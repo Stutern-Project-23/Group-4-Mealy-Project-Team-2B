@@ -22,5 +22,12 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "warn",
     "react/jsx-filename-extension": ["error", { extensions: [".jsx", ".js"] }],
+    "react/function-component-definition": [
+      "error",
+      {
+        namedComponents: "arrow-function",
+        unnamedComponents: "arrow-function",
+      },
+    ],
   },
 };

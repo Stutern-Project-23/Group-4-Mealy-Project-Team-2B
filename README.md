@@ -1,6 +1,6 @@
 # Mealy App
 
-This is the Laundry App Frontend built with [React](https://reactjs.org/) (Frontend)
+This is an App Frontend built with [React](https://reactjs.org/) (Frontend)
 
 ## Getting Started.
 

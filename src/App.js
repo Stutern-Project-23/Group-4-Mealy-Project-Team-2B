@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/no-unresolved
-import NavBar from "component/NavBar";
+import Forgot from "component/Forgot-password/Forgot";
 import "./App.css";
 
 const App = () => (
   <div className="App">
-    <NavBar />
+    <Forgot />
   </div>
 );
 

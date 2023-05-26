@@ -1,26 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
- 
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-  }
-
-  html {
-    font-size: 16px;
-    box-sizing: border-box;
-   
-  }
-
-  body {
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    overflow-y: scroll;
-  }
 
   a,
   a:link,

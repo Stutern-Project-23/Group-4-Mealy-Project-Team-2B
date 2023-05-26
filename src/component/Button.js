@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Button = ({ text, onClick, children }) => (
+const Button = ({ text, onClick, children, className }) => (
   <ButtonStyle>
-    <button type="button" onClick={onClick}>
+    <button type="button" onClick={onClick} className={className}>
       {text}
       {children}
     </button>
@@ -15,6 +15,7 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node,
+  className: PropTypes.string,
 };
 Button.defaultProps = {
   children: null,

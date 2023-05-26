@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import SignUp from "./pages/signUp/SignUp";
-import "./App.css";
-import SignUpVerification from "./pages/signUpVerification/SignUpVerification";
 import Home from "./pages/Home";
+import SignUpVerification from "./pages/signUpVerification/SignUpVerification";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import VerifyEmail from "./pages/ForgotPassword/VerifyEmail";
 import NewPassword from "./pages/ForgotPassword/NewPassword";
 import ResetPassword from "./pages/resetPassword/ResetPassword";
 import ResetPasswordEmailVerification from "./pages/resetPassword/ResetPasswordEmailVerification";
+import "./App.css";
 
 const App = () => (
   <div className="App">

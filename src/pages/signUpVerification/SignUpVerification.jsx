@@ -1,9 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
-import signupVerImage from "../../assets/verification-image.png";
 import "../authPagesStyles.css";
+import { RightSideImage } from "../authPageBgImg";
 
 const SignUpVerification = () => (
   <div className="verification flex">
@@ -29,17 +28,5 @@ const SignUpVerification = () => (
     <RightSideImage className="image" />
   </div>
 );
-
-const RightSideImage = styled.div`
-  width: 50%;
-  min-height: 100vh;
-  background-image: url(${signupVerImage});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  @media (max-width: 830px) {
-    display: none;
-  }
-`;
 
 export default SignUpVerification;

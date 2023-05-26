@@ -28,7 +28,7 @@ const ResetPasswordEmailVerification = () => {
               <form onSubmit={handleSubmit}>
                 <Input
                   type="email"
-                  className="input-field"
+                  className="input-width"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter code"
@@ -40,7 +40,7 @@ const ResetPasswordEmailVerification = () => {
                   <a href="/reset-password">Resend</a>.
                 </p>
 
-                <Button type="submit" className="submit-button">
+                <Button type="submit" className="input-width">
                   Next
                 </Button>
                 <div className="cancel-reset-div">

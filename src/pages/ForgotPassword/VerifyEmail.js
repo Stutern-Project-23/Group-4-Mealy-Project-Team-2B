@@ -27,13 +27,13 @@ const VerifyEmail = () => {
               <form onSubmit={handleSubmit}>
                 <Input
                   type="email"
-                  className="input-field"
+                  className="input-width"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter code"
                   required
                 />
-                <Button type="submit" className="submit-button">
+                <Button type="submit" className="input-width">
                   Verify
                 </Button>
               </form>

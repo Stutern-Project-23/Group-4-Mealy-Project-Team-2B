@@ -23,7 +23,7 @@ const Form = () =>
         <Logo />
         <h3>Sign In</h3>
           <div className='input'>
-             <input className='name' type="text" placeholder='Phone number/Email' />
+             <input className='name' type="text" placeholder='Phone number / Email' />
           </div>
           <div className='password-div'>
              <input className='password' type="password" placeholder='Password'/>

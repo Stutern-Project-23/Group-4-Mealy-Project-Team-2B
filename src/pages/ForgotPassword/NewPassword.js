@@ -17,6 +17,7 @@ const NewPassword = () => (
             type="password"
             id="password"
             placeholder="Enter new password"
+            className="input-width"
           />
         </div>
         <div className="input-div input-cont">
@@ -24,10 +25,13 @@ const NewPassword = () => (
             type="password"
             id="forget-password"
             placeholder="Confirm new password"
+            className="input-width"
           />
         </div>
         <div className="create-new-passwd-btn">
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="input-width">
+            Submit
+          </Button>
         </div>
       </form>
     </div>

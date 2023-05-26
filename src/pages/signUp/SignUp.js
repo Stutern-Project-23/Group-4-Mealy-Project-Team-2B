@@ -17,15 +17,38 @@ const SignUp = () => (
         <h2>Create an Account</h2>
 
         <div className="input-div input-cont">
-          <Input type="text" id="name" placeholder="Name" />
+          <Input
+            type="text"
+            id="name"
+            placeholder="First Name"
+            className="input-width"
+          />
+        </div>
+        <div className="input-div input-cont">
+          <Input
+            type="text"
+            id="name"
+            placeholder="Last Name"
+            className="input-width"
+          />
         </div>
 
         <div className="input-div input-cont">
-          <Input type="email" id="email" placeholder="Email" />
+          <Input
+            type="email"
+            id="email"
+            placeholder="Email"
+            className="input-width"
+          />
         </div>
 
         <div className="input-div input-cont">
-          <Input type="password" id="password" placeholder="Password" />
+          <Input
+            type="password"
+            id="password"
+            placeholder="Password"
+            className="input-width"
+          />
         </div>
 
         <div className="input-div input-cont">
@@ -33,6 +56,7 @@ const SignUp = () => (
             type="password"
             id="forget-password"
             placeholder="Confirm Password"
+            className="input-width"
           />
         </div>
 
@@ -55,7 +79,9 @@ const SignUp = () => (
         </div>
 
         <div className="create-acc-btn">
-          <Button type="submit">Create an account</Button>
+          <Button type="submit" className="input-width">
+            Create an account
+          </Button>
         </div>
       </form>
 
@@ -68,7 +94,7 @@ const SignUp = () => (
         </div>
 
         <p className="sign-in-link">
-          Already have an account?<a href="#signIn"> Sign In</a>
+          Already have an account?<a href="sign-In"> Sign In</a>
         </p>
       </div>
     </div>

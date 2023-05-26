@@ -243,6 +243,9 @@ button {
   .all {
     width: 100%;
   }
+  .left-side {
+    width: 100%;
+  }
 }
 @media (max-width: 660px) {
   .form-container {
@@ -281,6 +284,24 @@ button {
   .input-field,
   .submit-button {
     width: 85% !important;
+  }
+  .input-width {
+    width: 300px !important;
+  }
+  .checkboxes {
+    margin: 0 auto;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+@media (max-width: 420px) {
+  .input-field,
+  .submit-button {
+    width: 60% !important;
+  }
+  .input-wrapper h2 {
+    font-size: 28px;
   }
 }
 

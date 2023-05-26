@@ -18,6 +18,7 @@ const ResetPassword = () => (
             type="password"
             id="password"
             placeholder="Enter old password"
+            className="input-width"
           />
         </div>
         <div className="input-div input-cont">
@@ -25,6 +26,7 @@ const ResetPassword = () => (
             type="password"
             id="password"
             placeholder="Enter new password"
+            className="input-width"
           />
         </div>
         <div className="input-div input-cont">
@@ -32,10 +34,13 @@ const ResetPassword = () => (
             type="password"
             id="forget-password"
             placeholder="Confirm new password"
+            className="input-width"
           />
         </div>
         <div className="create-new-passwd-btn">
-          <Button type="submit">Reset Password</Button>
+          <Button type="submit" className="input-width">
+            Reset Password
+          </Button>
         </div>
       </form>
     </div>

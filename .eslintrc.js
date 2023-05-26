@@ -29,5 +29,11 @@ module.exports = {
         unnamedComponents: "arrow-function",
       },
     ],
+    "react/require-default-props": [
+      "error",
+      {
+        ignoreFunctionalComponents: true,
+      },
+    ],
   },
 };

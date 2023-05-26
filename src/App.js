@@ -1,10 +1,11 @@
 // eslint-disable-next-line import/no-unresolved
-import NavBar from "component/NavBar";
 import "./App.css";
+import Form from './SignInComponents/Form'
 
 const App = () => (
   <div className="App">
-    <NavBar />
+
+   <Form />
   </div>
 );
 

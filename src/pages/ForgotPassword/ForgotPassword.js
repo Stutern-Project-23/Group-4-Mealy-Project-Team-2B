@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
-import signupVerImage from "../../assets/verification-image.png";
+import { RightSideImage } from "../authPageBgImg";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -57,17 +56,5 @@ const ForgotPassword = () => {
     </div>
   );
 };
-
-const RightSideImage = styled.div`
-  width: 50%;
-  min-height: 100vh;
-  background-image: url(${signupVerImage});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  @media (max-width: 830px) {
-    display: none;
-  }
-`;
 
 export default ForgotPassword;

@@ -1,11 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import apple from "../../assets/apple 1.svg";
 import google from "../../assets/google 1.svg";
 import facebook from "../../assets/facebook 1.svg";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
-import signupImage from "../../assets/signup.svg";
+import { RightSideImage } from "../authPageBgImg";
 
 const SignUp = () => (
   <div className="sign-up-page">
@@ -76,17 +75,5 @@ const SignUp = () => (
     <RightSideImage />
   </div>
 );
-
-const RightSideImage = styled.div`
-  width: 50%;
-  min-height: 100vh;
-  background-image: url(${signupImage});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  @media (max-width: 850px) {
-    display: none;
-  }
-`;
 
 export default SignUp;

@@ -7,13 +7,13 @@ const Icons = () =>
   (
     <div className='icons-container'>
         <div className="apple">
-          <FaApple />
+          <FaApple className='apple-logo' />
         </div>
         <div className="gmail">
-           <FcGoogle />
+           <FcGoogle className='google' />
         </div>
         <div className="facebook">
-           <BsFacebook />
+           <BsFacebook className='facebook-logo' />
         </div>
     </div>
   )

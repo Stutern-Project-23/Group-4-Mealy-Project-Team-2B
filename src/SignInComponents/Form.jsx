@@ -13,14 +13,16 @@ const Form = () =>
 //  const { register, handleSubmit, formState: { errors } } = useForm();
 
    (
-    <div className='container'>
+    <div className='form-container'>
         {/* <form onSubmit={handleSubmit(onSubmit)}>
             <input type='text' placeholder='Phone number/Email'  />
             <input type='text' placeholder='Password'  />
             <input type='submit' className='btn' placeholder='Sign In' />
         </form> */}
         <form action="" className='form'>
-        <Logo />
+        <div className="logo-div">
+            <Logo />
+        </div>
         <h3>Sign In</h3>
           <div className='input'>
              <input className='name' type="text" placeholder='Phone number / Email' />
@@ -34,8 +36,15 @@ const Form = () =>
           </div>
           <div className="options">
             <SignInOptions />
-            <Icons />
+          
           </div>
+            <Icons />
+          <div className="option-two">
+             <p>Dont have an account?</p>
+             <Link to='/signup' className='signup-link'>Sign Up</Link>
+          </div>
+          <p className='or'>or <br /></p>
+          <Link to='/guest' className='guest-link'>Continue as a Guest</Link>
         </form>
         <div className="image-div">
           <img src={Image} alt="Plate of food" />

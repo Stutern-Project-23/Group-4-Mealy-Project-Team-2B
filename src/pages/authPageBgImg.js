@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import signupVerImage from "../assets/verification-image.png";
+import signupVerImage from "../Assets/verification-image.png";
 
 // eslint-disable-next-line import/prefer-default-export
 export const RightSideImage = styled.div`

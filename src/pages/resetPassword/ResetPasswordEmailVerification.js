@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
-import signupVerImage from "../../assets/verification-image.png";
+import signupVerImage from "../../Assets/verification-image.png";
+
 
 const ResetPasswordEmailVerification = () => {
   const [email, setEmail] = useState("");

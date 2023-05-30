@@ -1,22 +1,17 @@
-
-// eslint-disable-next-line import/no-unresolved
-
 import { Routes, Route } from "react-router-dom";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
-import VerifyEmail from "./pages/ForgotPassword/VerifyEmail";
-import NewPassword from "./pages/ForgotPassword/NewPassword";
+import VerifyEmail from "./pages/forgotPassword/VerifyEmail";
 import SignUp from "./pages/signUp/SignUp";
 import Home from "./pages/Home";
 import SignUpVerification from "./pages/signUpVerification/SignUpVerification";
 import ResetPassword from "./pages/resetPassword/ResetPassword";
 import ResetPasswordEmailVerification from "./pages/resetPassword/ResetPasswordEmailVerification";
 import "./App.css";
-import Form from './SignInComponents/Form'
+import NewPassword from "./pages/forgotPassword/NewPassword";
+import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
+import SignIn from "./pages/signIn/SignIn";
 
 const App = () => (
   <div className="App">
-   <Form />
-
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="sign-up-verification" element={<SignUpVerification />} />
@@ -25,12 +20,12 @@ const App = () => (
       <Route path="forgot-password-verification" element={<VerifyEmail />} />
       <Route path="create-new-password" element={<NewPassword />} />
       <Route path="reset-password" element={<ResetPassword />} />
+      <Route path="sign-in" element={<SignIn />} />
       <Route
         path="reset-password-verification"
         element={<ResetPasswordEmailVerification />}
       />
     </Routes>
-
   </div>
 );
 

@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
-import signupImage from "../../Assets/signup.svg";
- 
+import signupImage from "../../assets/images/signup.svg";
+
 const ResetPassword = () => (
   <div className="create-new-passwd-page">
     <div className="left-side">

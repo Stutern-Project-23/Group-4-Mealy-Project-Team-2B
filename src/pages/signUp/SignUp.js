@@ -1,7 +1,7 @@
 import React from "react";
-import apple from "../../Assets/apple 1.svg";
-import google from "../../Assets/google 1.svg";
-import facebook from "../../Assets/facebook 1.svg";
+import apple from "../../assets/images/apple 1.svg";
+import google from "../../assets/images/google 1.svg";
+import facebook from "../../assets/images/facebook 1.svg";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";

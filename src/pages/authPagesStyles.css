@@ -204,6 +204,20 @@ button {
 .left-side {
   width: 50%;
 }
+.sign-up-link {
+  margin-left: 0.3em;
+  text-decoration: underline;
+}
+.no-p-margin {
+  margin-top: 0;
+  margin-bottom: 0 !important;
+}
+
+.guest-sign-in,
+.sign-up-link {
+  color: #fc9155;
+}
+
 @media (max-width: 1100px) {
   .verify {
     padding: 1rem;

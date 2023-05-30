@@ -123,3 +123,12 @@ h3,
     margin: 0;
   }
 }
+.validation-error-div {
+  width: 65%;
+}
+.validation-error {
+  color: #fa5a00;
+  font-size: 12px;
+  margin-top: 0.5em;
+  text-align: start;
+}

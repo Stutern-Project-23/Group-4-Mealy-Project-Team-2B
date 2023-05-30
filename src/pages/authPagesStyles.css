@@ -204,6 +204,45 @@ button {
 .left-side {
   width: 50%;
 }
+.sign-up-link {
+  margin-left: 0.3em;
+  text-decoration: underline;
+}
+.no-p-margin {
+  margin-top: 0;
+  margin-bottom: 0 !important;
+}
+
+.guest-sign-in,
+.sign-up-link {
+  color: #fc9155;
+}
+.sign-in-header {
+  display: flex;
+  justify-content: start;
+  width: 63%;
+}
+@media (min-width: 1393px) {
+  .sign-in-header {
+    width: 60%;
+  }
+}
+@media (min-width: 1569px) {
+  .sign-in-header {
+    width: 50%;
+  }
+}
+@media (max-width: 1300px) {
+  .sign-in-header {
+    width: 70%;
+  }
+}
+@media (max-width: 1180px) {
+  .sign-in-header {
+    width: 76%;
+  }
+}
+
 @media (max-width: 1100px) {
   .verify {
     padding: 1rem;

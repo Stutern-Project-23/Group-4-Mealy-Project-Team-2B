@@ -1,5 +1,5 @@
 body {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 .App {
   margin: auto;
@@ -16,11 +16,15 @@ body {
 h3 {
   padding-top: 20px;
 }
-h3, .name, .password, .btn, .link {
+h3,
+.name,
+.password,
+.btn,
+.link {
   margin-left: 90px;
-  
 }
-.form, .image-div {
+.form,
+.image-div {
   width: 98%;
   height: 100vh;
 }
@@ -28,7 +32,8 @@ h3, .name, .password, .btn, .link {
   width: 100%;
   height: inherit;
 }
-.name, .password {
+.name,
+.password {
   width: 400px;
   height: 31px;
   border-radius: 16px;
@@ -37,7 +42,7 @@ h3, .name, .password, .btn, .link {
   border: 1px solid gray;
 }
 .btn {
-  background: #FA5A00;
+  background: #fa5a00;
   border-radius: 16px;
   width: 400px;
   height: 61px;
@@ -73,11 +78,13 @@ h3, .name, .password, .btn, .link {
   margin-left: 32%;
   margin-top: 25px;
 }
-.apple-logo, .google, .facebook-logo {
+.apple-logo,
+.google,
+.facebook-logo {
   font-size: 30px;
 }
 .facebook-logo {
-  color: rgb(3, 3, 217); 
+  color: rgb(3, 3, 217);
   font-size: 25px;
   padding-top: 3px;
 }
@@ -86,25 +93,21 @@ h3, .name, .password, .btn, .link {
   flex-direction: row;
   margin: 3% 0 0 25%;
 }
-.signup-link, .guest-link {
-  color: #FA5A00;
+.signup-link,
+.guest-link {
+  color: #fa5a00;
   font-weight: bold;
   padding: 15px;
 }
 .or {
-margin: 0;
-padding-left: 40%;
-font-size: 0.9rem;
+  margin: 0;
+  padding-left: 40%;
+  font-size: 0.9rem;
 }
 .guest-link {
   padding-left: 30%;
   font-weight: 500;
 }
-
-
-
-
-
 
 /* MEDIA QUERIES */
 
@@ -119,7 +122,13 @@ font-size: 0.9rem;
     width: 100%;
     margin: 0;
   }
-  .App {
-    
-  }
+}
+.validation-error-div {
+  width: 65%;
+}
+.validation-error {
+  color: #fa5a00;
+  font-size: 12px;
+  margin-top: 0.5em;
+  text-align: start;
 }

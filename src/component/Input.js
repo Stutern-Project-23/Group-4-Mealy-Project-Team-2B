@@ -50,7 +50,7 @@ const InputStyle = styled.div`
     border: 1px solid #bbbbc4;
     border-radius: 16px;
     width: 396px;
-    height: 48px;
+    height: 30px;
   }
   .input-component::-webkit-outer-spin-button,
   .input-component-webkit-inner-spin-button {

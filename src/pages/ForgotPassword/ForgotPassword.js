@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
+import { FormValidationContext } from "../../hooks/FormValidationsContext";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const { email, setEmail, validateEmail, emailError, setEmailError } =
+    useContext(FormValidationContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const isEmailValid = validateEmail();
+
+    if (isEmailValid) {
+      setEmailError("");
+      setEmail("");
+    }
   };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setMessage("");
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [message]);
 
   return (
     <div className="forgot-flex">
@@ -41,14 +41,17 @@ const ForgotPassword = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email address"
-                  required
                 />
+                <div className="validation-error-div">
+                  {emailError && (
+                    <span className="validation-error">{emailError}</span>
+                  )}
+                </div>
                 <Button type="submit" className="input-width">
                   Get Code
                 </Button>
               </form>
             </div>
-            {message && <p className="message">{message}</p>}
           </div>
         </div>
       </div>

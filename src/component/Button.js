@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Button = ({ text, onClick, children, className }) => (
+const Button = ({ text, onClick, children, className, type }) => (
   <ButtonStyle>
-    <button type="button" onClick={onClick} className={className}>
+    {/* eslint-disable-next-line react/button-has-type */}
+    <button type={type} onClick={onClick} className={className}>
       {text}
       {children}
     </button>
@@ -12,10 +13,11 @@ const Button = ({ text, onClick, children, className }) => (
 );
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string,
+  onClick: PropTypes.func,
   children: PropTypes.node,
   className: PropTypes.string,
+  type: PropTypes.string.isRequired,
 };
 Button.defaultProps = {
   children: null,

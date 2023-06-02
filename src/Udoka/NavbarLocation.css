@@ -1,0 +1,112 @@
+
+/* CSS for Nav bar page */
+.header {
+    height: auto;
+    padding: 28px;
+    background-color: #F8F8F8;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 120px;
+    margin-left: 60px;
+  }
+  
+  .right-items {
+    margin-right:60px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    }
+  
+    .input-div {
+      position: relative;
+    }
+  
+    .nav-location {
+      width: 18px;
+      position: absolute;
+      left: 8px;
+      z-index: 1;
+      transform: translatey(34%);
+    }
+  
+  input {
+    width: 250px;
+    height: auto;
+    padding: 10px 10px 10px 30px;
+    border-radius: 8px;
+    border: 1px solid #010101;
+    position: relative;
+  }
+  
+  .drop-down {
+    position: absolute;
+    right: 8px;
+    transform: translatey(24%);
+  }
+  
+  .profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: grey;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  .bag {
+    width: 40px;
+  }
+  
+  .notification {
+    width: 40px;
+  }
+  
+  /* css for location page */
+  
+  .location-container {
+    width:50%;
+    margin: 20px auto;
+    height: auto;
+    background-color: #e3e3e3;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 40px;
+    position: relative;
+  }
+  
+  .location-input {
+    border: 1px solid #010101;
+    padding: 10px;
+  }
+  
+  .locationicon-wrapper {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+    margin-top: 24px;
+    }
+  
+  .location-icon {
+    width: 20px;
+  }
+  
+  .bottom-p {
+    margin-top: 50px;
+  }
+  
+  .close-icon {
+    position: absolute;
+    right: 50px;
+    top: 10px;
+  }
+  
+  .map {
+    width: 98%;
+  }
+  

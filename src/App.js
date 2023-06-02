@@ -13,6 +13,8 @@ import MealCustomization from "./component/mealCustomization/MealCustomization";
 import ResturantDashboard from "./component/ResturantDashboard";
 import "./App.css";
 
+
+
 const App = () => (
   <div className="App">
     <ValidationProvider>

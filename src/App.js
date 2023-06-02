@@ -11,6 +11,8 @@ import NewPassword from "./pages/forgotPassword/NewPassword";
 import ResetPassword from "./pages/resetPassword/ResetPassword";
 import SignIn from "./pages/signIn/SignIn";
 
+
+
 const App = () => (
   <div className="App">
     <ValidationProvider>

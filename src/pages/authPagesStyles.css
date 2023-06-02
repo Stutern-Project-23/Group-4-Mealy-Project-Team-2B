@@ -96,7 +96,7 @@
   margin-top: 2em;
   margin-left: 2em;
 }
-h2 {
+.input-wrapper h2 {
   margin-top: 24px;
   margin-bottom: 18px;
   color: #32324d;
@@ -219,7 +219,7 @@ button {
 }
 .sign-in-header {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   width: 63%;
 }
 @media (min-width: 1393px) {

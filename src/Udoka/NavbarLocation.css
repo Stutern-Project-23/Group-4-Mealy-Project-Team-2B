@@ -110,3 +110,29 @@
     width: 98%;
   }
   
+  /* CSS for Modal */
+
+.modal-div {
+    width: 30%;
+    height: auto;
+    padding: 14px;
+    border-radius: 20px;
+    background-color: white;
+    margin: auto;
+  }
+  
+  .button-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+  }
+  
+  .button {
+    width: fit-content;
+    height: auto;
+    padding: 8px 20px;
+    background-color: #FA5A00;
+    border-radius: 8px;
+    border: none;
+    color: white;
+  }

@@ -2,14 +2,16 @@ import { Routes, Route } from "react-router-dom";
 import VerifyEmail from "./pages/forgotPassword/VerifyEmail";
 import ValidationProvider from "./hooks/FormValidationsContext";
 import SignUp from "./pages/signUp/SignUp";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import SignUpVerification from "./pages/signUpVerification/SignUpVerification";
 import ResetPasswordEmailVerification from "./pages/resetPassword/ResetPasswordEmailVerification";
-import "./App.css";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import NewPassword from "./pages/forgotPassword/NewPassword";
 import ResetPassword from "./pages/resetPassword/ResetPassword";
 import SignIn from "./pages/signIn/SignIn";
+import MealCustomization from "./component/mealCustomization/MealCustomization";
+import ResturantDashboard from "./component/ResturantDashboard";
+import "./App.css";
 
 const App = () => (
   <div className="App">
@@ -23,6 +25,8 @@ const App = () => (
         <Route path="create-new-password" element={<NewPassword />} />
         <Route path="reset-password" element={<ResetPassword />} />
         <Route path="sign-in" element={<SignIn />} />
+        <Route path="tabs" element={<MealCustomization />} />
+        <Route path="meal-dashboard" element={<ResturantDashboard />} />
         <Route
           path="reset-password-verification"
           element={<ResetPasswordEmailVerification />}

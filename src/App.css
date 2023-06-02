@@ -3,7 +3,6 @@ body {
 }
 .App {
   margin: auto;
-  width: 98%;
   height: 100vh;
 }
 
@@ -131,4 +130,43 @@ h3,
   font-size: 12px;
   margin-top: 0.5em;
   text-align: start;
+}
+.tab-button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 8px 8px;
+  gap: 10px;
+  background: #ffffff;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-button {
+  justify-content: center;
+  align-items: center;
+  padding: 8px 15px;
+  gap: 10px;
+  background-color: #ffffff;
+  color: #32324d;
+  border: none;
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+  text-align: center;
+}
+.active-tab {
+  background: #fa5a00;
+  color: #ffffff;
+}
+
+.star {
+  color: #32324d;
+  cursor: pointer;
+  padding: 1px;
+}
+
+.star-filled {
+  color: #fa5a00;
 }

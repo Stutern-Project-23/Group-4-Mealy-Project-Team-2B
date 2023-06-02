@@ -1,0 +1,112 @@
+.carousel {
+  width: 93%;
+  position: relative;
+  padding: 1em;
+  padding-left: 0;
+  margin-left: 4em;
+  margin-right: 1em;
+}
+.carousel h3 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+  color: #3e2d2d;
+  margin: 0;
+  margin-bottom: 0.7em;
+}
+.carousel h3 span {
+  color: #ff422e;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding: 0 16px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border-radius: 3.69557px;
+}
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-card {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  border-radius: 3.69557px;
+  background-color: #f9f9f9;
+  margin-right: 8px;
+  height: 165.84px;
+  width: 100%;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 3em;
+}
+.carousel-content-div {
+  background-position: center;
+  background-size: cover;
+  border-radius: 3.69557px;
+  background-repeat: no-repeat;
+  margin-top: -1em;
+  height: 165.84px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+.carousel-content-decription {
+  position: absolute;
+  bottom: 0;
+  height: 60%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  width: 87%;
+  border-bottom-left-radius: 3.69557px;
+  border-bottom-right-radius: 3.69557px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.3em;
+  padding: 0.5em;
+}
+.carousel-content-decription div:first-child {
+  font-weight: 700;
+  font-size: 9.23892px;
+  line-height: 100%;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+}
+.carousel-content-img {
+  width: 100%;
+  border-radius: 3.69557px;
+}
+.carousel-content-decription-price {
+  margin-bottom: 0;
+  font-weight: 800;
+  font-size: 11.0867px;
+}

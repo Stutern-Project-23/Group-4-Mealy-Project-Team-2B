@@ -219,7 +219,7 @@ button {
 }
 .sign-in-header {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   width: 63%;
 }
 @media (min-width: 1393px) {

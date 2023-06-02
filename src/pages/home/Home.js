@@ -8,6 +8,7 @@ import Navbar from "../../component/Navbar";
 import Feature from "./Feature";
 import Attributes from "./Attributes";
 import Discount from "./Discount";
+import Footer from "../../component/Footer";
 
 const Home = () => (
   <>
@@ -36,6 +37,7 @@ const Home = () => (
       <Attributes />
 
       <Discount />
+      <Footer />
     </HeroSection>
   </>
 );

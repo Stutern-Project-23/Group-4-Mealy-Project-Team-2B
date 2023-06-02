@@ -3,6 +3,8 @@ import styled from "styled-components";
 import ResturantTabs from "./ResturantTabs";
 import AfricanGridContent from "./allResturantGrids/AfricanGrid";
 import RandomResturantGrid from "./allResturantGrids/RandomResturantGrid";
+import AuthNavbar from "../authNavbar/AuthNavbar";
+import Layout from "../Layout";
 
 const MyComponent = () => {
   const tabs = [
@@ -28,21 +30,22 @@ const MyComponent = () => {
   ];
 
   return (
-    <AllResturantStyle>
-      <div className="header-rest">
-        <h3>All Restaurants</h3>
-      </div>
-      <ResturantTabs
-        tabs={tabs}
-        content={content}
-        className="tabs-custom-class"
-      />
-    </AllResturantStyle>
+    <Layout>
+      <AllResturantStyle>
+        <div className="header-rest">
+          <h3>All Restaurants</h3>
+        </div>
+        <ResturantTabs
+          tabs={tabs}
+          content={content}
+          className="tabs-custom-class"
+        />
+      </AllResturantStyle>
+    </Layout>
   );
 };
 
 const AllResturantStyle = styled.div`
-  margin-top: 5em;
   background-color: #f8f8f8;
   .header-rest {
     width: 90%;

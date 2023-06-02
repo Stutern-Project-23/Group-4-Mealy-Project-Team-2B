@@ -105,18 +105,6 @@ const NavStyle = styled.div`
     max-width: 1500px;
   }
 
-  .nav-logo {
-    color: #000000;
-    align-items: center;
-    margin-left: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 58px;
-    flex-grow: 1;
-  }
-
   .nav-menu {
     display: flex;
     align-items: center;

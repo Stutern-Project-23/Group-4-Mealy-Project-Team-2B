@@ -5,6 +5,8 @@ import styled from "styled-components";
 import AfricanGrid from "./mealCustomization/allResturantGrids/AfricanGrid";
 import HeroBackgroundImg from "../assets/images/dashboard-hero-bg.png";
 import AttributeImg from "../assets/images/Frame 91.png";
+import AuthNavbar from "./authNavbar/AuthNavbar";
+import Layout from "./Layout";
 
 const TabPanel = ({ children, value, index }) => (
   <div
@@ -13,7 +15,7 @@ const TabPanel = ({ children, value, index }) => (
     id={`vertical-tabpanel-${index}`}
     aria-labelledby={`vertical-tab-${index}`}>
     {value === index && (
-      <div style={{ padding: "16px" }}>
+      <div style={{ padding: "16px", paddingTop: 0 }}>
         <div className="dashboard-content-grid">{children}</div>
       </div>
     )}
@@ -68,63 +70,67 @@ const ResturantDashboard = () => {
   ];
 
   return (
-    <DashboardStyle>
-      <div className="dashboard-hero-container">
-        <div className="dashboard-hero-container-overlay" />
-        <div className="dashboard-hero-content">
-          <h3>Tastee</h3>
-        </div>
-      </div>
-      <div className="dashboard-tabs-content-cont">
-        <div className="dashboard-content-tabs">
-          <div role="tablist" className="tabList">
-            <img src={AttributeImg} alt="" className="attibute-img" />
-            {tabItems.map((item, index) => (
-              <div
-                className={`tab-button ${index === value ? "active-tab" : ""}`}
-                key={`vertical-tab-${index}`}
-                id={`vertical-tab-${index}`}
-                aria-controls={`vertical-tabpanel-${index}`}
-                onClick={() => handleChange(index)}
-                tabIndex={value === index ? 0 : -1}
-                onKeyDown={(event) => handleKeyDown(event, index)}
-                role="tab">
-                {item}
-              </div>
-            ))}
+    <Layout>
+      <DashboardStyle>
+        <div className="dashboard-hero-container">
+          <div className="dashboard-hero-container-overlay" />
+          <div className="dashboard-hero-content">
+            <h3>Tastee</h3>
           </div>
         </div>
 
-        <div className="dashboard-content">
-          <TabPanel value={value} index={0}>
-            <AfricanGrid />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            Item Two
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            Item Three
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-            Item Four
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-            Item Five
-          </TabPanel>
-          <TabPanel value={value} index={5}>
-            Item Six
-          </TabPanel>
-          <TabPanel value={value} index={6}>
-            Item Seven
-          </TabPanel>
+        <div className="dashboard-tabs-content-cont">
+          <div className="dashboard-content-tabs">
+            <div role="tablist" className="tabList">
+              <img src={AttributeImg} alt="" className="attibute-img" />
+              {tabItems.map((item, index) => (
+                <div
+                  className={`tab-button ${
+                    index === value ? "active-tab" : ""
+                  }`}
+                  key={`vertical-tab-${index}`}
+                  id={`vertical-tab-${index}`}
+                  aria-controls={`vertical-tabpanel-${index}`}
+                  onClick={() => handleChange(index)}
+                  tabIndex={value === index ? 0 : -1}
+                  onKeyDown={(event) => handleKeyDown(event, index)}
+                  role="tab">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="dashboard-content">
+            <TabPanel value={value} index={0}>
+              <AfricanGrid />
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              Item Two
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              Item Three
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+              Item Four
+            </TabPanel>
+            <TabPanel value={value} index={4}>
+              Item Five
+            </TabPanel>
+            <TabPanel value={value} index={5}>
+              Item Six
+            </TabPanel>
+            <TabPanel value={value} index={6}>
+              Item Seven
+            </TabPanel>
+          </div>
         </div>
-      </div>
-    </DashboardStyle>
+      </DashboardStyle>
+    </Layout>
   );
 };
 
 const DashboardStyle = styled.div`
-  margin-top: 8em;
   .dashboard-hero-container {
     background-image: url(${HeroBackgroundImg});
     background-size: cover;
@@ -132,6 +138,8 @@ const DashboardStyle = styled.div`
     background-repeat: no-repeat;
     height: 276px;
     width: 100%;
+    margin-top: 7em;
+    margin-bottom: 2em;
   }
   /* .dashboard-hero-container-overlay {
     position: absolute;
@@ -153,6 +161,7 @@ const DashboardStyle = styled.div`
   .dashboard-tabs-content-cont {
     display: flex;
     width: 100%;
+    padding-bottom: 5em;
   }
   .dashboard-content {
     width: 60%;
@@ -166,6 +175,7 @@ const DashboardStyle = styled.div`
     gap: 10px;
     background: #ffffff;
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
+    height: 500px;
     .tab-button {
       text-align: center;
     }

@@ -1,0 +1,164 @@
+/* CSS for Nav bar page */
+.header {
+  height: auto;
+  padding: 15px;
+  padding-left: 0;
+  background-color: #f8f8f8;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+.authNavbar {
+  width: 95%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.logo {
+  width: 120px;
+  margin-left: 60px;
+}
+
+.right-items {
+  margin-right: 60px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-div {
+  position: relative;
+}
+
+.nav-location {
+  width: 18px;
+  position: absolute;
+  left: 8px;
+  z-index: 1;
+  transform: translatey(34%);
+}
+
+input {
+  width: 250px;
+  height: auto;
+  padding: 10px 10px 10px 30px;
+  border-radius: 8px;
+  border: 1px solid #010101;
+  position: relative;
+}
+
+.drop-down {
+  position: absolute;
+  right: 8px;
+  transform: translatey(24%);
+}
+
+.profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: grey;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.bag,
+.notification {
+  width: 40px;
+  cursor: pointer;
+}
+
+/* css for location page */
+
+.location-container {
+  width: 60%;
+  margin: 20px auto;
+  height: auto;
+  background-color: #e3e3e3;
+  padding: 2em;
+  padding-top: 1em;
+  position: relative;
+}
+
+.location-container-grid {
+  display: flex;
+  flex-direction: row;
+  column-gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+.location-container-grid h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 35px;
+  color: #32324d;
+}
+.location-container-grid > div {
+  width: 50%;
+}
+
+.location-input {
+  border: 1px solid #010101;
+  padding: 10px;
+  width: 80% !important;
+  height: 25px !important;
+}
+
+.locationicon-wrapper {
+  display: flex;
+  flex-direction: row;
+  column-gap: 16px;
+  margin-top: 0.5em;
+  align-items: center;
+}
+
+.location-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.bottom-p {
+  margin-top: 0.5em;
+}
+.close-icon-div {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1em;
+}
+
+.close-icon {
+  right: 50px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}
+
+.location-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 10000;
+}

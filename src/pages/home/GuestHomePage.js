@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "../../component/Layout";
-import MealCustomization from "../../component/mealCustomization/ResturantTabs";
+import MealCustomizationComponentWrapper from "../../component/mealCustomization/MealCustomizationComponentWrapper";
 
 const GuestHomePage = () => (
   <Layout>
     GuestHomePage
-    {/* <MealCustomization /> */}
+    <MealCustomizationComponentWrapper />
   </Layout>
 );
 

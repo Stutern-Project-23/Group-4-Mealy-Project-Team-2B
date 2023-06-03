@@ -17,7 +17,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node,
   className: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 Button.defaultProps = {
   children: null,
@@ -36,6 +36,9 @@ const ButtonStyle = styled.div`
     border-radius: 16px;
     width: 400px;
     height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   button:hover {

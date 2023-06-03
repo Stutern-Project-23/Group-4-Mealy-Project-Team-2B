@@ -94,7 +94,7 @@ const SignIn = () => {
           </div>
           <p className="sign-in-link">
             Do not have an account?
-            <a href="sign-in" className="sign-up-link">
+            <a href="sign-up" className="sign-up-link">
               Sign Up
             </a>
           </p>

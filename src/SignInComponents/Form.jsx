@@ -43,8 +43,10 @@ const Form = () =>
              <p>Dont have an account?</p>
              <Link to='/signup' className='signup-link'>Sign Up</Link>
           </div>
+          <div className="guest-div">
           <p className='or'>or <br /></p>
           <Link to='/guest' className='guest-link'>Continue as a Guest</Link>
+          </div>
         </form>
         <div className="image-div">
           <img src={Image} alt="Plate of food" />

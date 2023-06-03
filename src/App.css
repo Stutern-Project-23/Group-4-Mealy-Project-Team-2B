@@ -2,9 +2,8 @@ body {
   background-color: #F8F8F8;
 }
 .App {
-  margin: auto;
-  width: 98%;
-  height: 100vh;
+  width: 100%;
+  height: fit-content;
 }
 
 .form-container {
@@ -102,11 +101,211 @@ font-size: 0.9rem;
 }
 
 
-
+/* MEAL CUSTOMIZATION STYLING */
+.meal-cust-container {
+  width: 90%;
+  display: flex;
+  margin: auto;
+  gap: 20px;
+}
+.food-desc-section, .price-section {
+  background-color: red;
+  height: 80vh;
+  width: 43%;
+}
 
 
 
 /* MEDIA QUERIES */
+
+@media (max-width: 416px) {
+  .image-div {
+    display: none;
+  }
+  .logo-div {
+    display: none;
+  }
+  .form {
+    width: 100%;
+    margin-left: -40px;
+  }
+  .name, .password {
+    width: 300px;
+    height: 20px;
+  }
+  .btn {
+    width: 320px;
+    height: 50px;
+  }
+  .options p {
+    text-align: center;
+    line-height: 3;
+  }
+  .options {
+    margin-top: 30px;
+  }
+  .icons-container {
+    gap: 15px;
+   justify-content: center;
+  }
+  .option-two  {
+    justify-content: center;
+    font-size: 0.9rem;
+    margin-top: 7%;
+  }
+ .signup-link {
+  color: #1b1c1e;
+  text-decoration: none;
+  font-weight: bolder;
+  padding: 12px 0 0 2px;
+ }
+ .or {
+  display: none;
+ }
+ .guest-link {
+  border: 1px solid gray;
+  border-radius: 16px;
+  width: 100%;
+  outline: none;
+  color:  #FA5A00;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+ }
+ .guest-div {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 20px 120px;
+ }
+}
+@media (max-width: 375px) {
+  .image-div {
+    display: none;
+  }
+  .logo-div {
+    display: none;
+  }
+  .form {
+    width: 100%;
+    margin-left: -15%;
+  }
+  .name, .password {
+    width: 330px;
+    height: 20px;
+    
+  }
+  .btn {
+    width: 350px;
+    height: 50px;
+    background-color: gray;
+  }
+  .options p {
+    text-align: center;
+    line-height: 3;
+  }
+  .options {
+    margin-top: 30px;
+  }
+  .icons-container {
+    gap: 15px;
+   justify-content: center;
+  }
+  .option-two  {
+    justify-content: center;
+    font-size: 0.9rem;
+    margin-top: 7%;
+  }
+ .signup-link {
+  color: #1b1c1e;
+  text-decoration: none;
+  font-weight: bolder;
+  padding: 12px 0 0 2px;
+ }
+ .or {
+  display: none;
+ }
+ .guest-link {
+  border: 1px solid gray;
+  border-radius: 16px;
+  width: 100%;
+  outline: none;
+  color:  #FA5A00;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+ }
+ .guest-div {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 20px 120px;
+ }
+}
+@media (max-width: 360px) {
+  .image-div {
+    display: none;
+  }
+  .logo-div {
+    display: none;
+  }
+  .form {
+    width: 100%;
+    margin-left: -20%;
+  }
+  .name, .password {
+    width: 300px;
+    height: 20px;
+  }
+  .btn {
+    width: 320px;
+    height: 50px;
+  }
+  .options p {
+    text-align: center;
+    line-height: 3;
+  }
+  .options {
+    margin-top: 30px;
+  }
+  .icons-container {
+    gap: 15px;
+   justify-content: center;
+  }
+  .option-two  {
+    justify-content: center;
+    font-size: 0.9rem;
+    margin-top: 7%;
+  }
+ .signup-link {
+  color: #1b1c1e;
+  text-decoration: none;
+  font-weight: bolder;
+  padding: 12px 0 0 2px;
+ }
+ .or {
+  display: none;
+ }
+ .guest-link {
+  border: 1px solid gray;
+  border-radius: 16px;
+  width: 100%;
+  outline: none;
+  color:  #FA5A00;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+ }
+ .guest-div {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 20px 120px;
+ }
+}
 
 @media (max-width: 320px) {
   .image-div {
@@ -117,9 +316,57 @@ font-size: 0.9rem;
   }
   .form {
     width: 100%;
-    margin: 0;
+    margin-left: -20%;
   }
-  .App {
-    
+  .name, .password {
+    width: 250px;
+    height: 15px;
   }
+  .btn {
+    width: 270px;
+    height: 40px;
+  }
+  .options p {
+    text-align: center;
+    line-height: 0.5;
+  }
+  .options {
+    margin-top: 10px;
+  }
+  .icons-container {
+    gap: 15px;
+   justify-content: center;
+  }
+  .option-two  {
+    justify-content: center;
+    font-size: 0.8rem;
+    margin-top: 7%;
+  }
+ .signup-link {
+  color: #1b1c1e;
+  text-decoration: none;
+  font-weight: bolder;
+  padding: 12px 0 0 2px;
+ }
+ .or {
+  display: none;
+ }
+ .guest-link {
+  border: 1px solid gray;
+  border-radius: 16px;
+  width: 300px;
+  outline: none;
+  color:  #FA5A00;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.8rem;
+ }
+ .guest-div {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 20px 100px;
+ }
 }
+

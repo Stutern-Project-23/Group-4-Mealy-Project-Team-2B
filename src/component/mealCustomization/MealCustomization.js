@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ResturantTabs from "./ResturantTabs";
 import AfricanGridContent from "./allResturantGrids/AfricanGrid";
 import RandomResturantGrid from "./allResturantGrids/RandomResturantGrid";
-import AuthNavbar from "../authNavbar/AuthNavbar";
+// import AuthNavbar from "../authNavbar/AuthNavbar";
 import Layout from "../Layout";
 
 const MyComponent = () => {

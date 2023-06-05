@@ -43,8 +43,8 @@ const HeroSection = () => (
         <img src={Fav2} alt="" />
         <img src={Fav3} alt="" />
         <img src={Fav4} alt="" />
-        {/* <img src={Fav5} alt="" /> */}
-        {/* <img src={Fav6} alt="" /> */}
+        <img src={Fav5} alt="" />
+        <img src={Fav6} alt="" />
         <div className="favourites-empty-box">
           <div className="add">+</div>
         </div>

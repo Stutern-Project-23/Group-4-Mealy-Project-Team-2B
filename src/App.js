@@ -1,15 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-// import VerifyEmail from "./pages/forgotPassword/VerifyEmail";
+import VerifyEmail from "./pages/forgotPassword/VerifyEmail";
 import ValidationProvider from "./hooks/FormValidationsContext";
 import ResetPasswordEmailVerification from "./pages/resetPassword/ResetPasswordEmailVerification";
-// import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
-// import NewPassword from "./pages/forgotPassword/NewPassword";
+import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
+import NewPassword from "./pages/forgotPassword/NewPassword";
 import SignUpVerification from "./pages/signUpVerification/SignUpVerification";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/resetPassword/ResetPassword";
 import ResturantDashboard from "./component/ResturantDashboard";
-import VerifyEmail from "./pages/ForgotPassword/VerifyEmail";
-import NewPassword from "./pages/ForgotPassword/NewPassword";
 import GuestHomePage from "./pages/home/GuestHomePage";
 import AuthHomePage from "./pages/home/AuthHomePage";
 import SignIn from "./pages/signIn/SignIn";

@@ -1,14 +1,14 @@
 import React from "react";
-import Input from "../component/Input";
+import Input from "../../Input";
 import CategoryData from "../Data/HeroSectionData";
-import Fav1 from "../assets/images/hero/fav1.png";
-import Fav2 from "../assets/images/hero/fav2.png";
-import Fav3 from "../assets/images/hero/fav3.png";
-import Fav4 from "../assets/images/hero/fav4.png";
-import Fav5 from "../assets/images/hero/fav5.png";
-import Fav6 from "../assets/images/hero/fav6.png";
-import Avocado from "../assets/images/hero/avocado-sandwich.png";
-import HelpIcon from "../assets/images/hero/help-icon.svg";
+import Fav1 from "../../../assets/images/hero/fav1.png";
+import Fav2 from "../../../assets/images/hero/fav2.png";
+import Fav3 from "../../../assets/images/hero/fav3.png";
+import Fav4 from "../../../assets/images/hero/fav4.png";
+import Fav5 from "../../../assets/images/hero/fav5.png";
+import Fav6 from "../../../assets/images/hero/fav6.png";
+import Avocado from "../../../assets/images/hero/avocado-sandwich.png";
+import HelpIcon from "../../../assets/images/hero/help-icon.svg";
 import "./HeroSection.css";
 
 const HeroSection = () => (

@@ -3,10 +3,8 @@ import styled from "styled-components";
 import ResturantTabs from "./ResturantTabs";
 import AfricanGridContent from "./allResturantGrids/AfricanGrid";
 import RandomResturantGrid from "./allResturantGrids/RandomResturantGrid";
-// import AuthNavbar from "../authNavbar/AuthNavbar";
-import Layout from "../Layout";
 
-const MyComponent = () => {
+const MealCustomizationComponentWrapper = () => {
   const tabs = [
     "Order Again",
     "All",
@@ -30,18 +28,16 @@ const MyComponent = () => {
   ];
 
   return (
-    <Layout>
-      <AllResturantStyle>
-        <div className="header-rest">
-          <h3>All Restaurants</h3>
-        </div>
-        <ResturantTabs
-          tabs={tabs}
-          content={content}
-          className="tabs-custom-class"
-        />
-      </AllResturantStyle>
-    </Layout>
+    <AllResturantStyle>
+      <div className="header-rest">
+        <h3>All Restaurants</h3>
+      </div>
+      <ResturantTabs
+        tabs={tabs}
+        content={content}
+        className="tabs-custom-class"
+      />
+    </AllResturantStyle>
   );
 };
 
@@ -75,4 +71,4 @@ const ContentWrapperGrid = styled.div`
   padding-bottom: 4em;
 `;
 
-export default MyComponent;
+export default MealCustomizationComponentWrapper;

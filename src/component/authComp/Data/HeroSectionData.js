@@ -1,6 +1,6 @@
-import AfricanImg from "../assets/images/hero/african.png";
-import HealthyImg from "../assets/images/hero/healthy.png";
-import SnacksImg from "../assets/images/hero/snacks.png";
+import AfricanImg from "../../../assets/images/hero/african.png";
+import HealthyImg from "../../../assets/images/hero/healthy.png";
+import SnacksImg from "../../../assets/images/hero/snacks.png";
 
 const CategoryData = [
   {
@@ -28,11 +28,11 @@ const CategoryData = [
     categoryImg: SnacksImg,
     title: "Snacks",
   },
-  {
-    id: 6,
-    categoryImg: AfricanImg,
-    title: "African",
-  },
+  // {
+  //   id: 6,
+  //   categoryImg: AfricanImg,
+  //   title: "African",
+  // },
 ];
 
 export default CategoryData;

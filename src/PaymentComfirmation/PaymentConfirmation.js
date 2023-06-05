@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../component/Button";
-import PaymentData from "../Data/PaymentConfirmation";
+import PaymentData from "../component/authComp/Data/PaymentConfirmation";
 import Close from "../assets/images/hero/close.svg";
 import Success from "../assets/images/hero/success.svg";
 import "./PaymentConfirmation.css";

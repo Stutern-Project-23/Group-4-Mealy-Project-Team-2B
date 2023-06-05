@@ -24,9 +24,9 @@ const App = () => (
         <Route path="guest" element={<GuestHomePage />} />
         <Route path="auth-user" element={<AuthHomePage />} />s
         <Route path="sign-up" element={<SignUp />} />
-        {/* <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="forgot-password-verification" element={<VerifyEmail />} />
-<Route path="create-new-password" element={<NewPassword />} /> */}
+        <Route path="create-new-password" element={<NewPassword />} />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="create-new-password" element={<NewPassword />} />

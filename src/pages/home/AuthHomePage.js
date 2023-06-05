@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "../../component/Layout";
-import MealCustomizationComponentWrapper from "../../component/mealCustomization/MealCustomizationComponentWrapper";
+// import MealCustomizationComponentWrapper from "../../component/mealCustomization/MealCustomizationComponentWrapper";
 
 const AuthHomePage = () => (
   <Layout>
     AuthHomePage
-    <MealCustomizationComponentWrapper />
+    {/* <MealCustomization /> */}
   </Layout>
 );
 

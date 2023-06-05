@@ -5,7 +5,7 @@ import styled from "styled-components";
 import AfricanGrid from "./mealCustomization/allResturantGrids/AfricanGrid";
 import HeroBackgroundImg from "../assets/images/dashboard-hero-bg.png";
 import AttributeImg from "../assets/images/Frame 91.png";
-import AuthNavbar from "./authNavbar/AuthNavbar";
+// import AuthNavbar from "./authNavbar/AuthNavbar";
 import Layout from "./Layout";
 
 const TabPanel = ({ children, value, index }) => (

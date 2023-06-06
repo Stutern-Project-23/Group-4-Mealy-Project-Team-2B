@@ -53,6 +53,12 @@ We're using eslint for js linting, and prettier for code formating, make sure yo
 see linting errors as you code and have your code formatted on save by prettier. If formatOnSave doesn't work please google how to set up
 format on save for the eslint & prettier plugins in your editor 🙃
 
+## Contributing
+
+For detailed information on how to go about contributing to this project. Check out the
+
+- [Contribution Guide](./docs/CONTRIBUTING.md)
+
 **Before send PR or making a merge make sure you code is properly formatted.** You can easily do that by running
 
 ```bash

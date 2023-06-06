@@ -1,6 +1,6 @@
 import React from "react";
 
-const Modal = () => {
+const NotificationModal = () => {
 
     return (
         <div className="modal-div">
@@ -13,4 +13,4 @@ const Modal = () => {
     )
 } 
 
-export default Modal
+export default NotificationModal

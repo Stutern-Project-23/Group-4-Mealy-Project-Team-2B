@@ -1,0 +1,1045 @@
+.meal-cust-container {
+  width: 98%;
+  display: flex;
+  flex-direction: row;
+  height: 80vh;
+  gap: 50px;
+  justify-content: center;
+ 
+}
+.food-desc-section, .price-section {
+  width: 40%;
+  height: inherit;
+  margin-top: 30px;
+}
+.food-div {
+  width: inherit;
+  height: auto;
+}
+.food {
+  width: 100%;
+}
+.ingredients {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+.text-ingredients {
+  height: 50px;
+  width: 40%;
+}
+.text-ingredients p {
+  border: 2px solid black;
+  margin: 0;
+  padding: 10px;
+}
+.img-ingredients {
+  width: 60%; 
+}
+.ratings {
+  width: 100%;
+  display: flex;
+}
+.rating-star-div {
+  margin-top: 15px;
+}
+.review p {
+  padding-left: 20px;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+.nutri-value {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.size, .calories, .cooktime {
+   width: 30%;
+   background-color: #ffff;
+   box-shadow: 10px 3px 10px #adacac;
+}
+.nutri-value p {
+  text-align: center;
+  line-height: 0.2;
+}
+.first {
+  font-weight: bold;
+}
+.food-description {
+  margin-top: 20px;
+  font-weight: 600;
+}
+.meal-prices {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.food-name {
+  margin-top: -40px;
+}
+.food-name h2{
+  font-size: 2.5rem;
+  margin-bottom: -20px;
+}
+.food-name p {
+  font-size: 1.3rem;
+}
+.quantity button {
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  padding: 5px;
+  width: 45px;
+  font-size: 2rem;
+  background-color: #FA5A00;
+  color: #f5f5f5;
+}
+.span {
+  padding: 10px;
+  font-size: 2rem;
+}
+.quantity {
+  margin-top: 20px;
+}
+.extras {
+  font-size: 2.5rem;
+}
+.extra-div {
+  display: flex;
+  width: 98%;
+  height: 80px;
+  box-shadow: 10px 3px 10px #adacac;
+  gap: 10px;
+  margin-top: 20px;
+}
+.name {
+  font-weight: bold;
+  margin-bottom: -15px;
+}
+.order-price {
+  width: 70%
+}
+.order-quantity {
+width: 20%;
+height: 80px;
+margin-left: 150px;
+}
+.order-quantity button {
+  border-radius: 50%;
+  border: 1px solid black;
+  margin-top: 50px;
+  background: none;
+}
+span {
+  padding: 10px;
+}
+.cart-input {
+  margin-top: 50px;
+}
+.cart-input input {
+ padding: 15px;
+ border-radius: 20px;
+ width: 90%;
+}
+.btn {
+  position: relative;
+  left: 70%;
+  top: -46px;
+  background-color: #FA5A00;
+  outline: none;
+  border: none;
+  width: 150px;
+  color: #f5f5f5;
+  border-radius: 20px;
+  padding: 13px;
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 835px) {
+  .meal-cust-container {
+    width: 100%;
+   
+  }
+  .food-desc-section, .price-section {
+    width: 48%;
+    margin-left: 10px;
+  }
+  .food-name {
+    width: 70%;
+    margin: -20px 0 0 0;
+
+  }
+  .food-name h2{
+    font-size: 1.5rem;
+    margin-bottom: -10px;
+  }
+  .food-name p {
+    font-size: 1rem;
+  }
+  .quantity {
+    width: 28%;
+    margin-top: 10px;
+  }
+  .quantity button {
+    padding: 5px;
+    width: 30px;
+    font-size: 1.5rem;
+  }
+  .span {
+    font-size: 1.5rem;
+  }
+  .extras {
+    font-size: 1.5rem;
+    /* padding-left: 10px; */
+  }
+  .extra-div {
+    display: flex;
+    width: 100%;
+  }
+  .order-img {
+    width: 30%;
+  }
+  .name {
+    font-size: 0.8rem;
+  }
+  .order-price {
+    width: 30%;
+    margin-right: 80px;
+  }
+  .order-quantity {
+  width: 30%;
+  margin-left: 0;
+  }
+.btn {
+  left: 70%;
+  width: 100px;
+  border-radius: 16px; 
+}
+}
+@media (max-width: 768px) {
+  .meal-cust-container {
+    width: 100%;
+   
+  }
+  .food-desc-section, .price-section {
+    width: 48%;
+    margin-left: 10px;
+  }
+  .food-name {
+    width: 70%;
+    margin: -20px 0 0 0;
+
+  }
+  .food-name h2{
+    font-size: 1.5rem;
+    margin-bottom: -10px;
+  }
+  .food-name p {
+    font-size: 1rem;
+  }
+  .quantity {
+    width: 28%;
+    margin-top: 10px;
+  }
+  .quantity button {
+    padding: 5px;
+    width: 30px;
+    font-size: 1.5rem;
+  }
+  .span {
+    font-size: 1.5rem;
+  }
+  .extras {
+    font-size: 1.5rem;
+    /* padding-left: 10px; */
+  }
+  .extra-div {
+    display: flex;
+    width: 100%;
+  }
+  .order-img {
+    width: 30%;
+  }
+  .name {
+    font-size: 0.8rem;
+  }
+  .order-price {
+    width: 30%;
+    margin-right: 80px;
+  }
+  .order-quantity {
+  width: 30%;
+  margin-left: 0;
+  }
+.btn {
+  left: 70%;
+  width: 100px;
+  border-radius: 16px; 
+}
+}
+
+
+@media (max-width: 428px) {
+  .meal-cust-container {
+    width: 100%;
+    display: block; 
+  }
+  .food-desc-section {
+    width: 100%;
+  }
+  .ingredients {
+    gap: 0;
+  }
+  .text-ingredients {
+    width: 40%;
+    height: 30px;
+    position: relative;
+    left: 10px;
+  }
+  .img-ingredients {
+    width: 60%;
+    position: relative;
+    left: 20px;
+  }
+  .img-ingredients img {
+    width: 14%;
+  }
+  .text-ingredients p {
+    border: 2px solid black;
+    margin: 0;
+    padding: 5px;
+    font-size: 0.7rem;
+  }
+  .rating-star-div {
+    margin-top: 25px;
+    margin-left: 10px;
+  }
+  .rating-star-div img {
+   width: 15%;
+  }
+  .review p {
+    width: 100px;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  .nutri-value {
+    width: 98%;
+    height: 40px;
+    gap: 10px;
+    justify-content: center;
+  }
+  .size, .calories, .cooktime {
+     width: 30%;
+     background-color: #ffff;
+     box-shadow: 10px 3px 10px #adacac;
+  }
+  .nutri-value p {
+    text-align: center;
+    line-height: 0.2;
+    font-size: 0.8rem;
+  }
+  .food-description {
+    width: 98%;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  .food-description p {
+    font-size: 0.8rem;
+  }
+  .meal-prices {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    width: 98%;
+    margin-top: -80px;
+  }
+  .food-name {
+    width: 70%;
+    margin: -20px 0 0 10px;
+
+  }
+  .food-name h2{
+    font-size: 1rem;
+    margin-bottom: -10px;
+  }
+  .food-name p {
+    font-size: 0.8rem;
+  }
+  .quantity {
+    width: 28%;
+    margin-top: 10px;
+  }
+  .quantity button {
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    padding: 2px;
+    width: 18px;
+    font-size: 0.8rem;
+    background-color: #FA5A00;
+    color: #f5f5f5;
+  }
+  .span {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .price-section {
+    width: 100%;
+  }
+  .extras {
+    font-size: 1rem;
+    padding-left: 10px;
+  }
+  .extra-div {
+    display: flex;
+    width: 90%;
+    margin-left: 20px;
+  }
+  .order-img {
+    width: 30%;
+  }
+  .name {
+    font-size: 0.8rem;
+  }
+  .order-price {
+    width: 30%;
+    margin-right: 40px;
+  }
+  .order-quantity {
+  width: 30%;
+
+  margin-left: 0;
+  }
+  .amount {
+    font-size: 0.8rem;
+  }
+  .cart-input {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.cart-input input {
+ padding: 15px;
+ border-radius: 20px;
+ width: 85%;
+}
+.btn {
+  left: 62%;
+  width: 100px;
+  border-radius: 16px; 
+}
+}
+@media (max-width: 415px) {
+  .meal-cust-container {
+    width: 100%;
+    display: block; 
+  }
+  .food-desc-section {
+    width: 100%;
+  }
+  .ingredients {
+    gap: 0;
+  }
+  .text-ingredients {
+    width: 40%;
+    height: 30px;
+    position: relative;
+    left: 10px;
+  }
+  .img-ingredients {
+    width: 60%;
+    position: relative;
+    left: 20px;
+  }
+  .img-ingredients img {
+    width: 14%;
+  }
+  .text-ingredients p {
+    border: 2px solid black;
+    margin: 0;
+    padding: 5px;
+    font-size: 0.7rem;
+  }
+  .rating-star-div {
+    margin-top: 25px;
+    margin-left: 10px;
+  }
+  .rating-star-div img {
+   width: 15%;
+  }
+  .review p {
+    width: 100px;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  .nutri-value {
+    width: 98%;
+    height: 40px;
+    gap: 10px;
+    justify-content: center;
+  }
+  .size, .calories, .cooktime {
+     width: 30%;
+     background-color: #ffff;
+     box-shadow: 10px 3px 10px #adacac;
+  }
+  .nutri-value p {
+    text-align: center;
+    line-height: 0.2;
+    font-size: 0.8rem;
+  }
+  .food-description {
+    width: 98%;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  .food-description p {
+    font-size: 0.8rem;
+  }
+  .meal-prices {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    width: 98%;
+    margin-top: -70px;
+  }
+  .food-name {
+    width: 70%;
+    margin: -20px 0 0 10px;
+
+  }
+  .food-name h2{
+    font-size: 1rem;
+    margin-bottom: -10px;
+  }
+  .food-name p {
+    font-size: 0.8rem;
+  }
+  .quantity {
+    width: 28%;
+  }
+  .quantity button {
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    padding: 2px;
+    width: 18px;
+    font-size: 0.8rem;
+    background-color: #FA5A00;
+    color: #f5f5f5;
+  }
+  .span {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .quantity {
+    margin-top: 10px;
+  }
+  .price-section {
+    width: 100%;
+  }
+  .extras {
+    font-size: 1rem;
+    padding-left: 10px;
+  }
+  .extra-div {
+    display: flex;
+    width: 90%;
+    margin-left: 20px;
+  }
+  .order-img {
+    width: 30%;
+  }
+  .name {
+    font-size: 0.8rem;
+  }
+  .order-price {
+    width: 30%;
+    margin-right: 40px;
+  }
+  .order-quantity {
+  width: 30%;
+
+  margin-left: 0;
+  }
+  .amount {
+    font-size: 0.8rem;
+  }
+  .cart-input {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.cart-input input {
+ padding: 15px;
+ border-radius: 20px;
+ width: 85%;
+}
+.btn {
+  left: 62%;
+  width: 100px;
+  border-radius: 16px; 
+}
+}
+@media (max-width: 380px) {
+  .meal-cust-container {
+    width: 100%;
+    display: block; 
+  }
+  .food-desc-section {
+    width: 100%;
+  }
+  .ingredients {
+    gap: 0;
+  }
+  .text-ingredients {
+    width: 40%;
+    height: 30px;
+    position: relative;
+    left: 10px;
+  }
+  .img-ingredients {
+    width: 60%;
+    position: relative;
+    left: 20px;
+  }
+  .img-ingredients img {
+    width: 14%;
+  }
+  .text-ingredients p {
+    border: 2px solid black;
+    margin: 0;
+    padding: 5px;
+    font-size: 0.7rem;
+  }
+  .rating-star-div {
+    margin-top: 25px;
+    margin-left: 10px;
+  }
+  .rating-star-div img {
+   width: 15%;
+  }
+  .review p {
+    width: 100px;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  .nutri-value {
+    width: 98%;
+    height: 40px;
+    gap: 10px;
+    justify-content: center;
+  }
+  .size, .calories, .cooktime {
+     width: 30%;
+     background-color: #ffff;
+     box-shadow: 10px 3px 10px #adacac;
+  }
+  .nutri-value p {
+    text-align: center;
+    line-height: 0.2;
+    font-size: 0.8rem;
+  }
+  .food-description {
+    width: 98%;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  .food-description p {
+    font-size: 0.8rem;
+  }
+  .meal-prices {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    width: 98%;
+    margin-top: -30px;
+  }
+  .food-name {
+    width: 70%;
+    margin: -20px 0 0 10px;
+
+  }
+  .food-name h2{
+    font-size: 1rem;
+    margin-bottom: -10px;
+  }
+  .food-name p {
+    font-size: 0.8rem;
+  }
+  .quantity {
+    width: 28%;
+  }
+  .quantity button {
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    padding: 2px;
+    width: 18px;
+    font-size: 0.8rem;
+    background-color: #FA5A00;
+    color: #f5f5f5;
+  }
+  .span {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .quantity {
+    margin-top: 10px;
+  }
+  .price-section {
+    width: 100%;
+  }
+  .extras {
+    font-size: 1rem;
+    padding-left: 10px;
+  }
+  .extra-div {
+    display: flex;
+    width: 90%;
+    margin-left: 20px;
+  }
+  .order-img {
+    width: 30%;
+  }
+  .name {
+    font-size: 0.8rem;
+  }
+  .order-price {
+    width: 30%;
+    margin-right: 40px;
+  }
+  .order-quantity {
+  width: 30%;
+
+  margin-left: 0;
+  }
+  .amount {
+    font-size: 0.8rem;
+  }
+  .cart-input {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.cart-input input {
+ padding: 15px;
+ border-radius: 20px;
+ width: 85%;
+}
+.btn {
+  left: 62%;
+  width: 100px;
+  border-radius: 16px; 
+}
+}
+
+@media (max-width: 360px) {
+  .meal-cust-container {
+    width: 100%;
+    display: block; 
+  }
+  .food-desc-section {
+    width: 100%;
+  }
+  .ingredients {
+    gap: 0;
+  }
+  .text-ingredients {
+    width: 40%;
+    height: 30px;
+    position: relative;
+    left: 10px;
+  }
+  .img-ingredients {
+    width: 60%;
+    position: relative;
+    left: 20px;
+  }
+  .img-ingredients img {
+    width: 14%;
+  }
+  .text-ingredients p {
+    border: 2px solid black;
+    margin: 0;
+    padding: 5px;
+    font-size: 0.7rem;
+  }
+  .rating-star-div {
+    margin-top: 25px;
+    margin-left: 10px;
+  }
+  .rating-star-div img {
+   width: 15%;
+  }
+  .review p {
+    width: 100px;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  .nutri-value {
+    width: 98%;
+    height: 40px;
+    gap: 10px;
+    justify-content: center;
+  }
+  .size, .calories, .cooktime {
+     width: 30%;
+     background-color: #ffff;
+     box-shadow: 10px 3px 10px #adacac;
+  }
+  .nutri-value p {
+    text-align: center;
+    line-height: 0.2;
+    font-size: 0.8rem;
+  }
+  .food-description {
+    width: 98%;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  .food-description p {
+    font-size: 0.8rem;
+  }
+  .meal-prices {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    width: 98%;
+    margin-top: -100px;
+  }
+  .food-name {
+    width: 70%;
+    margin: -20px 0 0 10px;
+
+  }
+  .food-name h2{
+    font-size: 1rem;
+    margin-bottom: -10px;
+  }
+  .food-name p {
+    font-size: 0.8rem;
+  }
+  .quantity {
+    width: 28%;
+  }
+  .quantity button {
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    padding: 2px;
+    width: 18px;
+    font-size: 0.8rem;
+    background-color: #FA5A00;
+    color: #f5f5f5;
+  }
+  .span {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .quantity {
+    margin-top: 10px;
+  }
+  .price-section {
+    width: 100%;
+  }
+  .extras {
+    font-size: 1rem;
+    padding-left: 10px;
+  }
+  .extra-div {
+    display: flex;
+    width: 90%;
+    margin-left: 20px;
+  }
+  .order-img {
+    width: 30%;
+  }
+  .name {
+    font-size: 0.8rem;
+  }
+  .order-price {
+    width: 30%;
+    margin-right: 40px;
+  }
+  .order-quantity {
+  width: 30%;
+
+  margin-left: 0;
+  }
+  .amount {
+    font-size: 0.8rem;
+  }
+  .cart-input {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.cart-input input {
+ padding: 15px;
+ border-radius: 20px;
+ width: 85%;
+}
+.btn {
+  left: 62%;
+  width: 100px;
+  border-radius: 16px; 
+}
+}
+
+@media (max-width: 320px) {
+  .meal-cust-container {
+    width: 100%;
+    display: block; 
+  }
+  .food-desc-section {
+    width: 100%;
+  }
+  .ingredients {
+    gap: 0;
+  }
+  .text-ingredients {
+    width: 40%;
+    height: 30px;
+    position: relative;
+    left: 10px;
+  }
+  .img-ingredients {
+    width: 60%;
+    position: relative;
+    left: 20px;
+  }
+  .img-ingredients img {
+    width: 14%;
+  }
+  .text-ingredients p {
+    border: 2px solid black;
+    margin: 0;
+    padding: 5px;
+    font-size: 0.7rem;
+  }
+  .rating-star-div {
+    margin-top: 25px;
+    margin-left: 10px;
+  }
+  .rating-star-div img {
+   width: 15%;
+  }
+  .review p {
+    width: 100px;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  .nutri-value {
+    width: 98%;
+    height: 40px;
+    gap: 10px;
+    justify-content: center;
+  }
+  .size, .calories, .cooktime {
+     width: 30%;
+     background-color: #ffff;
+     box-shadow: 10px 3px 10px #adacac;
+  }
+  .nutri-value p {
+    text-align: center;
+    line-height: 0.2;
+    font-size: 0.8rem;
+  }
+  .food-description {
+    width: 98%;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  .food-description p {
+    font-size: 0.8rem;
+  }
+  .meal-prices {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    width: 98%;
+    margin-top: 100px;
+  }
+  .food-name {
+    width: 70%;
+    margin: -20px 0 0 10px;
+
+  }
+  .food-name h2{
+    font-size: 1rem;
+    margin-bottom: -10px;
+  }
+  .food-name p {
+    font-size: 0.8rem;
+  }
+  .quantity {
+    width: 28%;
+  }
+  .quantity button {
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    padding: 2px;
+    width: 18px;
+    font-size: 0.8rem;
+    background-color: #FA5A00;
+    color: #f5f5f5;
+  }
+  .span {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .quantity {
+    margin-top: 10px;
+  }
+  .price-section {
+    width: 100%;
+  }
+  .extras {
+    font-size: 1rem;
+    padding-left: 10px;
+  }
+  .extra-div {
+    display: flex;
+    width: 90%;
+    margin-left: 20px;
+  }
+  .order-img {
+    width: 30%;
+  }
+  .name {
+    font-size: 0.8rem;
+  }
+  .order-price {
+    width: 30%;
+    margin-right: 40px;
+  }
+  .order-quantity {
+  width: 30%;
+
+  margin-left: 0;
+  }
+  .amount {
+    font-size: 0.8rem;
+  }
+  .cart-input {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.cart-input input {
+ padding: 15px;
+ border-radius: 20px;
+ width: 85%;
+}
+.btn {
+  left: 62%;
+  width: 100px;
+  border-radius: 16px; 
+}
+}

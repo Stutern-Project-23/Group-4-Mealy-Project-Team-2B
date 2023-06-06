@@ -12,7 +12,7 @@ const Menu = () =>
        </div>
        <div className="order-price">
            <p className='name'>Grilled Fish</p>
-           <p>#350.00</p>
+           <p className='amount'>#350.00</p>
        </div>
        <div className="order-quantity">
             <button type='button'>-</button>
@@ -26,7 +26,7 @@ const Menu = () =>
        </div>
        <div className="order-price">
            <p className='name'>Deep Fried Chicken</p>
-           <p>#350.00</p>
+           <p className='amount'>#350.00</p>
        </div>
        <div className="order-quantity">
             <button type='button'>-</button>
@@ -40,7 +40,7 @@ const Menu = () =>
        </div>
        <div className="order-price">
            <p className='name'>Fried Plantain</p>
-           <p>#350.00</p>
+           <p className='amount'>#350.00</p>
        </div>
        <div className="order-quantity">
             <button type='button'>-</button>

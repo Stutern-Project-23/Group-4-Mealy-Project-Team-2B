@@ -1,8 +1,15 @@
 import React from "react";
+<<<<<<< HEAD:src/component/PaymentComfirmation/PaymentConfirmation.js
 import Button from "../Button";
 import PaymentData from "../authComp/Data/PaymentConfirmation";
 import Success from "../../assets/images/hero/success.svg";
 import "./paymentConfirmation.css";
+=======
+import Button from "../component/Button";
+import PaymentData from "../component/authComp/Data/PaymentConfirmation";
+import Success from "../assets/images/hero/success.svg";
+import "./PaymentConfirmation.css";
+>>>>>>> 496d4abeac3e6fd52164caaa4b35911fa4e50cfe:src/PaymentComfirmation/PaymentConfirmation.js
 
 const PaymentConfirmation = () => (
   <div className="payment-main-box">

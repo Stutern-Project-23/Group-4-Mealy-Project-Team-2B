@@ -16,6 +16,8 @@ import Home from "./pages/home/Home";
 import SettingsDashboard from "./pages/settingDashboard/SettingsDashboard";
 import "./App.css";
 
+import OrderTracking from "./pages/orderTracking/OrderTracking";
+
 const App = () => (
   <div className="App">
     <ValidationProvider>
@@ -32,6 +34,7 @@ const App = () => (
         <Route path="create-new-password" element={<NewPassword />} />
         <Route path="reset-password" element={<ResetPassword />} />
         <Route path="meal-dashboard" element={<ResturantDashboard />} />
+        <Route path="order-tracking" element={<OrderTracking />} />
         <Route path="sign-up-verification" element={<SignUpVerification />} />
         <Route path="forgot-password-verification" element={<VerifyEmail />} />
         <Route

@@ -1,8 +1,7 @@
 import React from "react";
-import edit from "../Udoka/Assets/edit.svg"
+import edit from "./Assets/edit.svg"
 
-const Delete = () => {
-  return (
+const Delete = () =>  (
     <div className="delete-container">
         <div className="first-container">
             <h3>Delete Account and Data</h3>
@@ -18,14 +17,14 @@ const Delete = () => {
         <div className="second-container">
             <div className="second-innerdiv">
                 <img src={edit} alt="" className="edit-icon" />
-                <div className="rectangle"></div>
+                <div className="rectangle"/>
             </div>
             <div className="delete-button-div">
-            <button className="delete-button">Send request</button>
+            <button className="delete-button" type="submit">Send request</button>
             </div>
         </div>
     </div>
   );
-};
+
 
 export default Delete;

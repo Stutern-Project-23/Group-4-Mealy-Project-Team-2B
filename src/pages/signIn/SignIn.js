@@ -37,9 +37,11 @@ const SignIn = () => {
   return (
     <div className="sign-up-page">
       <div className="left-side">
-        <header className="logo-header signup-header">
-          <h1>Mealy</h1>
-        </header>
+        <a href="/">
+          <header className="logo-header signup-header">
+            <h1>Mealy</h1>
+          </header>
+        </a>
 
         <form className="input-wrapper" onSubmit={handleSubmit}>
           <div className="sign-in-header">

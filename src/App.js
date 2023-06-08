@@ -14,16 +14,18 @@ import PaymentCheckout from "./pages/paymentCheckout/PaymentCheckout";
 import SignUp from "./pages/signUp/SignUp";
 import Home from "./pages/home/Home";
 import "./App.css";
+
 import OrderTracking from "./pages/orderTracking/OrderTracking";
+
+import Orders from "./pages/Orders/Orders";
 
 const App = () => (
   <div className="App">
-    <PaymentCheckout />
     <ValidationProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="guest" element={<GuestHomePage />} />
-        <Route path="auth-user" element={<AuthHomePage />} />s
+        <Route path="auth-user" element={<AuthHomePage />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="forgot-password-verification" element={<VerifyEmail />} />
@@ -40,6 +42,8 @@ const App = () => (
           path="reset-password-verification"
           element={<ResetPasswordEmailVerification />}
         />
+        <Route path="checkout" element={<PaymentCheckout />} />
+        <Route path="/" element={<Orders />} />
       </Routes>
     </ValidationProvider>
   </div>

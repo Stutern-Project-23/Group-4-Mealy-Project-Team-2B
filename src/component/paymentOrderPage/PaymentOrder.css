@@ -1,0 +1,209 @@
+.payment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.section1 {
+    border: 2px solid rgb(66, 65, 65);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.section1 h2 {
+    margin-top: 0;
+    font-size: x-large;
+    font-weight: 800;
+}
+
+.add-balance {
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 400px;
+}
+
+.add-balance span {
+    font-size: 24px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #FA5A00;
+    color: white;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    transition: opacity 0.2s ease;
+}
+
+.add-balance h4 {
+    margin-bottom: 10px;
+    font-size: large;
+}
+
+.section2,
+.section3 {
+    margin-top: 20px;
+}
+
+.section2 h3 {
+    margin-right: 500px;
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+    border: 2px solid #FA5A00;
+    padding: 10px;
+    justify-content: space-between;
+    width: 70%;
+    margin-left: 90px;
+}
+
+.card-info2 {
+    display: flex;
+    align-items: center;
+    border: 2px solid #FA5A00;
+    padding: 10px;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 70%;
+    margin-left: 90px;
+}
+
+.card-logo,
+.delete-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    transition: opacity 0.2s ease;
+}
+
+.card-logo:hover,
+.delete-logo:hover {
+    background-color: #FA5A00;
+}
+
+.add-balance span,
+.card-logo,
+.delete-logo {
+    cursor: pointer;
+}
+
+.add-balance span :focus,
+.card-logo:focus,
+.delete-logo:focus {
+    outline: none;
+    opacity: 0.7;
+}
+
+.card-number {
+    display: flex;
+    align-items: center;
+    width: 100px;
+}
+
+.card-logo {
+    width: 30px;
+    height: 30px;
+    margin-left: 50px;
+}
+
+.delete-logo {
+    margin-left: 150px;
+    color: white;
+    font-size: 24px;
+    margin-right: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    border: 1px solid #FA5A00;
+    background-color: #FA5A00;
+}
+
+.card-number p {
+    padding-inline-start: 40px;
+    font-weight: 900;
+    font-size: x-large;
+}
+
+.add-card {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 80px;
+}
+
+.add-card span {
+    cursor: pointer;
+}
+
+.add-card span {
+    font-size: 24px;
+    margin-right: 20px;
+    font-size: 24px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: #FA5A00;
+    color: white;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+}
+
+.section2 {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+/* Styles for smaller screens */
+@media (max-width: 400px) {
+    .payment-container {
+        padding: 10px;
+    }
+
+    .section1 {
+        margin: 10px;
+    }
+
+    .add-balance {
+        margin-left: 50px;
+    }
+
+    .section2 h3 {
+        margin-right: 0;
+    }
+
+    .card-info,
+    .card-info2 {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 50px;
+        width: 65%;
+    }
+
+    .card-logo,
+    .delete-logo {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .add-card {
+        margin-left: 0;
+    }
+}
+.card-number{
+    width: 20px;
+    margin-left:0 ;
+}
+.card-number p{
+    padding-inline-start: 0;
+}

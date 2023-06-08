@@ -29,6 +29,9 @@
 .order__map {
   margin: 1.5rem 0 2.5rem;
 }
+.order__map img {
+  width: 100%;
+}
 
 .progrss {
   width: 100%;
@@ -74,6 +77,10 @@
   padding: 10px;
   background: #fa5a00;
   border-radius: 16px;
+}
+
+.help-icon img {
+  width: 150%;
 }
 
 .rate {

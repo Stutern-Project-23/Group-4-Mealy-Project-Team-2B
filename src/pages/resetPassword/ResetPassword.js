@@ -35,9 +35,11 @@ const ResetPassword = () => {
   return (
     <div className="create-new-passwd-page">
       <div className="left-side">
-        <header className="logo-header create-new-passwd-header">
-          <h1>Mealy</h1>
-        </header>
+        <a href="/">
+          <header className="logo-header create-new-passwd-header">
+            <h1>Mealy</h1>
+          </header>
+        </a>
 
         <form
           className="input-wrapper input-wrapper-top"

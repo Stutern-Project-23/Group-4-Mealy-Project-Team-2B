@@ -13,8 +13,8 @@ import SignIn from "./pages/signIn/SignIn";
 import PaymentCheckout from "./pages/paymentCheckout/PaymentCheckout";
 import SignUp from "./pages/signUp/SignUp";
 import Home from "./pages/home/Home";
+import SettingsDashboard from "./pages/settingDashboard/SettingsDashboard";
 import "./App.css";
-import Orders from "./pages/Orders/Orders";
 
 const App = () => (
   <div className="App">
@@ -39,7 +39,7 @@ const App = () => (
           element={<ResetPasswordEmailVerification />}
         />
         <Route path="checkout" element={<PaymentCheckout />} />
-        <Route path="/" element={<Orders />} />
+        <Route path="setting-dashboard" element={<SettingsDashboard />} />
       </Routes>
     </ValidationProvider>
   </div>

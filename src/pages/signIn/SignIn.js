@@ -102,7 +102,7 @@ const SignIn = () => {
           </p>
           <p className="no-p-margin">or</p>
           <p>
-            <a href="sign-up" className="guest-sign-in">
+            <a href="/guest" className="guest-sign-in">
               Continue as guest
             </a>
           </p>

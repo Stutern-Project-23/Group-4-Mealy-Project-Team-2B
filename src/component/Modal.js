@@ -1,8 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { CgClose } from "react-icons/cg";
 import styled from "styled-components";
 
-// eslint-disable-next-line react/prop-types
 const Modal = ({ onCloseModal, title, children }) => {
   const handleCloseModalClick = () => {
     onCloseModal();
@@ -13,10 +13,13 @@ const Modal = ({ onCloseModal, title, children }) => {
       <div className="modal-overlay">
         <div className="modal-container">
           <div className="close-icon-div">
-            <CgClose className="close-icon" onClick={handleCloseModalClick} />
+            <CgClose
+              className="close-icon"
+              onClick={() => handleCloseModalClick()}
+            />
           </div>
 
-          <div>
+          <div className="modal-content">
             <h1 className="modal-title">{title}</h1>
             <div> {children}</div>
           </div>
@@ -67,6 +70,24 @@ const ModalStyle = styled.div`
     cursor: pointer;
     color: #d6d6d6;
   }
+  .modal-content {
+    display: grid;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      margin-bottom: 0.5em;
+    }
+    > div {
+      text-align: center;
+    }
+  }
 `;
+
+Modal.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string,
+  onCloseModal: PropTypes.func,
+};
 
 export default Modal;

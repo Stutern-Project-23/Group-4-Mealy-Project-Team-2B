@@ -1,12 +1,28 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background-color: #f8f8f8;
 }
 .App {
   margin: auto;
-  height: 100vh;
 }
-a {
+a,
+a:link,
+a:hover,
+a:focus {
   text-decoration: none;
+  cursor: pointer;
+}
+
+input:focus,
+input:hover,
+textarea:focus,
+select:focus {
+  outline: none !important;
 }
 
 .form-container {
@@ -15,10 +31,10 @@ a {
 .form {
   margin-left: 80px;
 }
-h3 {
+.form h3 {
   padding-top: 20px;
 }
-h3,
+.form h3,
 .name,
 .password,
 .btn,
@@ -113,6 +129,9 @@ h3,
 button {
   cursor: pointer;
 }
+.logout-btn {
+  margin-top: 3em;
+}
 
 /* MEDIA QUERIES */
 
@@ -186,4 +205,7 @@ button {
   font-size: 48px;
   line-height: 58px;
   flex-grow: 1;
+}
+.close-icon {
+  cursor: pointer;
 }

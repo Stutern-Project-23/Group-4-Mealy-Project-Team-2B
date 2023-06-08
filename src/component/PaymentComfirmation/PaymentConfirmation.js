@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../component/Button";
-import PaymentData from "../component/authComp/Data/PaymentConfirmation";
-import Success from "../assets/images/hero/success.svg";
+import Button from "../Button";
+import PaymentData from "../authComp/Data/PaymentConfirmation";
+import Success from "../../assets/images/hero/success.svg";
 import "./paymentConfirmation.css";
 
 const PaymentConfirmation = () => (

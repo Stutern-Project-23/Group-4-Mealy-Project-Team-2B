@@ -1,18 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { BsArrowRightCircle } from "react-icons/bs";
 import RatingStarComponent from "../RatingStarComponent ";
 
 const ResturantContent = ({ imageSrc, description, header, reviewText }) => (
   <ContentWrapperItem>
     <div className="content-wrapper-item">
-      <img src={imageSrc} alt="" className="content-img" />
+      <div className="content-img-div">
+        <img src={imageSrc} alt="" className="content-img" />
+      </div>
       <h4>{header}</h4>
       <div className="review-star-div">
         <RatingStarComponent />
         <p className="review">{reviewText}</p>
       </div>
-      <p>{description}</p>
+      <div className="paragraph-moreIcon-div">
+        <p>{description}</p>
+        <BsArrowRightCircle />
+      </div>
     </div>
   </ContentWrapperItem>
 );
@@ -27,15 +33,20 @@ const ContentWrapperItem = styled.div`
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0px 16px;
   gap: 17px;
   margin-top: 2em;
   padding: 0.8em;
   color: #32324d;
-  width: 21%;
-  img {
+
+  .content-img-div {
     width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100%;
+    }
   }
   h4 {
     font-weight: 700;
@@ -57,8 +68,19 @@ const ContentWrapperItem = styled.div`
   }
   .review {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 8px;
     margin: 0;
+  }
+  .paragraph-moreIcon-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+    svg {
+      font-size: 26px;
+      cursor: pointer;
+      color: #11111a;
+    }
   }
 `;
 

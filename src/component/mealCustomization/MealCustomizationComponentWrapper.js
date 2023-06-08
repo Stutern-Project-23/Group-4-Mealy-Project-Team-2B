@@ -42,8 +42,10 @@ const MealCustomizationComponentWrapper = () => {
 };
 
 const AllResturantStyle = styled.div`
+  margin-top: 5em;
   background-color: #f8f8f8;
   .header-rest {
+    margin-bottom: 3em;
     width: 90%;
     display: flex;
     justify-content: flex-start;

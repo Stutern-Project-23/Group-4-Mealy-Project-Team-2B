@@ -26,8 +26,16 @@ const TabPanel = ({ children, value, index }) => (
 const ResturantDashboard = () => {
   const [value, setValue] = useState(0);
 
+  useEffect(() => {
+    const storedValue = localStorage.getItem("selectedTab");
+    if (storedValue !== null) {
+      setValue(Number(storedValue));
+    }
+  }, []);
+
   const handleChange = (newValue) => {
     setValue(newValue);
+    localStorage.setItem("selectedTab", newValue);
   };
 
   const handleKeyDown = (event, index) => {
@@ -88,11 +96,16 @@ const ResturantDashboard = () => {
                 <div
                   className={`tab-button ${
                     index === value ? "active-tab" : ""
-                  }`}
+                  } ${index === 0 ? "disabled-tab" : ""}`}
                   key={`vertical-tab-${index}`}
                   id={`vertical-tab-${index}`}
                   aria-controls={`vertical-tabpanel-${index}`}
-                  onClick={() => handleChange(index)}
+                  onClick={() => {
+                    if (index !== 0) {
+                      handleChange(index);
+                    }
+                  }}
+                  // onClick={() => handleChange(index)}
                   tabIndex={value === index ? 0 : -1}
                   onKeyDown={(event) => handleKeyDown(event, index)}
                   role="tab">
@@ -104,10 +117,10 @@ const ResturantDashboard = () => {
 
           <div className="dashboard-content">
             <TabPanel value={value} index={0}>
-              <AfricanGrid />
+              Item one
             </TabPanel>
             <TabPanel value={value} index={1}>
-              Item Two
+              <AfricanGrid />
             </TabPanel>
             <TabPanel value={value} index={2}>
               Item Three
@@ -175,7 +188,7 @@ const DashboardStyle = styled.div`
   }
   .dashboard-tabs-content-cont {
     display: grid;
-    grid-template-columns: 0.7fr 2fr 1fr;
+    grid-template-columns: 0.5fr 2fr 1fr;
     gap: 1em;
     width: 100%;
     padding-bottom: 5em;

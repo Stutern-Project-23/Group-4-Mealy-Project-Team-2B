@@ -33,7 +33,7 @@ const ButtonStyle = styled.div`
     font-weight: 500;
     color: #ffffff;
     background-color: #fa5a00;
-    border-radius: 16px;
+    border-radius: 5px;
     width: 400px;
     height: 48px;
     display: flex;

@@ -5,8 +5,9 @@ import styled from "styled-components";
 import AfricanGrid from "./mealCustomization/allResturantGrids/AfricanGrid";
 import HeroBackgroundImg from "../assets/images/dashboard-hero-bg.png";
 import AttributeImg from "../assets/images/Frame 91.png";
-// import AuthNavbar from "./authNavbar/AuthNavbar";
 import Layout from "./Layout";
+import CheckoutSummary from "../pages/paymentCheckout/CheckoutSummary";
+import TasteeImg from "../assets/images/tastee.png";
 
 const TabPanel = ({ children, value, index }) => (
   <div
@@ -75,7 +76,7 @@ const ResturantDashboard = () => {
         <div className="dashboard-hero-container">
           <div className="dashboard-hero-container-overlay" />
           <div className="dashboard-hero-content">
-            <h3>Tastee</h3>
+            <img src={TasteeImg} alt="" />
           </div>
         </div>
 
@@ -124,6 +125,10 @@ const ResturantDashboard = () => {
               Item Seven
             </TabPanel>
           </div>
+
+          <div className="checkout-summary-section">
+            <CheckoutSummary />
+          </div>
         </div>
       </DashboardStyle>
     </Layout>
@@ -131,17 +136,18 @@ const ResturantDashboard = () => {
 };
 
 const DashboardStyle = styled.div`
+  padding-left: 1em;
+  padding-right: 1em;
   .dashboard-hero-container {
-    background-image: url(${HeroBackgroundImg});
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     height: 276px;
     width: 100%;
     margin-top: 7em;
     margin-bottom: 2em;
+    position: relative;
+    display: grid;
+    place-items: center;
   }
-  /* .dashboard-hero-container-overlay {
+  .dashboard-hero-container-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -157,15 +163,41 @@ const DashboardStyle = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
-  } */
-  .dashboard-tabs-content-cont {
+  }
+  .dashboard-hero-content {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .dashboard-tabs-content-cont {
+    display: grid;
+    grid-template-columns: 0.7fr 2fr 1fr;
+    gap: 1em;
     width: 100%;
     padding-bottom: 5em;
   }
-  .dashboard-content {
-    width: 60%;
+  @media (max-width: 1089px) {
+    .dashboard-tabs-content-cont {
+      grid-template-columns: 0.4fr 2fr;
+      .dashboard-content-tabs {
+        grid-column: 1 / 2;
+      }
+      .dashboard-content {
+        grid-column: 2 / 3;
+      }
+      .checkout-summary-section {
+        grid-column: 1 / 3;
+        justify-self: center;
+        width: 60%;
+        margin-top: 2em;
+      }
+    }
   }
+
   .dashboard-content-tabs {
     display: flex;
     flex-direction: row;
@@ -188,14 +220,25 @@ const DashboardStyle = styled.div`
     flex-wrap: wrap;
     gap: 0.5em;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   .dashboard-content-grid > div {
     margin-top: 0;
-    width: 25%;
+    width: 27%;
   }
+
   .dashboard-content-grid-item {
     margin-top: 0 !important;
+  }
+  @media (max-width: 747px) {
+    .dashboard-content-grid > div {
+      width: 35%;
+    }
+  }
+  @media (max-width: 658px) {
+    .dashboard-content-grid > div {
+      width: 80%;
+    }
   }
 `;
 

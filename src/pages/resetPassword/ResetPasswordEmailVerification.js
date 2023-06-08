@@ -13,9 +13,11 @@ const ResetPasswordEmailVerification = () => {
   return (
     <div className="forgot-flex">
       <div className="all">
-        <header className="logo-header">
-          <h1>Mealy</h1>
-        </header>
+        <a href="/">
+          <header className="logo-header">
+            <h1>Mealy</h1>
+          </header>
+        </a>
         <div className="form-container">
           <div className="form-minScreen">
             <div className="text">

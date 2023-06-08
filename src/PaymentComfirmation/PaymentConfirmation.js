@@ -1,16 +1,12 @@
 import React from "react";
 import Button from "../component/Button";
 import PaymentData from "../component/authComp/Data/PaymentConfirmation";
-import Close from "../assets/images/hero/close.svg";
 import Success from "../assets/images/hero/success.svg";
-import "./PaymentConfirmation.css";
+import "./paymentConfirmation.css";
 
 const PaymentConfirmation = () => (
   <div className="payment-main-box">
     <div className="payment-modal">
-      <div className="close">
-        <img src={Close} alt="" />
-      </div>
       <div className="payment-box">
         <div className="payment-success">
           <img src={Success} alt="" />
@@ -29,7 +25,9 @@ const PaymentConfirmation = () => (
           <p>#33, 067</p>
         </div>
 
-        <Button type="submit">Track Order</Button>
+        <Button type="submit" className="track-order-btn">
+          Track Order
+        </Button>
       </div>
     </div>
   </div>

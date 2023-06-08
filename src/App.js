@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import VerifyEmail from "./pages/ForgotPassword/VerifyEmail";
+import VerifyEmail from "./pages/forgotPassword/VerifyEmail";
 import ValidationProvider from "./hooks/FormValidationsContext";
 import ResetPasswordEmailVerification from "./pages/resetPassword/ResetPasswordEmailVerification";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
-import NewPassword from "./pages/ForgotPassword/NewPassword";
+import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
+import NewPassword from "./pages/forgotPassword/NewPassword";
 import SignUpVerification from "./pages/signUpVerification/SignUpVerification";
 import ResetPassword from "./pages/resetPassword/ResetPassword";
 import ResturantDashboard from "./component/ResturantDashboard";
@@ -18,13 +18,11 @@ import Orders from "./pages/Orders/Orders";
 
 const App = () => (
   <div className="App">
-    <PaymentCheckout />
-    <Orders />
     <ValidationProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="guest" element={<GuestHomePage />} />
-        <Route path="auth-user" element={<AuthHomePage />} />s
+        <Route path="auth-user" element={<AuthHomePage />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="forgot-password-verification" element={<VerifyEmail />} />
@@ -40,8 +38,10 @@ const App = () => (
           path="reset-password-verification"
           element={<ResetPasswordEmailVerification />}
         />
+        <Route path="checkout" element={<PaymentCheckout />} />
+        <Route path="/" element={<Orders />} />
       </Routes>
-</ValidationProvider>
+    </ValidationProvider>
   </div>
 );
 

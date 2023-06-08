@@ -10,8 +10,8 @@ const Profile = () => (
         <div className="profile-image-container flex cont-border">
           <img src={EllipseImg} alt="" />
           <div className="profile-name-location-div">
-            <p>Amara Chukwu</p>
-            <p>Lagos, Nigeria</p>
+            <p className="user-name">Amara Chukwu</p>
+            <p className="user-saved-location">Lagos, Nigeria</p>
           </div>
         </div>
 
@@ -89,13 +89,23 @@ const ProfileStyles = styled.div`
   color: #000000;
   .personal-information-header {
     justify-content: space-between;
-    h3 {
+    h3,
+    .user-name {
       font-weight: 700;
       font-size: 20px;
       line-height: 24px;
       text-align: center;
     }
   }
+
+  .personal-information-header h3,
+  .user-name {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+  }
+
   .profile-image-container img {
     width: 100px;
     flex-direction: row !important;
@@ -111,17 +121,17 @@ const ProfileStyles = styled.div`
   .personal-information-edit {
     column-gap: 5em;
     align-items: center;
-
     h4 {
       font-weight: 600;
       font-size: 20px;
       line-height: 24px;
     }
-    p {
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 24px;
-    }
+  }
+  .user-saved-location,
+  .personal-information-edit p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
   }
   .profile-edit-icon {
     width: 50px;

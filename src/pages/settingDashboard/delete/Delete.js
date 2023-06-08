@@ -21,7 +21,7 @@ const Delete = () => (
           </p>
         </div>
 
-        <div className="send-request-container flex">
+        <div className="send-request-container">
           <div className="second-innerdiv flex">
             <img src={edit} alt="" className="edit-icon" />
             <img src={GreyRectangle} alt="" className="rectangle" />
@@ -51,6 +51,10 @@ const DeleteStyles = styled.div`
 
   .rectangle {
     width: 70%;
+    height: 300px;
+  }
+  .delete-button {
+    margin-left: 3em;
   }
 `;
 export default Delete;

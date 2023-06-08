@@ -40,7 +40,8 @@
 
 .orders,
 .delete-container,
-.profile-container {
+.profile-container,
+.payment-container {
   flex-direction: column;
   row-gap: 5rem;
   padding-top: 2rem;

@@ -14,9 +14,8 @@ import PaymentCheckout from "./pages/paymentCheckout/PaymentCheckout";
 import SignUp from "./pages/signUp/SignUp";
 import Home from "./pages/home/Home";
 import SettingsDashboard from "./pages/settingDashboard/SettingsDashboard";
-import "./App.css";
-
 import OrderTracking from "./pages/orderTracking/OrderTracking";
+import "./App.css";
 
 const App = () => (
   <div className="App">

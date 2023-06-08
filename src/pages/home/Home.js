@@ -3,7 +3,7 @@ import styled from "styled-components";
 import HeroBackgroundImg from "../../assets/herobg.png";
 import LocationSearch from "../../component/LocationSearch";
 import FoodCarousel from "../../component/foodCarousel/FoodCarousel";
-import Navbar from "../../component/NavBar";
+import Navbar from "../../component/Navbar";
 import Feature from "./Feature";
 import Attributes from "./Attributes";
 import Discount from "./Discount";

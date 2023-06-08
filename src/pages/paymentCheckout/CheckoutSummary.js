@@ -4,7 +4,7 @@ import { GrFormClose } from "react-icons/gr";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { cart, receipt } from "./data";
 import Modal from "../../component/Modal";
-import PaymentConfirmation from "../../PaymentComfirmation/PaymentConfirmation";
+import PaymentConfirmation from "../../component/PaymentComfirmation/PaymentConfirmation";
 
 const CheckoutSummary = () => {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
@@ -37,7 +37,7 @@ const CheckoutSummary = () => {
   return (
     <CheckoutSummaryStyle>
       <div className="checkout flex">
-        <div className="cart flex">
+        <div className="cart flex cart-scroll">
           {cart.map((items) => (
             <div className="food flex" key={items.id}>
               <div className="price flex">
@@ -91,7 +91,7 @@ const CheckoutSummary = () => {
         </div>
         <div>
           {isPaymentModalOpen && (
-            <Modal onCloseModal={() => handleClosePaymentModal}>
+            <Modal onCloseModal={handleClosePaymentModal}>
               <PaymentConfirmation />
             </Modal>
           )}
@@ -115,6 +115,24 @@ const CheckoutSummaryStyle = styled.div`
   .cart {
     flex-direction: column;
     row-gap: 0.5rem;
+  }
+  .cart-scroll {
+    max-height: 200px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  .cart-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .cart-scroll::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .cart-scroll::-webkit-scrollbar-thumb {
+    background-color: transparent;
   }
   .food {
     justify-content: space-between;
@@ -166,7 +184,11 @@ const CheckoutSummaryStyle = styled.div`
     color: rgb(250, 90, 0);
     font-size: 1.5em;
   }
-
+  .plus,
+  .minus,
+  .close-img {
+    cursor: pointer;
+  }
   .discount-input {
     justify-content: space-between;
     align-items: center;

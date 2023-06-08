@@ -37,9 +37,15 @@ const MealCustomization = ({ tabs, content, className }) => {
           <button
             key={label.index}
             type="button"
-            onClick={() => handleChange(index)}
+            onClick={() => {
+              if (index !== 0) {
+                handleChange(index);
+              }
+            }}
             disabled={index === 0}
-            className={`tab-button ${index === value ? "active-tab" : ""}`}>
+            className={`tab-button ${index === value ? "active-tab" : ""} ${
+              index === 0 ? "disabled-tab" : ""
+            }`}>
             {label}
           </button>
         ))}

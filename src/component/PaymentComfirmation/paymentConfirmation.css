@@ -27,6 +27,10 @@
   font-size: 24px;
   line-height: 29px;
   color: #000000;
+  margin-bottom: 1em;
+}
+.payment-success {
+  margin-bottom: 1em;
 }
 
 .payment-details {

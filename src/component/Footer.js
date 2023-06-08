@@ -105,7 +105,7 @@ const Footer = () => (
 );
 
 const FooterSection = styled.div`
-  width: 97.5%;
+  width: 100%;
   background: #fa5a00;
   padding: 1em;
   padding-top: 40px;

@@ -9,21 +9,19 @@ import Fav5 from "../../../assets/images/hero/fav5.png";
 import Fav6 from "../../../assets/images/hero/fav6.png";
 import Avocado from "../../../assets/images/hero/avocado-sandwich.png";
 import HelpIcon from "../../../assets/images/hero/help-icon.svg";
-import "./HeroSection.css";
+import "./heroSection.css";
 
 const HeroSection = () => (
   <div className="hero-page-box">
     <div className="search">
       <h1 className="hero-title">Welcome, Guest</h1>
       <p className="hero-description">What would you like to eat?</p>
-      <form>
-        <Input
-          type="text"
-          id="search"
-          placeholder="Search"
-          className="search-input"
-        />
-      </form>
+      <Input
+        type="text"
+        id="search"
+        placeholder="Search"
+        className="search-input"
+      />
     </div>
     <div className="category">
       <h3 className="hero-subtitle">Category</h3>

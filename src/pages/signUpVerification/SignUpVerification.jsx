@@ -7,9 +7,11 @@ import { RightSideImage } from "../authPageBgImg";
 const SignUpVerification = () => (
   <div className="verification flex">
     <div className="verify flex">
-      <header className="logo-header">
-        <h1>Mealy</h1>
-      </header>
+      <a href="/">
+        <header className="logo-header">
+          <h1>Mealy</h1>
+        </header>
+      </a>
       <div className="verify-input flex">
         <form className="verify-form">
           <div>

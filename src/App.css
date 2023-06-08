@@ -5,6 +5,9 @@ body {
   margin: auto;
   height: 100vh;
 }
+a {
+  text-decoration: none;
+}
 
 .form-container {
   display: flex;
@@ -106,6 +109,9 @@ h3,
 .guest-link {
   padding-left: 30%;
   font-weight: 500;
+}
+button {
+  cursor: pointer;
 }
 
 /* MEDIA QUERIES */

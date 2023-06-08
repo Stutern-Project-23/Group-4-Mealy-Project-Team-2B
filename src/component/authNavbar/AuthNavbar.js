@@ -34,6 +34,7 @@ const AuthNavbar = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [isLocationModalOpen]);
+
   return (
     <div className="authNavbar">
       <div className="header">

@@ -2,6 +2,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { BsLinkedin } from "react-icons/bs";
+import { AiFillTwitterSquare } from "react-icons/ai";
+import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
+// import {  } from "react-icons/fa";
 
 const Footer = () => (
   <FooterSection>
@@ -74,23 +78,23 @@ const Footer = () => (
         <div className="links">
           <ul>
             <li>
-              <a className="github" href="/">
-                fa-github
-              </a>
-            </li>
-            <li>
               <a className="linkedin" href="/">
-                fa-linkedin
+                <BsLinkedin />
               </a>
             </li>
             <li>
-              <a className="docker" href="/">
-                fa-docker
+              <a className="twitter" href="/">
+                <AiFillTwitterSquare />
               </a>
             </li>
             <li>
-              <a className="docker" href="/">
-                fa-docker
+              <a className="instagram" href="/">
+                <FaInstagram />
+              </a>
+            </li>
+            <li>
+              <a className="facebook" href="/">
+                <FaFacebookSquare />
               </a>
             </li>
           </ul>
@@ -117,6 +121,7 @@ const FooterSection = styled.div`
       font-weight: 600;
       font-size: 16px;
       line-height: 24px;
+
       a {
         color: #ffffff !important;
       }
@@ -158,6 +163,10 @@ const FooterSection = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+  }
+  .links ul {
+    display: flex;
+    gap: 0.5em;
   }
 
   .links > div {

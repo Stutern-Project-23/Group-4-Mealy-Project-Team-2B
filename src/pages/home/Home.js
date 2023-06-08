@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import HeroBackgroundImg from "../../assets/herobg.png";
 import LocationSearch from "../../component/LocationSearch";
-import DiscountImg from "../../assets/Group 10.png";
 import FoodCarousel from "../../component/foodCarousel/FoodCarousel";
 import Navbar from "../../component/Navbar";
 import Feature from "./Feature";
 import Attributes from "./Attributes";
 import Discount from "./Discount";
 import Footer from "../../component/Footer";
+import DiscountBox from "./DiscountBox";
 
 const Home = () => (
   <>
@@ -29,7 +29,7 @@ const Home = () => (
       <FoodCarousel numCards={7} />
 
       <div className="discount-img-div">
-        <img src={DiscountImg} alt="" className="discount-img" />
+        <DiscountBox />
       </div>
 
       <Feature />
@@ -88,10 +88,13 @@ const HeroSection = styled.div`
     color: #fedecc;
   }
   .discount-img-div {
-    display: flex;
     justify-content: end;
-    padding-top: 3em;
-    padding-right: 3em;
+    display: flex;
+    margin-top: 2em;
+    padding-right: 1em;
+    @media (min-width: 569px) {
+      padding-right: 3em;
+    }
   }
   .discount-img {
     width: 90%;
@@ -103,6 +106,7 @@ const HeroSection = styled.div`
     gap: 19px;
     width: 293px;
     margin-left: 3em;
+    margin-top: 3em;
     h4 {
       font-weight: 700;
       font-size: 26px;

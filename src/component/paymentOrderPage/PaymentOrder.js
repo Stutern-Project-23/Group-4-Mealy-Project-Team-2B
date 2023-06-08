@@ -3,8 +3,7 @@ import image1 from './image1.png';
 import image2 from './image2.png';
 import "./PaymentOrder.css";
 
-const PaymentPage = () => {
-  return (
+const PaymentPage = () => (
     <div className="payment-container">
       <div className="section1">
         <h2>Available Balance</h2>
@@ -46,6 +45,5 @@ const PaymentPage = () => {
       
     </div>
   );
-};
 
 export default PaymentPage;

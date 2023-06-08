@@ -14,6 +14,7 @@ import PaymentCheckout from "./pages/paymentCheckout/PaymentCheckout";
 import SignUp from "./pages/signUp/SignUp";
 import Home from "./pages/home/Home";
 import "./App.css";
+import Orders from "./pages/Orders/Orders";
 
 const App = () => (
   <div className="App">
@@ -38,6 +39,7 @@ const App = () => (
           element={<ResetPasswordEmailVerification />}
         />
         <Route path="checkout" element={<PaymentCheckout />} />
+        <Route path="/" element={<Orders />} />
       </Routes>
     </ValidationProvider>
   </div>

@@ -1,0 +1,131 @@
+.main-container {
+    width: 90%;
+    margin: auto;
+}
+.header-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.mealy {
+    font-weight: 800;
+    font-size: 2.5rem;
+    /* font-family: inter; */
+}
+.avatar, .calendar, .notification {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+}
+.avatar {
+    margin-top: -5px;
+}
+.avatar img {
+    width: 100%;
+}
+.calendar img {
+    width: 80%;
+}
+.notification img {
+    width: 80%;
+}
+.location {
+    position: relative;
+    left: 6%;
+    top: 17%;
+}
+.input input {
+    padding: 10px;
+    width: 450px;
+    border-radius: 15px;
+    padding-left: 50px;
+}
+.profile-body {
+  margin-top: 50px;
+}
+.profile-info-container {
+    display: flex;
+    width: 100%;
+    border: 1px solid rgba(50, 50, 77, 0.5);
+    border-radius: 32px;
+    padding: 10px;
+    
+}
+.sidebar {
+    width: 20%;
+    border-right: 1px solid gray;
+}
+.profile-info {
+    width: 80%;
+    margin-left: 100px;
+}
+.my-profile-cont {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 90%;
+    border: 1px solid #32324D;
+    border-radius: 32px;
+    box-shadow: 10px 3px 10px #adacac;
+    margin-top: 30px;
+}
+.my-name {
+    font-weight: 600;
+}
+.table-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.personal-info, .my-address {
+    width: 90%;
+    height: 200px; 
+    border: 1px solid #32324D;
+    border-radius: 32px;
+    box-shadow: 10px 3px 10px #adacac;
+    margin-top: 30px;  
+}
+.edit {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    width: 50px;
+    height: 30px;
+    border: 1px dashed #FA5A00;
+    margin: -30px 40px 0 0;
+    border-radius: 8px;
+}
+.edit span {
+    color: #FA5A00;
+    padding: 5px;
+    font-size: 0.8rem;
+}
+.edit img {
+    width: 50%;
+    height: 50%;
+    margin-top: 5px;
+}
+.my-info {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 10px;
+}
+table {
+    margin-left: 10px;
+}
+table td {
+    padding: 3px;
+    font-size: 0.8rem;
+}
+.name {
+    font-weight: 600;
+}
+.right {
+    padding-left: 100px;
+}

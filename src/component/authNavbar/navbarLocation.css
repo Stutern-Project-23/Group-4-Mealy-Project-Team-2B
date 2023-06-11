@@ -54,6 +54,15 @@ input {
   position: relative;
 }
 
+input[type='checkbox'] {
+  width: 20px;
+  height: auto;
+  padding: 10px 10px 10px 30px;
+  border-radius: 8px;
+  border: 1px solid #010101;
+  position: relative;
+}
+
 .drop-down {
   position: absolute;
   right: 8px;

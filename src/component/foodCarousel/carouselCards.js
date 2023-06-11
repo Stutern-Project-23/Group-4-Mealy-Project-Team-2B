@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as randid } from 'uuid';
 import CarouselWallet from "../../assets/images/carouselWallet.png";
 import CarouselImg from "../../assets/images/carouselImg1.png";
 
@@ -23,55 +24,55 @@ const generateCardContent = (name, price, img) => (
 
 const cards = [
   {
-    id: 1,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 2,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 3,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 4,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 5,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 2,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 3,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 4,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 5,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 2,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 3,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 4,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
   {
-    id: 5,
+    id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
 ];

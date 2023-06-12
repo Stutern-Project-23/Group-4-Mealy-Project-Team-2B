@@ -23,7 +23,7 @@ const VerifyEmail = () => {
                 Enter the verification code sent to your email address.
               </p>
             </div>
-            <div className="input">
+            <div className="input verify-input">
               <form onSubmit={handleSubmit}>
                 <Input
                   type="email"
@@ -41,7 +41,7 @@ const VerifyEmail = () => {
 
             <p className="forgot-password">
               If you did not recieve a code?
-              <a href="/reset-password">Resend</a>.
+              <a href="/reset-password"> Resend</a>.
             </p>
           </div>
         </div>

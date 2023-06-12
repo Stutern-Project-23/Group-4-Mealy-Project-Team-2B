@@ -19,7 +19,7 @@ const SignUpVerification = () => (
               <h3>Verify Email</h3>
               <p>Enter verification code sent to your Email</p>
             </div>
-            <div className="input flex">
+            <div className="input  flex">
               <Input
                 placeholder="Enter code"
                 maxLength={6}

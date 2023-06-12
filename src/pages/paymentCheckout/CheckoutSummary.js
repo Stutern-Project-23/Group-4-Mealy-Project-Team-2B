@@ -265,6 +265,15 @@ const CheckoutSummaryStyle = styled.div`
     font-size: 0.8rem;
     font-weight: 500;
   }
+  .input,
+  textarea,
+  .calender-input {
+    padding: 0.5rem 0.7rem;
+    outline: none;
+    resize: none;
+    border: 1px solid #32324d4f;
+    border-radius: 5px;
+  }
   @media (max-width: 906px) {
     .checkout {
       width: 80%;

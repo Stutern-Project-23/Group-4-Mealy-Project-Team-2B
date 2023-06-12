@@ -44,6 +44,7 @@
   row-gap: 2rem;
   width: 100%;
 }
+
 .input-wrapper {
   width: 100%;
   display: grid;
@@ -60,7 +61,7 @@
   margin-left: -3.3em;
 }
 .input-wrapper-top {
-  margin-top: 10em;
+  /* margin-top: 10em; */
 }
 .input-field {
   margin-bottom: 10px;
@@ -70,6 +71,7 @@
 }
 .forgot-password {
   font-size: 12px;
+  margin-top: 0.5em;
 }
 
 .checkboxes {
@@ -248,9 +250,9 @@ button {
     padding: 1rem;
   }
 
-  .verify-input {
+  /* .verify-input {
     padding: 0 2rem;
-  }
+  } */
   .form-container {
     padding: 1rem;
   }
@@ -261,9 +263,9 @@ button {
   }
 }
 @media (max-width: 900px) {
-  .verify-input {
+  /* .verify-input {
     padding: 0 1rem;
-  }
+  } */
   .form-container {
     padding: 0 1rem;
   }
@@ -284,6 +286,11 @@ button {
   }
   .left-side {
     width: 100%;
+  }
+}
+@media (max-width: 830px) {
+  .form-container {
+    justify-content: center;
   }
 }
 @media (max-width: 660px) {

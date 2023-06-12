@@ -41,9 +41,7 @@ const ResetPassword = () => {
           </header>
         </a>
 
-        <form
-          className="input-wrapper input-wrapper-top"
-          onSubmit={handleSubmit}>
+        <form className="input-wrapper" onSubmit={handleSubmit}>
           <h2 className="input-wrapper-margin">Reset Password</h2>
           <div className="input-div input-cont">
             <Input

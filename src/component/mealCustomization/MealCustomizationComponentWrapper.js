@@ -71,6 +71,16 @@ const ContentWrapperGrid = styled.div`
   width: 100%;
   justify-content: space-between;
   padding-bottom: 4em;
+  > div {
+    width: 20%;
+  }
+  @media (max-width: 954px) {
+    justify-content: center;
+    row-gap: 1.5em;
+    > div {
+      width: 70%;
+    }
+  }
 `;
 
 export default MealCustomizationComponentWrapper;

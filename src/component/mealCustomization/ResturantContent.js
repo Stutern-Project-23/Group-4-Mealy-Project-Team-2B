@@ -22,12 +22,6 @@ const ResturantContent = ({ imageSrc, description, header, reviewText }) => (
     </div>
   </ContentWrapperItem>
 );
-ResturantContent.propTypes = {
-  imageSrc: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  header: PropTypes.string.isRequired,
-  reviewText: PropTypes.string.isRequired,
-};
 
 const ContentWrapperItem = styled.div`
   background: #ffffff;
@@ -83,5 +77,12 @@ const ContentWrapperItem = styled.div`
     }
   }
 `;
+
+ResturantContent.propTypes = {
+  imageSrc: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired,
+  reviewText: PropTypes.string.isRequired,
+};
 
 export default ResturantContent;

@@ -95,11 +95,11 @@ const SignUp = () => {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
-          </div>
-          <div className="validation-error-div">
-            {firstNameError && (
-              <span className="validation-error">{firstNameError}</span>
-            )}
+            <div className="validation-error-div">
+              {firstNameError && (
+                <span className="validation-error">{firstNameError}</span>
+              )}
+            </div>
           </div>
 
           <div className="input-div input-cont">
@@ -111,11 +111,11 @@ const SignUp = () => {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
-          </div>
-          <div className="validation-error-div">
-            {lastNameError && (
-              <span className="validation-error">{lastNameError}</span>
-            )}
+            <div className="validation-error-div">
+              {lastNameError && (
+                <span className="validation-error">{lastNameError}</span>
+              )}
+            </div>
           </div>
 
           <div className="input-div input-cont">
@@ -127,11 +127,11 @@ const SignUp = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-          </div>
-          <div className="validation-error-div">
-            {emailError && (
-              <span className="validation-error">{emailError}</span>
-            )}
+            <div className="validation-error-div">
+              {emailError && (
+                <span className="validation-error">{emailError}</span>
+              )}
+            </div>
           </div>
 
           <div className="input-div input-cont">
@@ -143,11 +143,11 @@ const SignUp = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
-          <div className="validation-error-div">
-            {passwordError && (
-              <span className="validation-error">{passwordError}</span>
-            )}
+            <div className="validation-error-div">
+              {passwordError && (
+                <span className="validation-error">{passwordError}</span>
+              )}
+            </div>
           </div>
 
           <div className="input-div input-cont">
@@ -159,11 +159,11 @@ const SignUp = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-          </div>
-          <div className="validation-error-div">
-            {confirmPasswordError && (
-              <span className="validation-error">{confirmPasswordError}</span>
-            )}
+            <div className="validation-error-div">
+              {confirmPasswordError && (
+                <span className="validation-error">{confirmPasswordError}</span>
+              )}
+            </div>
           </div>
 
           <div className="checkboxes">
@@ -186,11 +186,11 @@ const SignUp = () => {
               <label htmlFor="agree" className="checkbox-label">
                 yes, I understand and agree to Mealy’s Terms of service
               </label>
-            </div>
-            <div className="validation-error-div">
-              {agreeCheckedError && (
-                <span className="validation-error">{agreeCheckedError}</span>
-              )}
+              <div className="validation-error-div">
+                {agreeCheckedError && (
+                  <span className="validation-error">{agreeCheckedError}</span>
+                )}
+              </div>
             </div>
           </div>
 

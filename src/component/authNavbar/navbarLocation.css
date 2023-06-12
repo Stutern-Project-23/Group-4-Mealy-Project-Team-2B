@@ -45,7 +45,7 @@
   transform: translatey(34%);
 }
 
-input {
+.input-div input {
   width: 250px;
   height: auto;
   padding: 10px 10px 10px 30px;

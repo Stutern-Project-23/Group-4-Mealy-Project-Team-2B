@@ -209,3 +209,6 @@ button {
 .close-icon {
   cursor: pointer;
 }
+.menu-section {
+  padding-top: 5em;
+}

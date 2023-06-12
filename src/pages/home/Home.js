@@ -69,6 +69,7 @@ const HeroSection = styled.div`
   }
   .hero-section-content {
     padding: 1em;
+    padding-top: 2.5em;
     text-align: center;
     margin: 0 auto;
     color: #f8fbff;

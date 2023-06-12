@@ -16,6 +16,7 @@ import Home from "./pages/home/Home";
 import SettingsDashboard from "./pages/settingDashboard/SettingsDashboard";
 import OrderTracking from "./pages/orderTracking/OrderTracking";
 import "./App.css";
+import Menu from "./pages/Menu";
 
 const App = () => (
   <div className="App">
@@ -42,6 +43,7 @@ const App = () => (
         />
         <Route path="checkout" element={<PaymentCheckout />} />
         <Route path="setting-dashboard" element={<SettingsDashboard />} />
+        <Route path="menu" element={<Menu />} />
       </Routes>
     </ValidationProvider>
   </div>

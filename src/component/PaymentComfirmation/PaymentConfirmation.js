@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "../Button";
 import PaymentData from "../authComp/Data/PaymentConfirmation";
 import Success from "../../assets/images/hero/success.svg";
@@ -25,9 +26,11 @@ const PaymentConfirmation = () => (
           <p>#33, 067</p>
         </div>
 
-        <Button type="submit" className="track-order-btn">
-          Track Order
-        </Button>
+        <Link to="/order-tracking">
+          <Button type="submit" className="track-order-btn">
+            Track Order
+          </Button>
+        </Link>
       </div>
     </div>
   </div>

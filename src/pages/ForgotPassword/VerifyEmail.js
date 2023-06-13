@@ -1,14 +1,26 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 
-const VerifyEmail = () => {
-  const [email, setEmail] = useState("");
+const VerifyEmail = ({ onCodeSubmit, onResendCode }) => {
+  const [code, setCode] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleCodeChange = (e) => {
+    setCode(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onCodeSubmit(code);
+  };
+
+  const handleResendCode = () => {
+    onResendCode();
+  };
+
   return (
     <div className="forgot-flex">
       <div className="all">
@@ -28,8 +40,8 @@ const VerifyEmail = () => {
                 <Input
                   type="email"
                   className="input-width"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={code}
+                  onChange={handleCodeChange}
                   placeholder="Enter code"
                   required
                 />
@@ -41,7 +53,10 @@ const VerifyEmail = () => {
 
             <p className="forgot-password">
               If you did not recieve a code?
-              <a href="/reset-password"> Resend</a>.
+              <a href="/reset-password" onClick={handleResendCode}>
+                Resend
+              </a>
+              .
             </p>
           </div>
         </div>

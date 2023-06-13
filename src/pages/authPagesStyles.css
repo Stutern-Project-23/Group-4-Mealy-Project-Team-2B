@@ -153,6 +153,10 @@
 .create-acc-btn {
   margin-top: 24px;
 }
+.create-acc-btn p {
+  text-align: center !important;
+}
+
 button {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -161,6 +165,7 @@ button {
 .icons img {
   margin-right: 24px;
   width: 2rem;
+  cursor: pointer;
 }
 
 .button-icons-div {
@@ -223,6 +228,16 @@ button {
   display: flex;
   justify-content: flex-start;
   width: 63%;
+}
+.sign-in-password-div {
+  justify-content: space-between;
+}
+.forgot-password-link {
+  color: #32324d !important;
+  cursor: pointer;
+}
+.sign-in-validation-div {
+  width: 100% !important;
 }
 @media (min-width: 1393px) {
   .sign-in-header {

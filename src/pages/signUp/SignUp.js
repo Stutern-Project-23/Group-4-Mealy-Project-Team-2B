@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import apple from "../../assets/images/apple 1.svg";
 import google from "../../assets/images/google 1.svg";
 import facebook from "../../assets/images/facebook 1.svg";
@@ -7,19 +8,16 @@ import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
 import SignUpHook from "../../hooks/SignUpHook";
-import SignUpVerification from "../signUpVerification/SignUpVerification";
-import AuthHomePage from "../home/AuthHomePage";
 
 const SignUp = () => {
-  const [verificationCode, setVerificationCode] = useState("");
+  const [isVerificationCodeSent, setIsVerificationCodeSent] = useState(false);
+
+  const history = useNavigate();
 
   const {
-    isVerificationCodeSent,
-    isVerificationCodeCorrect,
     isLoading,
     error,
     signUp,
-    verifyCode,
   } = SignUpHook();
 
   const {
@@ -79,29 +77,19 @@ const SignUp = () => {
         password,
         confirmPassword,
         receivePromotionalEmails,
-      });
+      })
+      .then(() => {
+        setIsVerificationCodeSent(true);
+      })
     }
   };
 
-  const handleVerification = () => {
-    handleVerification(verificationCode);
-  };
-
-  if (isVerificationCodeSent) {
-    return (
-      <SignUpVerification
-        verificationCode={verificationCode}
-        setVerificationCode={setVerificationCode}
-        handleVerification={handleVerification}
-        error={error}
-      />
-    );
-  }
-
-  if (isVerificationCodeCorrect) {
-    console.log(isVerificationCodeCorrect);
-    return <AuthHomePage />;
-  }
+  useEffect(() => {
+    if(error){
+      setIsVerificationCodeSent(false)
+    }
+    else if (isVerificationCodeSent && !error) history("/sign-up-verification")
+  }, [isVerificationCodeSent]);
 
   return (
     <div className="sign-up-page">

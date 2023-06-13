@@ -3,7 +3,7 @@ import styled from "styled-components";
 import HeroBackgroundImg from "../../assets/herobg.png";
 import LocationSearch from "../../component/LocationSearch";
 import FoodCarousel from "../../component/foodCarousel/FoodCarousel";
-import Navbar from "../../component/Navbar";
+import NavBar from "../../component/NavBar";
 import Feature from "./Feature";
 import Attributes from "./Attributes";
 import Discount from "./Discount";
@@ -12,7 +12,7 @@ import DiscountBox from "./DiscountBox";
 
 const Home = () => (
   <>
-    <Navbar />
+    <NavBar />
     <HeroSection>
       <div className="hero-section">
         <div className="hero-section-overlay" />

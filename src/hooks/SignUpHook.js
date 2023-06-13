@@ -64,6 +64,8 @@ const SignUpHook = () => {
         },
       );
 
+      // eslint-disable-next-line 
+      console.log(response)
       if (response.ok) {
         setIsVerificationCodeCorrect(true);
       } else {

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
 
-const Navbar = () => {
+const NavBar = () => {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -78,7 +78,7 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
 
 const NavStyle = styled.div`
   .navbar {

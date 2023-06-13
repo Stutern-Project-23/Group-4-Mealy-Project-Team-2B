@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import apple from "../../assets/images/apple 1.svg";
 import google from "../../assets/images/google 1.svg";
 import facebook from "../../assets/images/facebook 1.svg";
@@ -6,17 +6,27 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
+import SignUpHook from "../../hooks/SignUpHook";
+import SignUpVerification from "../signUpVerification/SignUpVerification";
+import AuthHomePage from "../home/AuthHomePage";
 
 const SignUp = () => {
+  const [verificationCode, setVerificationCode] = useState("");
+
   const {
-    firstName,
-    setFirstName,
-    firstNameError,
-    validateFirstName,
-    lastName,
-    setLastName,
-    lastNameError,
-    validateLastName,
+    isVerificationCodeSent,
+    isVerificationCodeCorrect,
+    isLoading,
+    error,
+    signUp,
+    verifyCode,
+  } = SignUpHook();
+
+  const {
+    name,
+    setName,
+    nameError,
+    validateName,
     email,
     setEmail,
     emailError,
@@ -33,19 +43,19 @@ const SignUp = () => {
     agreeChecked,
     agreeCheckedError,
     setAgreeChecked,
-    setFirstNameError,
-    setLastNameError,
+    setNameError,
     setEmailError,
     setPasswordError,
     setConfirmPasswordError,
     setAgreeCheckedError,
+    receivePromotionalEmails,
+    setReceivePromotionalEmails,
   } = useContext(FormValidationContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const isFirstNameValid = validateFirstName();
-    const isLastNameValid = validateLastName();
+    const isFirstNameValid = validateName();
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
     const isConfirmPasswordValid = validateConfirmPassword();
@@ -53,26 +63,45 @@ const SignUp = () => {
 
     if (
       isFirstNameValid &&
-      isLastNameValid &&
       isEmailValid &&
       isPasswordValid &&
       isConfirmPasswordValid &&
       isAgreeCheckedValid
     ) {
-      setFirstNameError("");
-      setLastNameError("");
+      setNameError("");
       setEmailError("");
       setPasswordError("");
       setConfirmPasswordError("");
       setAgreeCheckedError("");
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      setAgreeChecked(false);
+      signUp({
+        name,
+        email,
+        password,
+        confirmPassword,
+        receivePromotionalEmails,
+      });
     }
   };
+
+  const handleVerification = () => {
+    handleVerification(verificationCode);
+  };
+
+  if (isVerificationCodeSent) {
+    return (
+      <SignUpVerification
+        verificationCode={verificationCode}
+        setVerificationCode={setVerificationCode}
+        handleVerification={handleVerification}
+        error={error}
+      />
+    );
+  }
+
+  if (isVerificationCodeCorrect) {
+    console.log(isVerificationCodeCorrect);
+    return <AuthHomePage />;
+  }
 
   return (
     <div className="sign-up-page">
@@ -92,30 +121,14 @@ const SignUp = () => {
               id="first name"
               placeholder="First Name"
               className="input-width"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
-          </div>
-          <div className="validation-error-div">
-            {firstNameError && (
-              <span className="validation-error">{firstNameError}</span>
-            )}
-          </div>
-
-          <div className="input-div input-cont">
-            <Input
-              type="text"
-              id="last name"
-              placeholder="Last Name"
-              className="input-width"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          <div className="validation-error-div">
-            {lastNameError && (
-              <span className="validation-error">{lastNameError}</span>
-            )}
+            <div className="validation-error-div">
+              {nameError && (
+                <span className="validation-error">{nameError}</span>
+              )}
+            </div>
           </div>
 
           <div className="input-div input-cont">
@@ -127,11 +140,11 @@ const SignUp = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-          </div>
-          <div className="validation-error-div">
-            {emailError && (
-              <span className="validation-error">{emailError}</span>
-            )}
+            <div className="validation-error-div">
+              {emailError && (
+                <span className="validation-error">{emailError}</span>
+              )}
+            </div>
           </div>
 
           <div className="input-div input-cont">
@@ -143,11 +156,11 @@ const SignUp = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
-          <div className="validation-error-div">
-            {passwordError && (
-              <span className="validation-error">{passwordError}</span>
-            )}
+            <div className="validation-error-div">
+              {passwordError && (
+                <span className="validation-error">{passwordError}</span>
+              )}
+            </div>
           </div>
 
           <div className="input-div input-cont">
@@ -159,16 +172,21 @@ const SignUp = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-          </div>
-          <div className="validation-error-div">
-            {confirmPasswordError && (
-              <span className="validation-error">{confirmPasswordError}</span>
-            )}
+            <div className="validation-error-div">
+              {confirmPasswordError && (
+                <span className="validation-error">{confirmPasswordError}</span>
+              )}
+            </div>
           </div>
 
           <div className="checkboxes">
             <div className="first-checkbox">
-              <input type="checkbox" id="discount" />
+              <input
+                type="checkbox"
+                id="discount"
+                checked={receivePromotionalEmails}
+                onChange={(e) => setReceivePromotionalEmails(e.target.checked)}
+              />
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="discount" className="checkbox-label">
                 I want to receive discounts, loyalty offers and other updates.
@@ -186,17 +204,18 @@ const SignUp = () => {
               <label htmlFor="agree" className="checkbox-label">
                 yes, I understand and agree to Mealy’s Terms of service
               </label>
-            </div>
-            <div className="validation-error-div">
-              {agreeCheckedError && (
-                <span className="validation-error">{agreeCheckedError}</span>
-              )}
+              <div className="validation-error-div">
+                {agreeCheckedError && (
+                  <span className="validation-error">{agreeCheckedError}</span>
+                )}
+              </div>
             </div>
           </div>
 
           <div className="create-acc-btn">
+            {error && <div>Error: {error}</div>}
             <Button type="submit" className="input-width">
-              Create an account
+              {isLoading ? "Signing Up..." : "Create an account"}
             </Button>
           </div>
         </form>

@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { useContext } from "react";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 
-const NewPassword = () => {
+const NewPassword = ({ onPasswordSubmit }) => {
   const {
     password,
     setPassword,
@@ -29,6 +30,7 @@ const NewPassword = () => {
       setConfirmPassword("");
       setPasswordError("");
       setConfirmPasswordError("");
+      onPasswordSubmit(password);
     }
   };
 

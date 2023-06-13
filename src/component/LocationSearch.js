@@ -12,6 +12,7 @@ const LocationSearch = () => (
 );
 
 const SearchStyle = styled.div`
+  margin-top: 3em;
   .search-input {
     position: relative;
     display: flex;

@@ -42,7 +42,7 @@ const Footer = () => (
         <h2>Services</h2>
         <ul>
           <li>
-            <a href="/">Menu</a>
+            <a href="/menu">Menu</a>
           </li>
           <li>
             <a href="/">Recipe</a>
@@ -66,6 +66,9 @@ const Footer = () => (
           </li>
           <li>
             <a href="/">Status</a>
+          </li>
+          <li>
+            <a href="/setting-dashboard">Settings</a>
           </li>
           <li>
             <a href="/"> Terms of services</a>

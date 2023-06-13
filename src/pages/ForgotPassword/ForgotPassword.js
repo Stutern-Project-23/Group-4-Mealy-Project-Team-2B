@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+/* eslint-disable react/prop-types */
+import React, { useContext, useState } from "react";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ onEmailSubmit }) => {
   const { email, setEmail, validateEmail, emailError, setEmailError } =
     useContext(FormValidationContext);
 
@@ -15,7 +16,7 @@ const ForgotPassword = () => {
 
     if (isEmailValid) {
       setEmailError("");
-      setEmail("");
+      onEmailSubmit(email);
     }
   };
 

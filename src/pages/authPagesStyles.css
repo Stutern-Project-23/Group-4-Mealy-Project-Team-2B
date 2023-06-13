@@ -44,6 +44,7 @@
   row-gap: 2rem;
   width: 100%;
 }
+
 .input-wrapper {
   width: 100%;
   display: grid;
@@ -60,7 +61,7 @@
   margin-left: -3.3em;
 }
 .input-wrapper-top {
-  margin-top: 10em;
+  /* margin-top: 10em; */
 }
 .input-field {
   margin-bottom: 10px;
@@ -70,6 +71,7 @@
 }
 .forgot-password {
   font-size: 12px;
+  margin-top: 0.5em;
 }
 
 .checkboxes {
@@ -151,6 +153,10 @@
 .create-acc-btn {
   margin-top: 24px;
 }
+.create-acc-btn p {
+  text-align: center !important;
+}
+
 button {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -159,6 +165,7 @@ button {
 .icons img {
   margin-right: 24px;
   width: 2rem;
+  cursor: pointer;
 }
 
 .button-icons-div {
@@ -222,6 +229,16 @@ button {
   justify-content: flex-start;
   width: 63%;
 }
+.sign-in-password-div {
+  justify-content: space-between;
+}
+.forgot-password-link {
+  color: #32324d !important;
+  cursor: pointer;
+}
+.sign-in-validation-div {
+  width: 100% !important;
+}
 @media (min-width: 1393px) {
   .sign-in-header {
     width: 60%;
@@ -248,9 +265,9 @@ button {
     padding: 1rem;
   }
 
-  .verify-input {
+  /* .verify-input {
     padding: 0 2rem;
-  }
+  } */
   .form-container {
     padding: 1rem;
   }
@@ -261,9 +278,9 @@ button {
   }
 }
 @media (max-width: 900px) {
-  .verify-input {
+  /* .verify-input {
     padding: 0 1rem;
-  }
+  } */
   .form-container {
     padding: 0 1rem;
   }
@@ -284,6 +301,11 @@ button {
   }
   .left-side {
     width: 100%;
+  }
+}
+@media (max-width: 830px) {
+  .form-container {
+    justify-content: center;
   }
 }
 @media (max-width: 660px) {

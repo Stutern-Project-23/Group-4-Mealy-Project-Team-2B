@@ -39,7 +39,7 @@ const ResetPasswordEmailVerification = () => {
 
                 <p className="forgot-password">
                   If you did not recieve a code?
-                  <a href="/reset-password">Resend</a>.
+                  <a href="/reset-password"> Resend</a>.
                 </p>
 
                 <Button type="submit" className="input-width">

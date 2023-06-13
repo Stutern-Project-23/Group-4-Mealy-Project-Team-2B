@@ -47,16 +47,6 @@
   width: 95%;
 }
 
-.input,
-textarea,
-.calender-input {
-  padding: 0.5rem 0.7rem;
-  outline: none;
-  resize: none;
-  border: 1px solid #32324d4f;
-  border-radius: 5px;
-}
-
 .delivery-form input::placeholder,
 .delivery-form textarea::placeholder {
   opacity: 0.8;

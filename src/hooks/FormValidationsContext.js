@@ -10,11 +10,8 @@ const ValidationProvider = ({ children }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
 
-  const [firstName, setFirstName] = useState("");
-  const [firstNameError, setFirstNameError] = useState("");
-
-  const [lastName, setLastName] = useState("");
-  const [lastNameError, setLastNameError] = useState("");
+  const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
 
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -22,8 +19,8 @@ const ValidationProvider = ({ children }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
-  const [discountChecked, setDiscountChecked] = useState(false);
-  const [discountCheckedError, setDiscountCheckedError] = useState("");
+  const [receivePromotionalEmails, setReceivePromotionalEmails] =
+    useState(false);
 
   const [agreeChecked, setAgreeChecked] = useState(false);
   const [agreeCheckedError, setAgreeCheckedError] = useState("");
@@ -54,12 +51,12 @@ const ValidationProvider = ({ children }) => {
     return true;
   };
 
-  const validateFirstName = () => {
-    if (firstName.trim() === "") {
-      setFirstNameError("First Name is required.");
+  const validateName = () => {
+    if (name.trim() === "") {
+      setNameError("First Name is required.");
       return false;
     }
-    setFirstNameError("");
+    setNameError("");
     return true;
   };
 
@@ -89,17 +86,11 @@ const ValidationProvider = ({ children }) => {
     return true;
   };
 
-  const validateLastName = () => {
-    if (!lastName) {
-      setLastNameError("Last name is required.");
-      return false;
+  const validateReceivePromotionalEmails = () => {
+    if (!receivePromotionalEmails) {
+      return true;
     }
-    setLastNameError("");
-    return true;
-  };
-  const validateDiscountChecked = () => {
-    // Discount checkbox validation logic
-    // ...
+    return false;
   };
 
   const validateAgreeChecked = () => {
@@ -123,16 +114,11 @@ const ValidationProvider = ({ children }) => {
       phoneNumberError,
       setPhoneNumberError,
       validatePhoneNumber,
-      firstName,
-      setFirstName,
-      firstNameError,
-      setFirstNameError,
-      validateFirstName,
-      lastName,
-      setLastName,
-      lastNameError,
-      setLastNameError,
-      validateLastName,
+      name,
+      setName,
+      nameError,
+      setNameError,
+      validateName,
       password,
       setPassword,
       passwordError,
@@ -143,11 +129,9 @@ const ValidationProvider = ({ children }) => {
       confirmPasswordError,
       setConfirmPasswordError,
       validateConfirmPassword,
-      discountChecked,
-      setDiscountChecked,
-      discountCheckedError,
-      setDiscountCheckedError,
-      validateDiscountChecked,
+      receivePromotionalEmails,
+      setReceivePromotionalEmails,
+      validateReceivePromotionalEmails,
       agreeChecked,
       setAgreeChecked,
       agreeCheckedError,
@@ -165,16 +149,11 @@ const ValidationProvider = ({ children }) => {
       phoneNumberError,
       setPhoneNumberError,
       validatePhoneNumber,
-      firstName,
-      setFirstName,
-      firstNameError,
-      setFirstNameError,
-      validateFirstName,
-      lastName,
-      setLastName,
-      lastNameError,
-      setLastNameError,
-      validateLastName,
+      name,
+      setName,
+      nameError,
+      setNameError,
+      validateName,
       password,
       setPassword,
       passwordError,
@@ -185,11 +164,9 @@ const ValidationProvider = ({ children }) => {
       confirmPasswordError,
       setConfirmPasswordError,
       validateConfirmPassword,
-      discountChecked,
-      setDiscountChecked,
-      discountCheckedError,
-      setDiscountCheckedError,
-      validateDiscountChecked,
+      receivePromotionalEmails,
+      setReceivePromotionalEmails,
+      validateReceivePromotionalEmails,
       agreeChecked,
       setAgreeChecked,
       agreeCheckedError,

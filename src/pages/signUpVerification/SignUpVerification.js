@@ -1,16 +1,35 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
+import SignUpHook from "../../hooks/SignUpHook";
 import "../authPagesStyles.css";
 import { RightSideImage } from "../authPageBgImg";
 
-const SignUpVerification = ({
-  verificationCode,
-  setVerificationCode,
-  handleVerification,
+const SignUpVerification = () => {
+const [code, setCode] = useState("")
+
+const history = useNavigate();
+
+const {
+  isLoading,
   error,
-}) => (
+  verifyCode,
+} = SignUpHook();
+
+const handleVerification = () => {
+  verifyCode(code)
+  .then(() => {
+    alert("verified successfully!")
+    history("/sign-in")
+  })
+  // .catch(() => {
+
+  // })
+}
+
+return (
   <div className="verification flex">
     <div className="verify flex">
       <a href="/">
@@ -30,12 +49,12 @@ const SignUpVerification = ({
                 placeholder="Enter code"
                 maxLength={6}
                 className="input-width"
-                value={verificationCode}
-                onChange={(e) => setVerificationCode(e.target.value)}
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
               />
               {error && <div>Error: {error}</div>}
               <Button type="submit" className="input-width">
-                Verify
+                {isLoading ? "Verifying..." : "Verify"}
               </Button>
             </div>
           </div>
@@ -44,6 +63,6 @@ const SignUpVerification = ({
     </div>
     <RightSideImage className="image" />
   </div>
-);
+)};
 
 export default SignUpVerification;

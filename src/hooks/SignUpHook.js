@@ -34,15 +34,14 @@ const SignUpHook = () => {
 
       if (
         err &&
-        err.response &&
-        err.response.data &&
-        err.response.data.message
+        err?.response &&
+        err?.response.data &&
+        err?.response.data.message
       ) {
         errorMessage = err.response.data.message;
-      } else if (err && err.message) {
+      } else if (err && err?.message) {
         errorMessage = err.message;
       }
-
       setError(errorMessage);
     } finally {
       setIsLoading(false);
@@ -57,7 +56,7 @@ const SignUpHook = () => {
         "https://mealy.onrender.com/api/v1/user/verify",
         {
           method: "POST",
-          body: JSON.stringify({ code: verificationCode }),
+          body: JSON.stringify({ verifyEmailToken: verificationCode }),
           headers: {
             "Content-Type": "application/json",
           },

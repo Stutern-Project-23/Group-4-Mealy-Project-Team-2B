@@ -9,7 +9,7 @@ import Fav5 from "../../../assets/images/hero/fav5.png";
 import Fav6 from "../../../assets/images/hero/fav6.png";
 import Avocado from "../../../assets/images/hero/avocado-sandwich.png";
 import HelpIcon from "../../../assets/images/hero/help-icon.svg";
-import "./HeroSection.css";
+import "./heroSection.css";
 
 const HeroSection = () => (
   <div className="hero-page-box">

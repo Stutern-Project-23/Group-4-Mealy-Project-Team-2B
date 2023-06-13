@@ -3,7 +3,7 @@ import styled from "styled-components";
 import HeroBackgroundImg from "../../assets/herobg.png";
 import LocationSearch from "../../component/LocationSearch";
 import FoodCarousel from "../../component/foodCarousel/FoodCarousel";
-import Navbar from "../../component/NavBar";
+import Navbar from "../../component/Navbar";
 import Feature from "./Feature";
 import Attributes from "./Attributes";
 import Discount from "./Discount";
@@ -174,7 +174,7 @@ const HeroSection = styled.div`
     p {
       font-weight: 400;
       font-size: 16px;
-      padding-top: 12px
+      padding-top: 12px;
     }
   }
   .attributes-section > div {

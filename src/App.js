@@ -16,9 +16,11 @@ import Home from "./pages/home/Home";
 import SettingsDashboard from "./pages/settingDashboard/SettingsDashboard";
 import OrderTracking from "./pages/orderTracking/OrderTracking";
 import "./App.css";
+import MealCustomization from "./pages/mealCustomization/MealCustomization";
 
 const App = () => (
   <div className="App">
+    <MealCustomization />
     <ValidationProvider>
       <Routes>
         <Route path="/" element={<Home />} />

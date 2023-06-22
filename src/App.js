@@ -21,19 +21,6 @@ import OrderTracking from "./pages/orderTracking/OrderTracking";
 import "./App.css";
 import Menu from "./pages/Menu";
 import ForgotPasswordFlow from "./pages/forgotPassword/ForgotPasswordFlow";
-import { useAuth } from "./hooks/AuthContext";
-
-const ProtectedRoute = ({ element: Element, ...rest }) => {
-  const { isAuthenticated } = useAuth();
-  const navigate = useNavigate();
-
-  if (!isAuthenticated) {
-    navigate("/", { replace: true });
-    return null;
-  }
-
-  return <Route {...rest} element={<Element />} />;
-};
 
 const App = () => (
   <div className="App">

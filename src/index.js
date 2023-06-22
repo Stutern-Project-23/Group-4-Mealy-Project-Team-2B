@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./hooks/AuthContext";
+import AuthProvider from "./providers/AuthProvider";
 import App from "./App";
+import { ProtectRoute } from "component/ProtectRoute";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <AuthProvider>
-      <App />
+      <ProtectRoute>
+        <App />
+      </ProtectRoute>
     </AuthProvider>
   </BrowserRouter>,
 );

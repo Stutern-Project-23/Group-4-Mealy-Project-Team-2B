@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
-import SignUpHook from "../../hooks/SignUpHook";
+import SignUpHook from "../../hooks/SignUp";
 import "../authPagesStyles.css";
 import { RightSideImage } from "../authPageBgImg";
 

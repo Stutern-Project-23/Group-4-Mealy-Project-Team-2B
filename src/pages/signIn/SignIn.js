@@ -8,7 +8,7 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
-import SignInHook from "../../hooks/SignInHook";
+import SignInHook from "../../hooks/SignIn";
 
 const SignIn = () => {
   const {

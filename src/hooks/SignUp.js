@@ -63,6 +63,7 @@ const SignUpHook = () => {
       setIsVerificationCodeCorrect(true);
       alert("verified successfully!");
       history("/auth-user");
+      // update user context
       return response;
     } catch (err) {
       setError(err?.response?.data?.message);

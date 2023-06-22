@@ -7,7 +7,7 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
-import SignUpHook from "../../hooks/SignUpHook";
+import SignUpHook from "../../hooks/SignUp";
 
 const SignUp = () => {
   const [isVerificationCodeSent, setIsVerificationCodeSent] = useState(false);

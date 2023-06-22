@@ -182,8 +182,9 @@ const HeroSection = styled.div`
   }
   .attributes-section > div:first-child {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    margin-left: 1em;
   }
   .attributes-section-col {
     display: grid;
@@ -237,9 +238,14 @@ const HeroSection = styled.div`
     place-items: center;
   }
   .discount-container {
-    background: #bdbdbd;
-    padding: 20px 10px;
-    width: 90%;
+    background: linear-gradient(
+      180deg,
+      rgba(189, 189, 189, 0) 8.74%,
+      rgba(189, 189, 189, 0.37) 61.46%,
+      rgba(189, 189, 189, 0.99) 100%
+    );
+    padding: 20px 0;
+    width: 93%;
     margin: 0 auto;
     margin-top: 3em;
     margin-bottom: 5em;

@@ -1,9 +1,9 @@
 .carousel {
-  width: 93%;
+  width: 100%;
   position: relative;
   padding: 1em;
   padding-left: 0;
-  margin-left: 4em;
+  margin-left: 2em;
   margin-right: 1em;
 }
 .carousel h3 {

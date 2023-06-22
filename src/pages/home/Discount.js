@@ -6,7 +6,9 @@ const Discount = () => (
   <div className="discount-container">
     <div className="discount-container-item-register">
       <h6 className="discount-header">Register and get discount up to 50 %</h6>
-      <Button className="discount-btn">Create account</Button>
+      <a href="/sign-up">
+        <Button className="discount-btn">Create account</Button>
+      </a>
     </div>
     <div className="discount-container-item-list-div">
       <div className="discount-container-item-list">

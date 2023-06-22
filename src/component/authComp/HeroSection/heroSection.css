@@ -109,11 +109,10 @@
 }
 
 .help-icon-box {
-  display: flex;
   padding-right: 3em;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 1rem;
+  position: absolute;
+  bottom: -200px;
+  right: 30px;
 }
 
 .help-icon {

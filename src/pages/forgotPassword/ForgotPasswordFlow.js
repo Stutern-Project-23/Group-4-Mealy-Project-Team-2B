@@ -12,10 +12,14 @@ const ForgotPasswordFlow = () => {
   const [showEmailForm, setShowEmailForm] = useState(true);
   const [showCodeForm, setShowCodeForm] = useState(false);
   const [showNewPasswordForm, setShowNewPasswordForm] = useState(false);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const history = useNavigate();
 
   const handleEmailSubmit = (Inputcode) => {
+    setError("");
+    setIsLoading(true);
     fetch("https://mealy.onrender.com/api/v1/user/forgotpassword", {
       method: "POST",
       body: JSON.stringify({ Inputcode }),
@@ -29,15 +33,21 @@ const ForgotPasswordFlow = () => {
           setCodeSent(true);
           setShowEmailForm(false);
           setShowCodeForm(true);
-          console.log(data);
+        } else {
+          setError(data.message);
         }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
+        setError("An error occurred. Please try again.");
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   const handleCodeSubmit = (code) => {
+    setError("");
     // Call the API endpoint to validate the forgot password code
     fetch("https://mealy.onrender.com/api/v1/user/resetpassword/code", {
       method: "POST",
@@ -55,14 +65,18 @@ const ForgotPasswordFlow = () => {
           setShowCodeForm(false);
           setShowNewPasswordForm(true);
           console.log(data);
+        } else {
+          setError(data.message);
         }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
+        setError("An error occurred. Please try again.");
       });
   };
 
   const handleResendCode = () => {
+    setError("");
     fetch("https://mealy.onrender.com/api/v1/user/resetpassword/code", {
       method: "POST",
       body: JSON.stringify({ email }),
@@ -74,14 +88,18 @@ const ForgotPasswordFlow = () => {
       .then((data) => {
         if (data.success) {
           console.log(data);
+        } else {
+          setError(data.message);
         }
       })
-      .catch((error) => {
-        console.log(error.message);
+      .catch((err) => {
+        console.log(err.message);
+        setError("An error occurred. Please try again.");
       });
   };
 
   const handlePasswordSubmit = (password) => {
+    setError("");
     fetch(
       `https://mealy.onrender.com/api/v1/user/resetpassword/${resetPasswordToken}`,
       {
@@ -98,26 +116,46 @@ const ForgotPasswordFlow = () => {
           console.log(data);
           alert("Password updated successfully!");
           history.push("/auth-user");
+        } else {
+          setError(data.message);
         }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
+        setError("An error occurred. Please try again.");
       });
   };
 
   let currentForm = null;
 
   if (showEmailForm) {
-    currentForm = <ForgotPassword onEmailSubmit={handleEmailSubmit} />;
+    currentForm = (
+      <ForgotPassword
+        onEmailSubmit={handleEmailSubmit}
+        error={error}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+      />
+    );
   } else if (showCodeForm) {
     currentForm = (
       <VerifyEmail
         onCodeSubmit={handleCodeSubmit}
         onResendCode={handleResendCode}
+        error={error}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
       />
     );
   } else if (showNewPasswordForm) {
-    currentForm = <NewPassword onPasswordSubmit={handlePasswordSubmit} />;
+    currentForm = (
+      <NewPassword
+        onPasswordSubmit={handlePasswordSubmit}
+        error={error}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+      />
+    );
   }
 
   return <div>{currentForm}</div>;

@@ -6,20 +6,22 @@ import RatingStarComponent from "../RatingStarComponent ";
 
 const ResturantContent = ({ imageSrc, description, header, reviewText }) => (
   <ContentWrapperItem>
-    <div className="content-wrapper-item">
-      <div className="content-img-div">
-        <img src={imageSrc} alt="" className="content-img" />
+    <a href="/meal-dashboard">
+      <div className="content-wrapper-item">
+        <div className="content-img-div">
+          <img src={imageSrc} alt="" className="content-img" />
+        </div>
+        <h4>{header}</h4>
+        <div className="review-star-div">
+          <RatingStarComponent />
+          <p className="review">{reviewText}</p>
+        </div>
+        <div className="paragraph-moreIcon-div">
+          <p>{description}</p>
+          <BsArrowRightCircle />
+        </div>
       </div>
-      <h4>{header}</h4>
-      <div className="review-star-div">
-        <RatingStarComponent />
-        <p className="review">{reviewText}</p>
-      </div>
-      <div className="paragraph-moreIcon-div">
-        <p>{description}</p>
-        <BsArrowRightCircle />
-      </div>
-    </div>
+    </a>
   </ContentWrapperItem>
 );
 

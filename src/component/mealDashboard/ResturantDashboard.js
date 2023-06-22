@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import AfricanGrid from "./mealCustomization/allResturantGrids/AfricanGrid";
-import HeroBackgroundImg from "../assets/images/dashboard-hero-bg.png";
-import AttributeImg from "../assets/images/Frame 91.png";
-import Layout from "./Layout";
-import CheckoutSummary from "../pages/paymentCheckout/CheckoutSummary";
-import TasteeImg from "../assets/images/tastee.png";
+import HeroBackgroundImg from "../../assets/images/dashboard-hero-bg.png";
+import AttributeImg from "../../assets/images/Frame 91.png";
+import Layout from "../Layout";
+import CheckoutSummary from "../../pages/paymentCheckout/CheckoutSummary";
+import TasteeImg from "../../assets/images/tastee.png";
+import RestaurantGrid from "./RestaurantGrid";
+import SideCheckoutSummary from "./SideCheckoutSummary";
 
 const TabPanel = ({ children, value, index }) => (
   <div
@@ -120,7 +121,7 @@ const ResturantDashboard = () => {
               Item one
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <AfricanGrid />
+              <RestaurantGrid />
             </TabPanel>
             <TabPanel value={value} index={2}>
               Item Three
@@ -140,7 +141,7 @@ const ResturantDashboard = () => {
           </div>
 
           <div className="checkout-summary-section">
-            <CheckoutSummary />
+            <SideCheckoutSummary />
           </div>
         </div>
       </DashboardStyle>

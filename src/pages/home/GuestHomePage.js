@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "../../component/Layout";
 import MealCustomizationComponentWrapper from "../../component/mealCustomization/MealCustomizationComponentWrapper";
-import HeroSection from "../../component/authComp/HeroSection/HeroSection";
+import GuestHeroSection from "../../component/authComp/HeroSection/GuestHeroSection";
 
 const GuestHomePage = () => (
   <Layout>
-    <HeroSection />
+    <GuestHeroSection />
     <MealCustomizationComponentWrapper />
   </Layout>
 );

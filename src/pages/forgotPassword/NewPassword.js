@@ -5,7 +5,7 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 
-const NewPassword = ({ onPasswordSubmit }) => {
+const NewPassword = ({ onPasswordSubmit, error, setIsLoading, isLoading }) => {
   const {
     password,
     setPassword,
@@ -30,6 +30,7 @@ const NewPassword = ({ onPasswordSubmit }) => {
       setConfirmPassword("");
       setPasswordError("");
       setConfirmPasswordError("");
+      setIsLoading(true);
       onPasswordSubmit(password);
     }
   };
@@ -76,10 +77,13 @@ const NewPassword = ({ onPasswordSubmit }) => {
               )}
             </div>
           </div>
-          <div className="create-new-passwd-btn">
-            <Button type="submit" className="input-width">
-              Submit
-            </Button>
+          <div className="form-btn-margin-top">
+            {error && <div className="endpoint-error">{error}</div>}
+            <div className="create-new-passwd-btn">
+              <Button type="submit" className="input-width">
+                {isLoading ? "Submiting..." : "Submit"}
+              </Button>
+            </div>
           </div>
         </form>
       </div>

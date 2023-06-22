@@ -41,7 +41,7 @@
 }
 .input {
   flex-direction: column;
-  row-gap: 2rem;
+  row-gap: 1rem;
   width: 100%;
 }
 
@@ -60,9 +60,7 @@
 .input-wrapper-margin {
   margin-left: -3.3em;
 }
-.input-wrapper-top {
-  /* margin-top: 10em; */
-}
+
 .input-field {
   margin-bottom: 10px;
 }
@@ -236,6 +234,19 @@ button {
   color: #32324d !important;
   cursor: pointer;
 }
+.form-btn {
+  margin-top: 0;
+}
+.form-btn-margin-top {
+  margin-top: 1em;
+}
+
+.endpoint-error {
+  color: #fa5a00;
+  font-size: 12px;
+  text-align: center;
+}
+
 .sign-in-validation-div {
   width: 100% !important;
 }

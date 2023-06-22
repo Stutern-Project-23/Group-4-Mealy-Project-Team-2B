@@ -15,7 +15,7 @@ const progressMinutes = 5;
 const totalMinutes = 10;
 const OrderTracking = () => (
   <Layout>
-    <div className="order">
+    <div className="order order-div">
       <div className="order__heading">
         <h2 className="order__title">Your Mealy is being delivered </h2>
       </div>

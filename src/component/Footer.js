@@ -112,6 +112,8 @@ const FooterSection = styled.div`
   background: #fa5a00;
   padding: 1em;
   padding-top: 40px;
+  padding-left: 2.2em;
+  padding-right: 2em;
   font-style: normal;
   line-height: 18px;
   color: #ffffff !important;

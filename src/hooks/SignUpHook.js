@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUpHook = () => {
   const [isVerificationCodeSent, setIsVerificationCodeSent] = useState(false);
@@ -6,13 +8,12 @@ const SignUpHook = () => {
     useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const history = useNavigate();
 
   const signUp = async (userData) => {
     try {
       setIsLoading(true);
       setError(null);
-
-      // Send a POST request to sign up the new user
       const response = await fetch(
         "https://mealy.onrender.com/api/v1/user/signup",
         {
@@ -27,7 +28,8 @@ const SignUpHook = () => {
       if (response.ok) {
         setIsVerificationCodeSent(true);
       } else {
-        throw new Error("Failed to sign up the user");
+        const responseData = await response.json();
+        throw new Error(responseData.message);
       }
     } catch (err) {
       let errorMessage = "An error occurred";
@@ -49,27 +51,23 @@ const SignUpHook = () => {
   };
 
   const verifyCode = async (verificationCode) => {
+    setIsLoading(true);
+    setError(null);
     try {
-      setIsLoading(true);
-      setError(null);
-      const response = await fetch(
+      const response = await axios.post(
         "https://mealy.onrender.com/api/v1/user/verify",
         {
-          method: "POST",
-          body: JSON.stringify({ verifyEmailToken: verificationCode }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+          verifyEmailToken: verificationCode,
         },
       );
-
-      if (response.ok) {
-        setIsVerificationCodeCorrect(true);
-      } else {
-        setIsVerificationCodeCorrect(false);
-      }
+      setIsVerificationCodeCorrect(true);
+      alert("verified successfully!");
+      history("/auth-user");
+      return response;
     } catch (err) {
-      setError(err.message);
+      setError(err?.response?.data?.message);
+      setIsVerificationCodeCorrect(false);
+      return new Error(err);
     } finally {
       setIsLoading(false);
     }

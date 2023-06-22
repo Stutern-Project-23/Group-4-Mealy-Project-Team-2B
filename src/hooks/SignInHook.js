@@ -1,10 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignInHook = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
+
+  const history = useNavigate();
 
   const signIn = async (email, password) => {
     setIsLoading(true);
@@ -21,6 +24,7 @@ const SignInHook = () => {
       );
 
       setUser(response.data.user);
+      history("/auth-user");
     } catch (err) {
       let errorMessage = "An error occurred";
 

@@ -5,7 +5,13 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 
-const VerifyEmail = ({ onCodeSubmit, onResendCode }) => {
+const VerifyEmail = ({
+  onCodeSubmit,
+  onResendCode,
+  error,
+  setIsLoading,
+  isLoading,
+}) => {
   const [code, setCode] = useState("");
 
   const handleCodeChange = (e) => {
@@ -14,6 +20,7 @@ const VerifyEmail = ({ onCodeSubmit, onResendCode }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     onCodeSubmit(code);
   };
 
@@ -45,9 +52,12 @@ const VerifyEmail = ({ onCodeSubmit, onResendCode }) => {
                   placeholder="Enter code"
                   required
                 />
-                <Button type="submit" className="input-width">
-                  Verify
-                </Button>
+                <div className="form-btn-margin-top">
+                  {error && <div className="endpoint-error">{error}</div>}
+                  <Button type="submit" className="input-width">
+                    {isLoading ? "Verifying..." : "Verify"}
+                  </Button>
+                </div>
               </form>
             </div>
 

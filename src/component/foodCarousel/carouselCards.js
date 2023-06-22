@@ -1,5 +1,5 @@
 import React from "react";
-import { v4 as randid } from 'uuid';
+import { v4 as randid } from "uuid";
 import CarouselWallet from "../../assets/images/carouselWallet.png";
 import CarouselImg from "../../assets/images/carouselImg1.png";
 
@@ -22,7 +22,7 @@ const generateCardContent = (name, price, img) => (
   </div>
 );
 
-const cards = [
+const Cards = [
   {
     id: randid(),
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
@@ -76,4 +76,4 @@ const cards = [
     content: generateCardContent("Green Curry Spices", "IDR 30K", CarouselImg),
   },
 ];
-export default cards;
+export default Cards;

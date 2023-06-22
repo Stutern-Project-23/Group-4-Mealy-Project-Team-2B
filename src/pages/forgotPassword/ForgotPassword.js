@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
 
-const ForgotPassword = ({ onEmailSubmit }) => {
+const ForgotPassword = ({ onEmailSubmit, error, setIsLoading, isLoading }) => {
   const { email, setEmail, validateEmail, emailError, setEmailError } =
     useContext(FormValidationContext);
 
@@ -16,6 +16,7 @@ const ForgotPassword = ({ onEmailSubmit }) => {
 
     if (isEmailValid) {
       setEmailError("");
+      setIsLoading(true);
       onEmailSubmit(email);
     }
   };
@@ -48,9 +49,12 @@ const ForgotPassword = ({ onEmailSubmit }) => {
                     <span className="validation-error">{emailError}</span>
                   )}
                 </div>
-                <Button type="submit" className="input-width">
-                  Get Code
-                </Button>
+                <div className="form-btn-margin-top">
+                  {error && <div className="endpoint-error">{error}</div>}
+                  <Button type="submit" className="input-width">
+                    {isLoading ? "Getting code..." : "Get code"}
+                  </Button>
+                </div>
               </form>
             </div>
           </div>

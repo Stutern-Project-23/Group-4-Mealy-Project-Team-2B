@@ -34,8 +34,8 @@ const SignIn = () => {
     if (isEmailValid && isPasswordValid) {
       setEmailError("");
       setPasswordError("");
-      // setEmail("");
-      // setPassword("");
+      setEmail("");
+      setPassword("");
       signIn(email, password);
     }
   };
@@ -53,6 +53,7 @@ const SignIn = () => {
     }
     signInWithGoogle();
   };
+
   return (
     <div className="sign-up-page">
       <div className="left-side">
@@ -134,7 +135,7 @@ const SignIn = () => {
           </div>
           <p className="sign-in-link">
             Do not have an account?
-            <a href="sign-up" className="sign-up-link">
+            <a href="/sign-up" className="sign-up-link">
               Sign Up
             </a>
           </p>

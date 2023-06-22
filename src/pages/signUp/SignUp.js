@@ -14,11 +14,7 @@ const SignUp = () => {
 
   const history = useNavigate();
 
-  const {
-    isLoading,
-    error,
-    signUp,
-  } = SignUpHook();
+  const { isLoading, error, signUp } = SignUpHook();
 
   const {
     name,
@@ -77,18 +73,17 @@ const SignUp = () => {
         password,
         confirmPassword,
         receivePromotionalEmails,
-      })
-      .then(() => {
+      }).then(() => {
         setIsVerificationCodeSent(true);
-      })
+      });
     }
   };
 
   useEffect(() => {
-    if(error){
-      setIsVerificationCodeSent(false)
-    }
-    else if (isVerificationCodeSent && !error) history("/sign-up-verification")
+    if (error) {
+      setIsVerificationCodeSent(false);
+    } else if (isVerificationCodeSent && !error)
+      history("/sign-up-verification");
   }, [isVerificationCodeSent]);
 
   return (
@@ -201,7 +196,7 @@ const SignUp = () => {
           </div>
 
           <div className="create-acc-btn">
-            {error && <div>Error: {error}</div>}
+            {error && <div className="endpoint-error">{error}</div>}
             <Button type="submit" className="input-width">
               {isLoading ? "Signing Up..." : "Create an account"}
             </Button>

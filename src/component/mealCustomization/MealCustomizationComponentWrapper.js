@@ -8,22 +8,18 @@ const MealCustomizationComponentWrapper = () => {
   const tabs = [
     "Order Again",
     "All",
-    "Starters",
+    "Tastee",
     "African",
-    "Drinks",
-    "Salad",
-    "Combos",
-    "Snacks",
+    "Chicken Republic",
+    "BluCabana",
+    "Jevinik ",
+    "Sketch",
   ];
 
   const content = [
-    <ContentWrapperGrid>Content for Item One</ContentWrapperGrid>,
-    <ContentWrapperGrid>
-      <RandomResturantGrid />
-    </ContentWrapperGrid>,
-    <ContentWrapperGrid>
-      <AfricanGridContent />
-    </ContentWrapperGrid>,
+    <p>Content for Item One</p>,
+    <RandomResturantGrid />,
+    <AfricanGridContent />,
     <p>Content for Item Three</p>,
   ];
 
@@ -61,25 +57,6 @@ const AllResturantStyle = styled.div`
   place-items: center;
   .tabs-custom-class {
     width: 90%;
-  }
-`;
-
-const ContentWrapperGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  width: 100%;
-  justify-content: space-between;
-  padding-bottom: 4em;
-  > div {
-    width: 20%;
-  }
-  @media (max-width: 954px) {
-    justify-content: center;
-    row-gap: 1.5em;
-    > div {
-      width: 70%;
-    }
   }
 `;
 

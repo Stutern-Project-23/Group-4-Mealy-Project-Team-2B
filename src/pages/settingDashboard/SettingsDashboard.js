@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -19,11 +20,11 @@ const TabPanel = ({ children, value, index }) => (
     hidden={value !== index}
     id={`vertical-tabpanel-${index}`}
     aria-labelledby={`vertical-tab-${index}`}>
-    {/* {value === index && ( */}
-    <div style={{ padding: "16px", paddingTop: 0 }}>
-      <div className="dashboard-content-grid">{children}</div>
-    </div>
-    {/* )} */}
+    {value === index && (
+      <div style={{ padding: "16px", paddingTop: 0 }}>
+        <div className="dashboard-content-grid">{children}</div>
+      </div>
+    )}
   </div>
 );
 
@@ -81,7 +82,7 @@ const SettingsDashboard = () => {
     "Orders",
     "Payments",
     "Logout",
-    "Delete Account",
+    // "Delete Account",
   ];
 
   return (

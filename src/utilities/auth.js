@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import get from './rest'
+import rest from './rest'
 // import PropTypes from "prop-types";
 // import useSignIn from "./SignInHook";
 // import useSignUp from "./SignUpHook";
@@ -23,7 +23,7 @@ StateContext.displayName = 'StateContext'
 export const DispatchContext = createContext((action) => {})
 DispatchContext.displayName = 'DispatchContext'
 
-export const getCurrentUser = (email) => get('/user/', {email})
+export const getCurrentUser = async (email) => rest().get(`/${email}`)
 
 export function useAuth() {
 	const state = useContext(StateContext)

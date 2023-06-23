@@ -45,32 +45,35 @@ const AuthProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(authReducer, { isAuthenticated: false })
 
-  useEffect(() => {
-    const sampleUser = {
-      "data": {
-        "name": "Enoch",
-        "email": "tester6+3@test.com",
-        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDk0ODhjZmJmNGUwYmIyZWIwYmJmMmQiLCJpYXQiOjE2ODc0NTYwNTMsImV4cCI6MTY4NzQ1Njk1M30.6WKT95zQaRB060dvtHTJbQJTi-R0KYHReVw4ojGmNUo"
-      }
-    }
+  // useEffect(() => {
+  //   // const sampleUser = {
+  //   //   "data": {
+  //   //     "name": "Enoch",
+  //   //     "email": "tester6+3@test.com",
+  //   //     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDk0ODhjZmJmNGUwYmIyZWIwYmJmMmQiLCJpYXQiOjE2ODc0NTYwNTMsImV4cCI6MTY4NzQ1Njk1M30.6WKT95zQaRB060dvtHTJbQJTi-R0KYHReVw4ojGmNUo"
+  //   //   }
+  //   // }
+  //   const userdata = localStorage.getItem("userdata");
+  //   const data = JSON.parse(userdata);
 
-    dispatch({
-      type: AuthDispatch.Authenticated,
-      payload: sampleUser.data,
-    })
-    setIsLoading(false)
-    // getCurrentUser("mekepe2388@aaorsi.com")
-    //   .then(async (user) => {
-    //     console.log(user)
-    //     if (user) {
-    //       dispatch({
-    //         type: AuthDispatch.Authenticated,
-    //         payload: user,
-    //       })
-    //     }
-    //   })
-    //   .finally(() => setIsLoading(false))
-  }, [])
+  //   try {
+  //     getCurrentUser(state.user.email)
+  //     .then(async(user) => {
+  //       // console.log(user)
+  //       if (user) {
+  //         dispatch({
+  //           type: AuthDispatch.Authenticated,
+  //           payload: user.data,
+  //         })
+  //       }
+  //       return null;
+  //     })
+  //   } catch (error) {
+  //     console.log(error)
+  //   } finally{
+  //     setIsLoading(false)
+  //   }
+  // }, [])
 
   const authState = useMemo(
     () => ({ ...state, isLoading }),

@@ -10,7 +10,7 @@ import { FormValidationContext } from "../../hooks/FormValidationsContext";
 import UseSignUp from "../../hooks/SignUp";
 
 const SignUp = () => {
-  const [isVerificationCodeSent, setIsVerificationCodeSent] = useState(false);
+  const [res, setres] = useState("");
 
   const history = useNavigate();
 
@@ -73,24 +73,20 @@ const SignUp = () => {
         password,
         confirmPassword,
         receivePromotionalEmails,
-      }).then((res) => {
-        console.log("post signup res", res)
-        if (error) {
-          setIsVerificationCodeSent(false);
-        }
-        setIsVerificationCodeSent(true);
+      }).then((response) => {
+        setres(response.status)
+        // console.log("post signup res", response)
       });
     }
   };
 
   useEffect(() => {
-    console.log("err", error)
-    console.log("isVerifisent", isVerificationCodeSent)
-    if (error && !isVerificationCodeSent) {
-      setIsVerificationCodeSent(false);
-    } else if (isVerificationCodeSent && !error)
+    // console.log('res', res)
+    if (res) {
       history("/sign-up-verification");
-  }, [isVerificationCodeSent]);
+      // console.log('good to go')
+    }
+  });
 
   return (
     <div className="sign-up-page">

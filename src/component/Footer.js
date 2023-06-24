@@ -15,8 +15,9 @@ const Footer = () => {
   } = useAuth()
 
   const logout = () => {
-    SignOut(user.user?.access_token)
-    .then(() => localStorage.removeItem("userdata"))
+    console.log(user.user?.access_token)
+    // SignOut(user.user?.access_token)
+    // .then(() => localStorage.removeItem("accessToken"))
   }
 
   return (
@@ -83,7 +84,7 @@ const Footer = () => {
               <a href="/setting-dashboard">Settings</a>
             </li>
             <li>
-              <Button onClick={()=>SignOut()}>Logout</Button>
+              <Button onClick={()=>logout()}>Logout</Button>
             </li>
           </ul>
         </div>

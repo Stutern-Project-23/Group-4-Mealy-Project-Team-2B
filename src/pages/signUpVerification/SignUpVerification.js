@@ -6,55 +6,32 @@ import Button from "../../component/Button";
 import useVerifyCode from "../../hooks/VerifyCode";
 import "../authPagesStyles.css";
 import { RightSideImage } from "../authPageBgImg";
-import { AuthDispatch, useAuth, getCurrentUser } from '../../utilities/auth';
+import { useAuth } from "../../utilities/auth";
 
 const SignUpVerification = () => {
   const [verificationCode, setVerificationCode] = useState("");
-  const [isVerificationCodeCorrect, setIsVerificationCodeCorrect] =
     useState(false);
-  const [email, setEmail] = useState(null)
 
   const { isLoading, error, verifyCode } = useVerifyCode();
+  const { state: user} = useAuth()
   const history = useNavigate();
-  const {
-    state: user,
-  } = useAuth()
 
   const handleVerification = async (e) => {
     e.preventDefault();
     await verifyCode({verificationCode
     }).then(() => {
-      if (error) {
-        setIsVerificationCodeCorrect(false);
-      }
       alert("verified successfully!");
-      setIsVerificationCodeCorrect(true)
-      history("/auth-user");
+      // history("/auth-user");
     })
   };
 
   useEffect(() => {
-    console.log('in use effect', user.user?.email)
-    // (function getuser(){
-    //   getCurrentUser(email)
-    //   .then(async(user) => {
-    //     if (user) {
-    //       console.log("seen motherfucker!!",user)
-    //       // update user context with actual user data
-    //       dispatch({
-    //         type: AuthDispatch.Authenticated,
-    //         payload: user.data,
-    //       })
-    //     }
-    //   })
-    // }())
-
-    // if (error) {
-    //   setIsVerificationCodeCorrect(false);
-    // } else if (isVerificationCodeCorrect && !error)
-    //   alert("verified successfully!");
-    //   history("/auth-user");
-  }, [email]);
+    if(user){
+      console.log("very good to go")
+      console.log()
+    }
+    console.log('good to go!!')
+  }, [user]);
 
   return (
     <div className="verification flex">

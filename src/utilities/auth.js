@@ -11,7 +11,7 @@ export const AuthDispatch = {
 // export const signIn = async (username: string, password: string): Promise<CognitoUser> =>
 //   Auth.signIn(username, password)
 
-export const SignOut = async (token) => rest().post("/logout")
+export const SignOut = async (token) => rest().get("/logout")
 
 export const StateContext = createContext({})
 StateContext.displayName = 'StateContext'

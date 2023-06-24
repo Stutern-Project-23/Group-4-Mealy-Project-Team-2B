@@ -11,15 +11,11 @@ const UseSignUp = () => {
   } = useAuth()
 
   const signUp = async (userData) => {
+    let req;
     try {
       setIsLoading(true);
       setError(null);
-      rest().post("/signup", userData)
-      // .then((result) => {
-      //   if (["200", "201"].includes(result.status) && result.data?.status === "Success") {
-      //     console.log(result)
-      //   }
-      // })
+      req = rest().post("/signup", userData)
     } catch (err) {
       let errorMessage = "An error occurred";
       if (
@@ -41,11 +37,13 @@ const UseSignUp = () => {
         // Something happened in setting up the request that triggered an Error
         console.log('Error', err.message);
         errorMessage = err.message;
+        return errorMessage;
       }
       setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
+    return req;
   };
 
   return {

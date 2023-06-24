@@ -11,27 +11,28 @@ import { useAuth } from "../../utilities/auth";
 const SignUpVerification = () => {
   const [verificationCode, setVerificationCode] = useState("");
     useState(false);
+    const [res, setres] = useState("")
 
   const { isLoading, error, verifyCode } = useVerifyCode();
-  const { state: user} = useAuth()
+  const { state: user } = useAuth()
   const history = useNavigate();
 
   const handleVerification = async (e) => {
     e.preventDefault();
-    await verifyCode({verificationCode
-    }).then(() => {
-      alert("verified successfully!");
-      // history("/auth-user");
+    verifyCode({verificationCode
+    }).then((result) => {
+      // console.log("xx", result)
+      setres(result)
     })
   };
 
   useEffect(() => {
-    if(user){
-      console.log("very good to go")
-      console.log()
+    if (res) {
+      alert("verified successfully!");
+      history("/auth-user");
+      // console.log('good to go')
     }
-    console.log('good to go!!')
-  }, [user]);
+  });
 
   return (
     <div className="verification flex">

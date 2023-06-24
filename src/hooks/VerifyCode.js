@@ -1,26 +1,55 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import rest from '../utilities/rest';
 import { AuthDispatch, useAuth, getCurrentUser } from '../utilities/auth';
 
 const useVerifyCode = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [email, setEmail] = useState(null)
 
   const {
     dispatch,
   } = useAuth()  
 
+  function getUserViaEmail(userEmail){
+    getCurrentUser(userEmail)
+      .then(async(user) => {
+        if (user) {
+          // update user context with actual user data
+          console.log('pre dispatch auth', user.data?.data?.user)
+          const data = user.data?.data?.user
+          dispatch({
+            type: AuthDispatch.Authenticated,
+            payload: data,
+          })
+        }
+      })
+      .catch(err => {
+        console.error('Error fetching user data:', err);
+      });
+  }
+
   const verifyCode = async ({verificationCode}) => {
     // debugger; // eslint-disable-line no-debugger
+    let res;
     try {
       setIsLoading(true);
       setError(null);
       await rest().post("/verify", {verifyEmailToken: verificationCode})
       .then(async(result) => {
         // console.log("response result hook", result)
-        setEmail(result.data?.data?.email)
-        await localStorage.setItem("accessToken", JSON.stringify(result.data?.data?.access_token))
+        console.log('pre dispatch sign in', result.data?.data)
+        const data = result.data?.data
+        dispatch({
+          type: AuthDispatch.SignIn,
+          payload: data,
+        })
+        if(result){
+          // User is verified, proceed to fetch user data
+          await getUserViaEmail(result.data?.data?.email)
+          await localStorage.setItem("accessToken", JSON.stringify(result.data?.data?.access_token))
+          // Return the processed data to pass it to the next `then` block
+          res = result;
+        }
       })
     } catch (err) {
       let errorMessage = "An error occurred";
@@ -48,26 +77,8 @@ const useVerifyCode = () => {
     } finally {
       setIsLoading(false);
     }
+    return res;
   };
-
-  function getUserViaEmail(userEmail){
-    getCurrentUser(userEmail)
-      .then(async(user) => {
-        if (user) {
-          // update user context with actual user data
-          await dispatch({
-            type: AuthDispatch.Authenticated,
-            payload: user.data,
-          })
-        }
-      })
-  }
-
-  useEffect(() => {
-    if(email){
-      getUserViaEmail(email)
-    }
-  }, [email])
 
   return {
     isLoading,

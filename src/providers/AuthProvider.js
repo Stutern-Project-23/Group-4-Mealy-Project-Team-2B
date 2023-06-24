@@ -8,18 +8,24 @@ import {
 } from '../utilities/auth'
 
 function authReducer(state, action) {
-  console.log(action)
+  console.log("action", action)
   switch (action.type) {
     case AuthDispatch.Authenticated:
     case AuthDispatch.SignIn: {
       const user = {
-        id: action.payload?.id,
+        _id: action.payload?.id,
         name: action.payload.name,
-        firstName: action.payload?.firstName,
-        lastName: action.payload?.lastName,
+        // firstName: action.payload?.firstName,
+        // lastName: action.payload?.lastName,
         email: action.payload?.email,
         phoneNumber: action.payload?.phone_number,
         address: action.payload?.address,
+        createdAt: action.payload?.createdAt,
+        isVerified: action.payload?.isVerified,
+        receivePromotionalEmails: action.payload?.receivePromotionalEmails,
+        access_token: action.payload?.access_token,
+        refreshToken: action.payload?.refreshToken,
+        updatedAt: action.payload?.updatedAt,
         photo: action.payload?.picture ?? '/avatar.png',
       }
 
@@ -51,7 +57,7 @@ const AuthProvider = ({ children }) => {
   //   const data = JSON.parse(userdata);
 
   //   try {
-  //     getCurrentUser(state.user?.user.email)
+  //     getCurrentUser(state.user?.email)
   //     .then(async(user) => {
   //       // console.log(user)
   //       if (user) {
@@ -73,6 +79,7 @@ const AuthProvider = ({ children }) => {
     () => ({ ...state, isLoading }),
     [state, isLoading],
   );
+  console.log("provider",state)
 
   return (
     <DispatchContext.Provider value={dispatch}>

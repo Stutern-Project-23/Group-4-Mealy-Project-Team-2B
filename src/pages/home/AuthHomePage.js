@@ -11,11 +11,12 @@ import { useAuth } from "../../utilities/auth";
 
 const AuthHomePage = () => {
   const { state: user} = useAuth()
+  console.log("auth home", user)
   return (
     <Layout>
       <div className="hero-page-box">
         <div className="search">
-          <h1 className="hero-title">Welcome, {`${user.user.name}`}</h1>
+          <h1 className="hero-title">Welcome, {`${user?.name}`}</h1>
           <p className="hero-description">What would you like to eat?</p>
           <Input
             type="text"

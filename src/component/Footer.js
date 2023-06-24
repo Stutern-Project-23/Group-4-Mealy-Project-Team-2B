@@ -15,9 +15,11 @@ const Footer = () => {
   } = useAuth()
 
   const logout = () => {
-    console.log(user.user?.access_token)
-    // SignOut(user.user?.access_token)
-    // .then(() => localStorage.removeItem("accessToken"))
+    // console.log(user.user?.access_token)
+    console.log(localStorage.getItem("accessToken"))
+    const token = localStorage.getItem("accessToken")
+    SignOut(token)
+    .then(() => localStorage.removeItem("accessToken"))
   }
 
   return (

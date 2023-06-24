@@ -11,6 +11,7 @@ import UseSignUp from "../../hooks/SignUp";
 
 const SignUp = () => {
   const [res, setres] = useState("");
+  const [disableBtn, setDisableBtn] = useState(false)
 
   const history = useNavigate();
 
@@ -48,7 +49,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setDisableBtn(true)
     const isFirstNameValid = validateName();
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
@@ -81,10 +82,12 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    // console.log('res', res)
     if (res) {
       history("/sign-up-verification");
       // console.log('good to go')
+    }
+    else {
+      setDisableBtn(false)
     }
   });
 
@@ -199,7 +202,7 @@ const SignUp = () => {
 
           <div className="create-acc-btn">
             {error && <div className="endpoint-error">{error}</div>}
-            <Button type="submit" className="input-width">
+            <Button type="submit" className="input-width" style={disableBtn ? {opacity: '0.6',cursor:'not-allowed'}:{opacity:'1'}}>
               {isLoading ? "Signing Up..." : "Create an account"}
             </Button>
           </div>

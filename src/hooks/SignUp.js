@@ -1,14 +1,9 @@
 import { useState } from "react";
 import rest from '../utilities/rest';
-import { useAuth } from '../utilities/auth'
 
 const UseSignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const {
-    dispatch,
-  } = useAuth()
 
   const signUp = async (userData) => {
     let req;

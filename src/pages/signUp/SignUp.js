@@ -7,14 +7,14 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
-import SignUpHook from "../../hooks/SignUp";
+import UseSignUp from "../../hooks/SignUp";
 
 const SignUp = () => {
   const [isVerificationCodeSent, setIsVerificationCodeSent] = useState(false);
 
   const history = useNavigate();
 
-  const { isLoading, error, signUp } = SignUpHook();
+  const { isLoading, error, signUp } = UseSignUp();
 
   const {
     name,
@@ -73,14 +73,20 @@ const SignUp = () => {
         password,
         confirmPassword,
         receivePromotionalEmails,
-      }).then(() => {
+      }).then((res) => {
+        console.log("post signup res", res)
+        if (error) {
+          setIsVerificationCodeSent(false);
+        }
         setIsVerificationCodeSent(true);
       });
     }
   };
 
   useEffect(() => {
-    if (error) {
+    console.log("err", error)
+    console.log("isVerifisent", isVerificationCodeSent)
+    if (error && !isVerificationCodeSent) {
       setIsVerificationCodeSent(false);
     } else if (isVerificationCodeSent && !error)
       history("/sign-up-verification");

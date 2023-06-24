@@ -1,20 +1,60 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
-import SignUpHook from "../../hooks/SignUp";
+import useVerifyCode from "../../hooks/VerifyCode";
 import "../authPagesStyles.css";
 import { RightSideImage } from "../authPageBgImg";
+import { AuthDispatch, useAuth, getCurrentUser } from '../../utilities/auth';
 
 const SignUpVerification = () => {
-  const [code, setCode] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
+  const [isVerificationCodeCorrect, setIsVerificationCodeCorrect] =
+    useState(false);
+  const [email, setEmail] = useState(null)
 
-  const { isLoading, error, verifyCode } = SignUpHook();
+  const { isLoading, error, verifyCode } = useVerifyCode();
+  const history = useNavigate();
+  const {
+    state: user,
+  } = useAuth()
 
-  const handleVerification = (e) => {
+  const handleVerification = async (e) => {
     e.preventDefault();
-    verifyCode(code);
+    await verifyCode({verificationCode
+    }).then(() => {
+      if (error) {
+        setIsVerificationCodeCorrect(false);
+      }
+      alert("verified successfully!");
+      setIsVerificationCodeCorrect(true)
+      history("/auth-user");
+    })
   };
+
+  useEffect(() => {
+    console.log('in use effect', user.user?.email)
+    // (function getuser(){
+    //   getCurrentUser(email)
+    //   .then(async(user) => {
+    //     if (user) {
+    //       console.log("seen motherfucker!!",user)
+    //       // update user context with actual user data
+    //       dispatch({
+    //         type: AuthDispatch.Authenticated,
+    //         payload: user.data,
+    //       })
+    //     }
+    //   })
+    // }())
+
+    // if (error) {
+    //   setIsVerificationCodeCorrect(false);
+    // } else if (isVerificationCodeCorrect && !error)
+    //   alert("verified successfully!");
+    //   history("/auth-user");
+  }, [email]);
 
   return (
     <div className="verification flex">
@@ -37,8 +77,8 @@ const SignUpVerification = () => {
                   maxLength={6}
                   className="input-width"
                   type="number"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
+                  value={verificationCode}
+                  onChange={(e) => setVerificationCode(e.target.value)}
                 />
                 {error && <div className="endpoint-error">{error}</div>}
                 <Button type="submit" className="input-width form-btn">

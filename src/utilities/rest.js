@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const api = axios.create({
     baseURL: 'https://mealy.onrender.com/api/v1/user',
-    timeout: 8000,
+    timeout: 15000,
     // headers: {'X-Custom-Header': 'foobar'}
   });
 
@@ -10,19 +10,19 @@ const api = axios.create({
     const get = (path, options = {}) => api.get(path, options)
 
     const post = (path, options = {}) =>  api.post(path, { ...options }).catch((error) => {
-      throw new Error(error.response.data.message)
+      throw new Error(error.response?.data?.message)
     })
 
     const put = (path, options = {}) => api.put(path, { body: options }).catch((error) => {
-      throw new Error(error.response.data.message)
+      throw new Error(error.response?.data?.message)
     })
 
     const patch = (path, options = {}) => api.patch(path, { body: options }).catch((error) => {
-      throw new Error(error.response.data.message)
+      throw new Error(error.response?.data?.message)
     })
 
     const del = (path, options = {}) => api.del(path, options).catch((error) => {
-      throw new Error(error.response.data.message)
+      throw new Error(error.response?.data?.message)
     })
 
   return {

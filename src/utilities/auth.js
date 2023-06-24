@@ -1,9 +1,5 @@
 import { createContext, useContext } from "react";
 import rest from './rest'
-// import PropTypes from "prop-types";
-// import useSignIn from "./SignInHook";
-// import useSignUp from "./SignUpHook";
-import signOut from "../hooks/SignOut";
 
 export const AuthDispatch = {
     Authenticated: 'authenticated',
@@ -15,7 +11,7 @@ export const AuthDispatch = {
 // export const signIn = async (username: string, password: string): Promise<CognitoUser> =>
 //   Auth.signIn(username, password)
 
-export const SignOut = async () => signOut()
+export const SignOut = async (token) => rest().post("/logout")
 
 export const StateContext = createContext({})
 StateContext.displayName = 'StateContext'

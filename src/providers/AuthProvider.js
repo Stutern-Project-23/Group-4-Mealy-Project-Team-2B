@@ -14,6 +14,7 @@ function authReducer(state, action) {
     case AuthDispatch.SignIn: {
       const user = {
         id: action.payload?.id,
+        name: action.payload.name,
         firstName: action.payload?.firstName,
         lastName: action.payload?.lastName,
         email: action.payload?.email,
@@ -46,18 +47,11 @@ const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, { isAuthenticated: false })
 
   // useEffect(() => {
-  //   // const sampleUser = {
-  //   //   "data": {
-  //   //     "name": "Enoch",
-  //   //     "email": "tester6+3@test.com",
-  //   //     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDk0ODhjZmJmNGUwYmIyZWIwYmJmMmQiLCJpYXQiOjE2ODc0NTYwNTMsImV4cCI6MTY4NzQ1Njk1M30.6WKT95zQaRB060dvtHTJbQJTi-R0KYHReVw4ojGmNUo"
-  //   //   }
-  //   // }
   //   const userdata = localStorage.getItem("userdata");
   //   const data = JSON.parse(userdata);
 
   //   try {
-  //     getCurrentUser(state.user.email)
+  //     getCurrentUser(state.user?.user.email)
   //     .then(async(user) => {
   //       // console.log(user)
   //       if (user) {

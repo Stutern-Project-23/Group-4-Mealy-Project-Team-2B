@@ -1,8 +1,8 @@
 import { useState } from "react";
 import rest from '../utilities/rest';
-import { useAuth } from '../utilities/auth'
+import { AuthDispatch, useAuth } from '../utilities/auth';
 
-const UseSignUp = () => {
+const useVerifyCode = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -10,16 +10,27 @@ const UseSignUp = () => {
     dispatch,
   } = useAuth()
 
-  const signUp = async (userData) => {
+  const verifyCode = async ({verificationCode}) => {
+    // debugger; // eslint-disable-line no-debugger
     try {
       setIsLoading(true);
       setError(null);
-      rest().post("/signup", userData)
-      // .then((result) => {
+      await rest().post("/verify", {verifyEmailToken: verificationCode})
+      .then(async(result) => {
+        console.log("response result hook", result)
+        await localStorage.setItem("userdata", JSON.stringify(result))
+        await dispatch({
+          type: AuthDispatch.Authenticated,
+          payload: result.data?.data,
+        })
+        return result
+      //   setEmail(result.data?.data?.email)
+      //   // console.table(result)
       //   if (["200", "201"].includes(result.status) && result.data?.status === "Success") {
-      //     console.log(result)
+      //     // store user email in local storage for subsequent usage
+      //     localStorage.setItem("userdata", JSON.stringify(result.data?.email))
       //   }
-      // })
+      })
     } catch (err) {
       let errorMessage = "An error occurred";
       if (
@@ -51,8 +62,8 @@ const UseSignUp = () => {
   return {
     isLoading,
     error,
-    signUp,
+    verifyCode,
   };
-};
+}
 
-export default UseSignUp;
+export default useVerifyCode;

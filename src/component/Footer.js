@@ -5,107 +5,120 @@ import styled from "styled-components";
 import { BsLinkedin } from "react-icons/bs";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
+import Button from "./Button";
+import {SignOut, useAuth} from "../utilities/auth";
 // import {  } from "react-icons/fa";
 
-const Footer = () => (
-  <FooterSection>
-    <footer className="top">
-      <div>
+const Footer = () => {
+  const {
+    state: user,
+  } = useAuth()
+
+  const logout = () => {
+    SignOut(user.user?.access_token)
+    .then(() => localStorage.removeItem("userdata"))
+  }
+
+  return (
+    <FooterSection>
+      <footer className="top">
         <div>
-          <NavLink to="/" className="nav-logo footer-logo">
-            MEALY
-          </NavLink>
-          <p>your fastest and reliable food and drink delivery partner</p>
+          <div>
+            <NavLink to="/" className="nav-logo footer-logo">
+              MEALY
+            </NavLink>
+            <p>your fastest and reliable food and drink delivery partner</p>
+          </div>
         </div>
-      </div>
-      <div>
-        <h2>Company</h2>
-        <ul>
-          <li>
-            <a href="/">About Us</a>
-          </li>
-          <li>
-            <a href="/">Patnerships</a>
-          </li>
-          <li>
-            <a href="/">Privacy</a>
-          </li>
-          <li>
-            <a href="/">Policy</a>
-          </li>
-          <li>
-            <a href="/">Customer</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2>Services</h2>
-        <ul>
-          <li>
-            <a href="/menu">Menu</a>
-          </li>
-          <li>
-            <a href="/">Recipe</a>
-          </li>
-
-          <li>
-            <a href="/">Delivery</a>
-          </li>
-
-          <li>
-            <a href="/">Customer</a>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <h2>Support</h2>
-        <ul>
-          <li>
-            <a href="/">Help Center</a>
-          </li>
-          <li>
-            <a href="/">Status</a>
-          </li>
-          <li>
-            <a href="/setting-dashboard">Settings</a>
-          </li>
-          <li>
-            <a href="/"> Terms of services</a>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <h2>Contact us</h2>
-        <div className="links">
+        <div>
+          <h2>Company</h2>
           <ul>
             <li>
-              <a className="linkedin" href="/">
-                <BsLinkedin />
-              </a>
+              <a href="/">About Us</a>
             </li>
             <li>
-              <a className="twitter" href="/">
-                <AiFillTwitterSquare />
-              </a>
+              <a href="/">Partnerships</a>
             </li>
             <li>
-              <a className="instagram" href="/">
-                <FaInstagram />
-              </a>
+              <a href="/">Privacy</a>
             </li>
             <li>
-              <a className="facebook" href="/">
-                <FaFacebookSquare />
-              </a>
+              <a href="/">Policy</a>
+            </li>
+            <li>
+              <a href="/">Customer</a>
             </li>
           </ul>
         </div>
-      </div>
-    </footer>
-  </FooterSection>
-);
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li>
+              <a href="/menu">Menu</a>
+            </li>
+            <li>
+              <a href="/">Recipe</a>
+            </li>
+
+            <li>
+              <a href="/">Delivery</a>
+            </li>
+
+            <li>
+              <a href="/">Customer</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Support</h2>
+          <ul>
+            <li>
+              <a href="/">Help Center</a>
+            </li>
+            <li>
+              <a href="/">Status</a>
+            </li>
+            <li>
+              <a href="/setting-dashboard">Settings</a>
+            </li>
+            <li>
+              <Button onClick={()=>SignOut()}>Logout</Button>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Contact us</h2>
+          <div className="links">
+            <ul>
+              <li>
+                <a className="linkedin" href="/">
+                  <BsLinkedin />
+                </a>
+              </li>
+              <li>
+                <a className="twitter" href="/">
+                  <AiFillTwitterSquare />
+                </a>
+              </li>
+              <li>
+                <a className="instagram" href="/">
+                  <FaInstagram />
+                </a>
+              </li>
+              <li>
+                <a className="facebook" href="/">
+                  <FaFacebookSquare />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </FooterSection>
+  )
+};
 
 const FooterSection = styled.div`
   width: 100%;

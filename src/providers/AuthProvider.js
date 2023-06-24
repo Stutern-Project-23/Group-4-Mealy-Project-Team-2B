@@ -48,7 +48,7 @@ function authReducer(state, action) {
 }
 
 const AuthProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   const [state, dispatch] = useReducer(authReducer, { isAuthenticated: false })
 
@@ -79,7 +79,7 @@ const AuthProvider = ({ children }) => {
     () => ({ ...state, isLoading }),
     [state, isLoading],
   );
-  console.log("provider",state)
+  // console.log("auth state",state.isAuthenticated)
 
   return (
     <DispatchContext.Provider value={dispatch}>

@@ -1,25 +1,31 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { BsLinkedin } from "react-icons/bs";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
 import Button from "./Button";
-import {SignOut, useAuth} from "../utilities/auth";
-// import {  } from "react-icons/fa";
+import { SignOut, useAuth } from "../utilities/auth";
 
 const Footer = () => {
   const {
     state: user,
+    dispatch
   } = useAuth()
 
+  const history = useNavigate();
+
   const logout = () => {
-    // console.log(user.user?.access_token)
+    // console.log(user?.access_token)
     console.log(localStorage.getItem("accessToken"))
     const token = localStorage.getItem("accessToken")
     SignOut(token)
-    .then(() => localStorage.removeItem("accessToken"))
+    .then(() => {
+      // dispatch action to remove user
+      localStorage.removeItem("accessToken")
+      history("/")
+    })
   }
 
   return (

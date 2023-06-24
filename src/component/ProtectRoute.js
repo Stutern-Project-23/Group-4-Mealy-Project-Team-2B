@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation, Navigate, Outlet } from 'react-router-dom'
 import PropTypes from "prop-types";
 import { useAuth } from '../utilities/auth'
 
@@ -10,28 +10,30 @@ const UNPROTECTED_PAGE_PATHS = [
   '/forgot-password',
 	'/forgot-password-verification',
 	'/sign-up-verification',
+  '/create-new-password',
+  '/reset-password',
+  '/reset-password-verification',
 ]
 
 export const isUnprotected = (path) => UNPROTECTED_PAGE_PATHS.includes(path)
 export const isProtected = (path) => !isUnprotected(path)
-
 
 export const ProtectRoute = ({ children }) => {
   const {
     state: { isAuthenticated, isLoading },
   } = useAuth()
 
-	const history = useNavigate();
 	const location = useLocation();
 
-  if (typeof window) {
-    if (isLoading) <div>LOADING</div>
-		else if (!isAuthenticated && isProtected(location.pathname)) {
-      history('/sign-in')
-    }
+  if (isLoading) {
+    return <div>LOADING</div> // <LoadingScreen />
+  } else if (!isAuthenticated && !UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
+      return <Navigate to="/sign-in" replace />;
+  } else if (isAuthenticated && UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
+      return <Navigate to="/auth-user" replace />;
   }
 
-  return children
+  return children ? children : <Outlet />;
 }
 
 ProtectRoute.propTypes = {

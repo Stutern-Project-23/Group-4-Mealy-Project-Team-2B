@@ -17,7 +17,7 @@ const Footer = () => {
   const history = useNavigate();
 
   const logout = () => {
-    // console.log(user?.access_token)
+    // console.log(user.user?.access_token)
     console.log(localStorage.getItem("accessToken"))
     const token = localStorage.getItem("accessToken")
     SignOut(token)

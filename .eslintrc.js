@@ -21,6 +21,8 @@ module.exports = {
   rules: {
     'no-else-return': 'off',
     'no-unneeded-ternary': 'off',
+    'no-underscore-dangle': 'off',
+    'dot-notation': 'off',
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "warn",
     "react/jsx-filename-extension": ["error", { extensions: [".jsx", ".js"] }],

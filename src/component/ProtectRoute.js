@@ -27,10 +27,11 @@ export const ProtectRoute = ({ children }) => {
 
   if (isLoading) {
     return <div>LOADING</div> // <LoadingScreen />
-  } else if (!isAuthenticated && !UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
-      return <Navigate to="/sign-in" replace />;
+  } 
+  else if (!isAuthenticated && !UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
+    return <Navigate to="/sign-in" replace />;
   } else if (isAuthenticated && UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
-      return <Navigate to="/auth-user" replace />;
+    return <Navigate to="/auth-user" replace />;
   }
 
   return children ? children : <Outlet />;

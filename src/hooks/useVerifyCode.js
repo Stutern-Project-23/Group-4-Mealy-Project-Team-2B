@@ -1,6 +1,6 @@
 import { useState } from "react";
 import rest from '../utilities/rest';
-import { AuthDispatch, useAuth, getCurrentUser } from '../utilities/auth';
+import { AuthDispatch, useAuth } from '../utilities/auth';
 
 const useVerifyCode = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,24 +10,6 @@ const useVerifyCode = () => {
     dispatch,
   } = useAuth()  
 
-  function getUserViaEmail(userEmail){
-    getCurrentUser(userEmail)
-      .then(async(user) => {
-        if (user) {
-          // update user context with actual user data
-          console.log('pre dispatch auth', user.data?.data?.user)
-          const data = user.data?.data?.user
-          dispatch({
-            type: AuthDispatch.Authenticated,
-            payload: data,
-          })
-        }
-      })
-      .catch(err => {
-        console.error('Error fetching user data:', err);
-      });
-  }
-
   const verifyCode = async ({verificationCode}) => {
     // debugger; // eslint-disable-line no-debugger
     let res;
@@ -36,17 +18,23 @@ const useVerifyCode = () => {
       setError(null);
       await rest().post("/verify", {verifyEmailToken: verificationCode})
       .then(async(result) => {
-        // console.log("response result hook", result)
-        console.log('pre dispatch sign in', result.data?.data)
-        const data = result.data?.data
-        dispatch({
-          type: AuthDispatch.SignIn,
-          payload: data,
-        })
         if(result){
-          // User is verified, proceed to fetch user data
-          await getUserViaEmail(result.data?.data?.email)
-          await localStorage.setItem("accessToken", JSON.stringify(result.data?.data?.access_token))
+          // console.log("response result hook", result)
+          console.log('pre dispatch sign in', result.data?.data)
+          const currentUser = result.data?.data?.user
+          const accessToken = result.data?.data?.access_token
+          const data = {...currentUser, accessToken}
+          dispatch({
+            type: AuthDispatch.SignIn,
+            payload: {data},
+          })
+          
+          // User is verified, proceed to store user data
+          //get token from response    
+          //set JWT token to local
+          await localStorage.setItem("token", accessToken);
+          //set token to axios common header
+          setAuthToken(accessToken);
           // Return the user data to pass it to the next `then` block in 'SignupVerification.js'
           res = result;
         }

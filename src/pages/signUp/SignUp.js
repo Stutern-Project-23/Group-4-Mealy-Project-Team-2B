@@ -7,7 +7,7 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
-import UseSignUp from "../../hooks/SignUp";
+import UseAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
   const [res, setres] = useState("");
@@ -15,7 +15,7 @@ const SignUp = () => {
 
   const history = useNavigate();
 
-  const { isLoading, error, signUp } = UseSignUp();
+  const { isLoading, error, signUp, getUser } = UseAuth();
 
   const {
     name,
@@ -68,6 +68,7 @@ const SignUp = () => {
       setPasswordError("");
       setConfirmPasswordError("");
       setAgreeCheckedError("");
+
       signUp({
         name,
         email,
@@ -83,7 +84,9 @@ const SignUp = () => {
 
   useEffect(() => {
     if (res) {
-      history("/sign-up-verification");
+      getUser(email).then(() => {
+        history("/sign-up-verification");
+      })
       // console.log('good to go')
     }
     else {

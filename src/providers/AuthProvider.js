@@ -13,20 +13,18 @@ function authReducer(state, action) {
     case AuthDispatch.Authenticated:
     case AuthDispatch.SignIn: {
       const user = {
-        _id: action.payload?.id,
-        name: action.payload.name,
-        // firstName: action.payload?.firstName,
-        // lastName: action.payload?.lastName,
-        email: action.payload?.email,
-        phoneNumber: action.payload?.phone_number,
-        address: action.payload?.address,
-        createdAt: action.payload?.createdAt,
-        isVerified: action.payload?.isVerified,
-        receivePromotionalEmails: action.payload?.receivePromotionalEmails,
-        access_token: action.payload?.access_token,
-        refreshToken: action.payload?.refreshToken,
-        updatedAt: action.payload?.updatedAt,
-        photo: action.payload?.picture ?? '/avatar.png',
+        _id: action.payload?.data._id,
+        name: action.payload?.data.name,
+        email: action.payload?.data.email,
+        phoneNumber: action.payload?.data.phone_number,
+        address: action.payload?.data.address,
+        createdAt: action.payload?.data.createdAt,
+        isVerified: action.payload?.data.isVerified,
+        receivePromotionalEmails: action.payload?.data.receivePromotionalEmails,
+        access_token: action.payload?.data.accessToken,
+        refreshToken: action.payload?.data.refreshToken,
+        updatedAt: action.payload?.data.updatedAt,
+        photo: action.payload?.data.profilePhoto ?? '/avatar.png',
       }
 
       return {
@@ -79,7 +77,7 @@ const AuthProvider = ({ children }) => {
     () => ({ ...state, isLoading }),
     [state, isLoading],
   );
-  // console.log("auth state",state.isAuthenticated)
+  console.log("auth state",state)
 
   return (
     <DispatchContext.Provider value={dispatch}>

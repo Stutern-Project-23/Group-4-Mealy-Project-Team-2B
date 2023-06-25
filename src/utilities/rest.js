@@ -1,10 +1,17 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://mealy.onrender.com/api/v1/user',
-    timeout: 15000,
-    // headers: {'X-Custom-Header': 'foobar'}
-  });
+  baseURL: 'https://mealy.onrender.com/api/v1/user',
+  timeout: 15000,
+  // headers: {'X-Custom-Header': 'foobar'}
+});
+
+export const setAuthToken = token => {
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
+  delete axios.defaults.headers.common["Authorization"];
+}
 
   export default function rest() {
     const get = (path, options = {}) => api.get(path, options)

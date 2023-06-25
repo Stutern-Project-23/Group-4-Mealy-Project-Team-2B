@@ -6,7 +6,7 @@ import { BsLinkedin } from "react-icons/bs";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
 import Button from "./Button";
-import { SignOut, useAuth } from "../utilities/auth";
+import { SignOut, useAuth, AuthDispatch } from "../utilities/auth";
 
 const Footer = () => {
   const {
@@ -23,6 +23,9 @@ const Footer = () => {
     SignOut(token)
     .then(() => {
       // dispatch action to remove user
+      dispatch({
+        type: AuthDispatch.SignOut,
+      })
       localStorage.removeItem("accessToken")
       history("/")
     })

@@ -47,7 +47,7 @@ const useVerifyCode = () => {
           // User is verified, proceed to fetch user data
           await getUserViaEmail(result.data?.data?.email)
           await localStorage.setItem("accessToken", JSON.stringify(result.data?.data?.access_token))
-          // Return the processed data to pass it to the next `then` block
+          // Return the user data to pass it to the next `then` block in 'SignupVerification.js'
           res = result;
         }
       })

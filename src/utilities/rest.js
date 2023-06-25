@@ -3,6 +3,7 @@ import axios from 'axios'
 const api = axios.create({
   baseURL: 'https://mealy.onrender.com/api/v1/user',
   timeout: 15000,
+  // withCredentials: true,
   // headers: {'X-Custom-Header': 'foobar'}
 });
 
@@ -36,7 +37,3 @@ export const setAuthToken = token => {
     get, post, put, patch, delete: del
   }
 }
-
-
-
-// export default { get, post, put, patch, delete: del }

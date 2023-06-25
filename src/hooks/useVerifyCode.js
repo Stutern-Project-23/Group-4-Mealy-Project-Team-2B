@@ -1,5 +1,5 @@
 import { useState } from "react";
-import rest from '../utilities/rest';
+import rest, { setAuthToken } from '../utilities/rest';
 import { AuthDispatch, useAuth } from '../utilities/auth';
 
 const useVerifyCode = () => {
@@ -30,10 +30,11 @@ const useVerifyCode = () => {
           })
           
           // User is verified, proceed to store user data
-          //get token from response    
-          //set JWT token to local
+          // get token from response    
+          // set JWT token to local
           await localStorage.setItem("token", accessToken);
-          //set token to axios common header
+          localStorage.setItem("id", currentUser.email)
+          // set token to axios common header
           setAuthToken(accessToken);
           // Return the user data to pass it to the next `then` block in 'SignupVerification.js'
           res = result;

@@ -12,6 +12,7 @@ import { FormValidationContext } from "../../hooks/FormValidationsContext";
 import UseGoogleSignIn from "../../hooks/useGogleSignIn";
 import UseAuth from "../../hooks/useAuth"
 import { AuthDispatch, useAuth } from '../../utilities/auth';
+import { setAuthToken } from "../../utilities/rest";
 
 const SignIn = () => {
   const [res, setres] = useState("")
@@ -77,9 +78,10 @@ const SignIn = () => {
       const accessToken = res.data?.data?.access_token
       const data = {...currentUser, accessToken}
       
-      //set JWT token to local
+      // set JWT token to local
       localStorage.setItem("token", accessToken);
-      //set token to axios common header
+      localStorage.setItem("id", currentUser.email)
+      // set token to axios common header
       setAuthToken(accessToken);
       dispatch({
         type: AuthDispatch.SignIn,

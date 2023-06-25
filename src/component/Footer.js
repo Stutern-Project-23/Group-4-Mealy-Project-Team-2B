@@ -18,15 +18,16 @@ const Footer = () => {
 
   const logout = () => {
     // console.log(user.user?.access_token)
-    console.log(localStorage.getItem("accessToken"))
-    const token = localStorage.getItem("accessToken")
+    const token = localStorage.getItem("token")
+    console.log(token)
     SignOut(token)
     .then(() => {
       // dispatch action to remove user
       dispatch({
         type: AuthDispatch.SignOut,
       })
-      localStorage.removeItem("accessToken")
+      localStorage.removeItem("token")
+      localStorage.removeItem("id")
       history("/")
     })
   }

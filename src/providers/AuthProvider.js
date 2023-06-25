@@ -50,28 +50,28 @@ const AuthProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(authReducer, { isAuthenticated: false })
 
-  // useEffect(() => {
-  //   const userdata = localStorage.getItem("userdata");
-  //   const data = JSON.parse(userdata);
+  useEffect(() => {
+    const userid = localStorage.getItem("id");
 
-  //   try {
-  //     getCurrentUser(state.user?.email)
-  //     .then(async(user) => {
-  //       // console.log(user)
-  //       if (user) {
-  //         dispatch({
-  //           type: AuthDispatch.Authenticated,
-  //           payload: user.data,
-  //         })
-  //       }
-  //       return null;
-  //     })
-  //   } catch (error) {
-  //     console.log(error)
-  //   } finally{
-  //     setIsLoading(false)
-  //   }
-  // }, [])
+    try {
+      getCurrentUser(userid)
+      .then(async(user) => {
+        // console.log(user)
+        if (user) {
+          const data = user.data?.data?.user
+          dispatch({
+            type: AuthDispatch.Authenticated,
+            payload: {data},
+          })
+        }
+        return null;
+      })
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    } finally{
+      setIsLoading(false)
+    }
+  }, [])
 
   const authState = useMemo(
     () => ({ ...state, isLoading }),

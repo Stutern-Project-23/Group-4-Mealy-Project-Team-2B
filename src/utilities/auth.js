@@ -9,7 +9,7 @@ export const AuthDispatch = {
 }
 
 export const SignOut = async (token) => rest().get("/logout", {
-  headers: {'Authorization': `Bearer ${token}`}
+  headers: {'Authorization': `Bearer ${token}`}, withCredentials: true,
 })
 
 export const StateContext = createContext({})

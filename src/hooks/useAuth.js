@@ -1,9 +1,8 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../utilities/auth";
 import rest from '../utilities/rest';
 import UserContext from './useContext';
-
 
 const UseAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,26 +10,27 @@ const UseAuth = () => {
 
   const history = useNavigate();
   const { setUser } = useContext(UserContext);
-
+  
   // set user in context and push them home
-  const setUserContext = async (email) => getCurrentUser(email).then(res => {
-      setUser(res.data);
-      // history("/auth-user");
+  const setUserContext = async (email) =>
+    getCurrentUser(email)
+    .then(async(res) => {
+      // console.log(res.data.data)
+      await setUser(res?.data?.data);
+      history("/auth-user");
     }).catch((err) => {
       setError(err.response.data);
     })
-  
 
   const signUp = async (userData) => {
     setIsLoading(true);
     setError(null);
-    
-    rest().post("/signup", userData)
-    .then(async(response) => {
-      console.log(response)
-      await setUserContext();
-    })
-    .catch((err) => {
+    try {
+      rest().post("/signup", userData)
+      .then(async() => {
+        await setUserContext(userData.email);
+      })
+    } catch (err) {
       let errorMessage = "An error occurred";
       if (
         err &&
@@ -51,12 +51,12 @@ const UseAuth = () => {
         // Something happened in setting up the request that triggered an Error
         console.log('Error', err.message);
         errorMessage = err.message;
-        
       }
-      setError(errorMessage);
-      return errorMessage;
-    })
-    .finally(() => setIsLoading(false))
+      return setError(errorMessage);
+    } finally{
+      setIsLoading(false)
+    }
+    return null;
   };
 
   const signIn = async (email, password) => {

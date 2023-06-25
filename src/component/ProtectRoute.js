@@ -1,6 +1,7 @@
+import React, { useContext } from 'react';
 import { useLocation, Navigate, Outlet } from 'react-router-dom'
 import PropTypes from "prop-types";
-import { useAuth } from '../utilities/auth'
+import UserContext from '../hooks/useContext';
 
 const UNPROTECTED_PAGE_PATHS = [
   '/',
@@ -19,17 +20,15 @@ export const isUnprotected = (path) => UNPROTECTED_PAGE_PATHS.includes(path)
 export const isProtected = (path) => !isUnprotected(path)
 
 export const ProtectRoute = ({ children }) => {
-  const {
-    state: { isAuthenticated, isLoading },
-  } = useAuth()
+  const { user, isLoading } = useContext(UserContext);
 
 	const location = useLocation();
 
   if (isLoading) {
     return <div>LOADING</div> // <LoadingScreen />
-  } else if (!isAuthenticated && !UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
+  } else if (!user && !UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
       return <Navigate to="/sign-in" replace />;
-  } else if (isAuthenticated && UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
+  } else if (user && UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
       return <Navigate to="/auth-user" replace />;
   }
 

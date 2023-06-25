@@ -1,31 +1,30 @@
 import { useState } from "react";
 import rest from '../utilities/rest';
-import { AuthDispatch, useAuth, getCurrentUser } from '../utilities/auth';
+import { getCurrentUser } from '../utilities/auth';
 
 const useVerifyCode = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const {
-    dispatch,
-  } = useAuth()  
-
   function getUserViaEmail(userEmail){
+    let currentuser;
     getCurrentUser(userEmail)
       .then(async(user) => {
         if (user) {
           // update user context with actual user data
           console.log('pre dispatch auth', user.data?.data?.user)
-          const data = user.data?.data?.user
-          dispatch({
-            type: AuthDispatch.Authenticated,
-            payload: data,
-          })
+          const data = user.data?.data?.user;
+          currentuser = user.data?.data?.user;
+          // dispatch({
+          //   type: AuthDispatch.Authenticated,
+          //   payload: data,
+          // })
         }
       })
       .catch(err => {
         console.error('Error fetching user data:', err);
       });
+    return currentuser;
   }
 
   const verifyCode = async ({verificationCode}) => {
@@ -35,14 +34,15 @@ const useVerifyCode = () => {
       setIsLoading(true);
       setError(null);
       await rest().post("/verify", {verifyEmailToken: verificationCode})
+      Promise.resolve()
       .then(async(result) => {
         // console.log("response result hook", result)
         console.log('pre dispatch sign in', result.data?.data)
         const data = result.data?.data
-        dispatch({
-          type: AuthDispatch.SignIn,
-          payload: data,
-        })
+        // dispatch({
+        //   type: AuthDispatch.SignIn,
+        //   payload: data,
+        // })
         if(result){
           // User is verified, proceed to fetch user data
           await getUserViaEmail(result.data?.data?.email)
@@ -84,6 +84,7 @@ const useVerifyCode = () => {
     isLoading,
     error,
     verifyCode,
+    getUserViaEmail,
   };
 }
 

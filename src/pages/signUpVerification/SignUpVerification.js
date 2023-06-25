@@ -1,38 +1,41 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import useVerifyCode from "../../hooks/VerifyCode";
 import "../authPagesStyles.css";
 import { RightSideImage } from "../authPageBgImg";
-import { useAuth } from "../../utilities/auth";
 
 const SignUpVerification = () => {
   const [verificationCode, setVerificationCode] = useState("");
     useState(false);
     const [res, setres] = useState("")
 
-  const { isLoading, error, verifyCode } = useVerifyCode();
-  const { state: user } = useAuth()
-  const history = useNavigate();
+  const { isLoading, error, verifyCode, getUserViaEmail } = useVerifyCode();
+  const location = useLocation();
 
   const handleVerification = async (e) => {
     e.preventDefault();
-    verifyCode({verificationCode
-    }).then((result) => {
-      // console.log("xx", result)
-      setres(result)
-    })
+    // verifyCode({verificationCode
+    // }).then((result) => {
+    //   // console.log("xx", result)
+    //   setres(result)
+    // })
+    getUserViaEmail(location.state.email)
+    // .then((result) => {
+    //   console.log("xx", result)
+    //   // setres(result)
+    // })
   };
 
-  useEffect(() => {
-    if (res) {
-      alert("verified successfully!");
-      history("/auth-user");
-      // console.log('good to go')
-    }
-  });
+  // useEffect(() => {
+  //   if (res) {
+  //     alert("verified successfully!");
+  //     history("/auth-user");
+  //     // console.log('good to go')
+  //   }
+  // });
 
   return (
     <div className="verification flex">

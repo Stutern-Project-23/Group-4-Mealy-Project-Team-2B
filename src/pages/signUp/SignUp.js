@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import apple from "../../assets/images/apple 1.svg";
 import google from "../../assets/images/google 1.svg";
 import facebook from "../../assets/images/facebook 1.svg";
@@ -7,15 +6,13 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
-import UseSignUp from "../../hooks/SignUp";
+import UseAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
   const [res, setres] = useState("");
   const [disableBtn, setDisableBtn] = useState(false)
 
-  const history = useNavigate();
-
-  const { isLoading, error, signUp } = UseSignUp();
+  const { isLoading, error, signUp } = UseAuth();
 
   const {
     name,
@@ -74,22 +71,23 @@ const SignUp = () => {
         password,
         confirmPassword,
         receivePromotionalEmails,
-      }).then((response) => {
-        setres(response.status)
-        // console.log("post signup res", response)
-      });
+      })
+      // .then((response) => {
+      //   setres(response.status)
+      //   // console.log("post signup res", response)
+      // });
     }
   };
 
-  useEffect(() => {
-    if (res) {
-      history("/sign-up-verification");
-      // console.log('good to go')
-    }
-    else {
-      setDisableBtn(false)
-    }
-  });
+  // useEffect(() => {
+  //   if (res) {
+  //     history("/sign-up-verification", {state:{email}});
+  //     // console.log('good to go')
+  //   }
+  //   else {
+  //     setDisableBtn(false)
+  //   }
+  // });
 
   return (
     <div className="sign-up-page">

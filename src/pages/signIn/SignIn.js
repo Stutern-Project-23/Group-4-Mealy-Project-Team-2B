@@ -8,7 +8,8 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/FormValidationsContext";
-import SignInHook from "../../hooks/SignIn";
+import UseAuth from "../../hooks/useAuth";
+import useGoogleSignIn from "../../hooks/useGoogleSignIn";
 
 const SignIn = () => {
   const {
@@ -23,7 +24,8 @@ const SignIn = () => {
     setEmailError,
     setPasswordError,
   } = useContext(FormValidationContext);
-  const { signIn, isLoading, error, user, signInWithGoogle } = SignInHook();
+  const { signIn, isLoading, error } = UseAuth();
+  const { signInWithGoogle } = useGoogleSignIn()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,8 +70,9 @@ const SignIn = () => {
             <h2>Sign In</h2>
           </div>
 
-          {user ? (
-            <p>Welcome, {user.name}!</p>
+          {true ? (
+            // <p>Welcome, {user.name}!</p>
+            "wellcome"
           ) : (
             <div>
               <div className="input-div input-cont">

@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
-import { FormValidationContext } from "../../hooks/FormValidationsContext";
+import { FormValidationContext } from "../../hooks/UseFormValidationsContext";
 
 const ForgotPassword = ({ onEmailSubmit, error, setIsLoading, isLoading }) => {
   const { email, setEmail, validateEmail, emailError, setEmailError } =

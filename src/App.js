@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { setAuthToken } from "./utilities/rest";
 import VerifyEmail from "./pages/forgotPassword/VerifyEmail";
-import ValidationProvider from "./hooks/FormValidationsContext";
+import ValidationProvider from "./hooks/UseFormValidationsContext";
 import ResetPasswordEmailVerification from "./pages/resetPassword/ResetPasswordEmailVerification";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import NewPassword from "./pages/forgotPassword/NewPassword";

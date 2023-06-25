@@ -6,7 +6,7 @@ import facebook from "../../assets/images/facebook 1.svg";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
-import { FormValidationContext } from "../../hooks/FormValidationsContext";
+import { FormValidationContext } from "../../hooks/UseFormValidationsContext";
 import UseAuth from "../../hooks/useAuth";
 
 const SignUp = () => {

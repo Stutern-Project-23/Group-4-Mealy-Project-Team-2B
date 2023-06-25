@@ -8,8 +8,8 @@ import facebook from "../../assets/images/facebook 1.svg";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
-import { FormValidationContext } from "../../hooks/FormValidationsContext";
-import UseGoogleSignIn from "../../hooks/useGogleSignIn";
+import { FormValidationContext } from "../../hooks/UseFormValidationsContext";
+import UseGoogleSignIn from "../../hooks/useGoogleSignIn";
 import UseAuth from "../../hooks/useAuth"
 import { AuthDispatch, useAuth } from '../../utilities/auth';
 import { setAuthToken } from "../../utilities/rest";

@@ -50,11 +50,10 @@ const AuthProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(authReducer, { isAuthenticated: false })
 
-  useEffect(() => {
+  const fetchData = async () => {
     const userid = localStorage.getItem("id");
-
     try {
-      getCurrentUser(userid)
+      await getCurrentUser(userid)
       .then(async(user) => {
         // console.log(user)
         if (user) {
@@ -67,10 +66,23 @@ const AuthProvider = ({ children }) => {
         return null;
       })
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      // console.error('Error fetching user data:', error);
+      if (error.response && error.response.status === 404) {
+        // Navigate to sign in page
+        dispatch({
+          type: AuthDispatch.SignOut
+        })
+      } else {
+        console.error(error);
+      }
     } finally{
       setIsLoading(false)
     }
+  }
+  
+  useEffect(() => {
+    console.log("auth provider triggered")
+    fetchData()
   }, [])
 
   const authState = useMemo(

@@ -19,7 +19,6 @@
 }
 
 .order__title {
-  font-family: "DM Sans";
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -48,7 +47,6 @@
 }
 
 .progress__width {
-  font-family: "Inter";
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 30px;
@@ -56,7 +54,6 @@
 }
 
 .circle-progress-bar-text {
-  font-family: "Inter";
   font-weight: 500;
   font-size: 0.7rem;
   color: #000000;
@@ -90,7 +87,6 @@
 }
 
 .delivering {
-  font-family: "DM Sans";
   font-weight: 700;
   font-size: 0.875rem;
   line-height: 1.4;
@@ -119,7 +115,6 @@
 }
 
 .profile-name {
-  font-family: "DM Sans";
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.5;

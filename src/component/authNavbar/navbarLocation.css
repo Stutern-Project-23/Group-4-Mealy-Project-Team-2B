@@ -80,7 +80,8 @@ input[type="checkbox"] {
 
 .bag,
 .notification {
-  width: 40px;
+  font-size: 25px;
+  width: 30px;
   cursor: pointer;
 }
 

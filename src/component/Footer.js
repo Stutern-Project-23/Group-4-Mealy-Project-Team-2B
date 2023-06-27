@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { BsLinkedin } from "react-icons/bs";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
-import Button from "./Button";
 import { SignOut, useAuth, AuthDispatch } from "../utilities/auth";
 
 const Footer = () => {

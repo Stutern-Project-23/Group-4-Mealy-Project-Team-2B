@@ -1,6 +1,5 @@
 .hero-page-box {
   background: #f8f8f8;
-  font-family: "Inter";
   color: #000000;
   margin-top: 10em;
 }
@@ -147,7 +146,6 @@
   }
 }
 .discount-off {
-  font-family: "Montserrat";
   font-weight: 700;
   font-size: 48px;
   line-height: 38px;
@@ -156,7 +154,6 @@
 }
 
 .discount-food {
-  font-family: "Montserrat";
   font-weight: 700;
   font-size: 14px;
   line-height: 16px;

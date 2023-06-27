@@ -1,20 +1,34 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
-import SignUpHook from "../../hooks/SignUpHook";
+import useVerifyCode from "../../hooks/useVerifyCode";
 import "../authPagesStyles.css";
 import { RightSideImage } from "../authPageBgImg";
 
 const SignUpVerification = () => {
-  const [code, setCode] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
+    useState(false);
+    const [requestSuccess, setRequestSuccess] = useState("")
 
-  const { isLoading, error, verifyCode } = SignUpHook();
+  const { isLoading, error, verifyCode } = useVerifyCode();
+  const history = useNavigate();
 
-  const handleVerification = (e) => {
+  const handleVerification = async (e) => {
     e.preventDefault();
-    verifyCode(code);
+    verifyCode({verificationCode
+    }).then((result) => {
+      setRequestSuccess(result)
+    })
   };
+
+  useEffect(() => {
+    if (requestSuccess) {
+      alert("verified successfully!");
+      history("/auth-user");
+    }
+  });
 
   return (
     <div className="verification flex">
@@ -37,8 +51,8 @@ const SignUpVerification = () => {
                   maxLength={6}
                   className="input-width"
                   type="number"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
+                  value={verificationCode}
+                  onChange={(e) => setVerificationCode(e.target.value)}
                 />
                 {error && <div className="endpoint-error">{error}</div>}
                 <Button type="submit" className="input-width form-btn">

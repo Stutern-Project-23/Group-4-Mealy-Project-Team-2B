@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from "react";
-import { FormValidationContext } from "../../hooks/FormValidationsContext";
+import { FormValidationContext } from "../../hooks/UseFormValidationsContext";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";

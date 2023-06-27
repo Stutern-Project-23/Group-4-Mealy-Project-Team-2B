@@ -7,13 +7,15 @@ import MealCustomizationComponentWrapper from "../../component/mealCustomization
 import Input from "../../component/Input";
 import HelpIcon from "../../assets/images/hero/help-icon.svg";
 import "../../component/authComp/HeroSection/heroSection.css";
+import { useAuth } from "../../utilities/auth";
 
 const AuthHomePage = () => {
+  const { state: user} = useAuth()
   return (
     <Layout>
       <div className="hero-page-box">
         <div className="search">
-          <h1 className="hero-title">Welcome, Angela</h1>
+          <h1 className="hero-title">Welcome, {`${user.user?.name}`}</h1>
           <p className="hero-description">What would you like to eat?</p>
           <Input
             type="text"

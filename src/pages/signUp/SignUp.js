@@ -6,15 +6,16 @@ import facebook from "../../assets/images/facebook 1.svg";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
-import { FormValidationContext } from "../../hooks/FormValidationsContext";
-import SignUpHook from "../../hooks/SignUpHook";
+import { FormValidationContext } from "../../hooks/UseFormValidationsContext";
+import UseAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
-  const [isVerificationCodeSent, setIsVerificationCodeSent] = useState(false);
+  const [requestSuccess, setRequestSuccess] = useState("");
+  const [disableBtn, setDisableBtn] = useState(false)
 
   const history = useNavigate();
 
-  const { isLoading, error, signUp } = SignUpHook();
+  const { isLoading, error, signUp, getUser } = UseAuth();
 
   const {
     name,
@@ -48,7 +49,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setDisableBtn(true)
     const isFirstNameValid = validateName();
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
@@ -67,24 +68,29 @@ const SignUp = () => {
       setPasswordError("");
       setConfirmPasswordError("");
       setAgreeCheckedError("");
+
       signUp({
         name,
         email,
         password,
         confirmPassword,
         receivePromotionalEmails,
-      }).then(() => {
-        setIsVerificationCodeSent(true);
+      }).then((response) => {
+        setRequestSuccess(response.status)
       });
     }
   };
 
   useEffect(() => {
-    if (error) {
-      setIsVerificationCodeSent(false);
-    } else if (isVerificationCodeSent && !error)
-      history("/sign-up-verification");
-  }, [isVerificationCodeSent]);
+    if (requestSuccess) {
+      getUser(email).then(() => {
+        history("/sign-up-verification");
+      })
+    }
+    else {
+      setDisableBtn(false)
+    }
+  });
 
   return (
     <div className="sign-up-page">
@@ -197,7 +203,7 @@ const SignUp = () => {
 
           <div className="create-acc-btn">
             {error && <div className="endpoint-error">{error}</div>}
-            <Button type="submit" className="input-width">
+            <Button type="submit" className="input-width" style={disableBtn ? {opacity: '0.6',cursor:'not-allowed'}:{opacity:'1'}}>
               {isLoading ? "Signing Up..." : "Create an account"}
             </Button>
           </div>

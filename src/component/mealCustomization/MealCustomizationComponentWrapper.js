@@ -1,27 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ResturantTabs from "./ResturantTabs";
 import AfricanGridContent from "./allResturantGrids/AfricanGrid";
 import RandomResturantGrid from "./allResturantGrids/RandomResturantGrid";
+import VendorContentComponent from "./allResturantGrids/VendorContentComponent ";
 
 const MealCustomizationComponentWrapper = () => {
-  const tabs = [
-    "Order Again",
-    "All",
-    "Tastee",
-    "African",
-    "Chicken Republic",
-    "BluCabana",
-    "Jevinik ",
-    "Sketch",
-  ];
+  const [tabs, setTabs] = useState(["Order Again", "All"]);
 
-  const content = [
-    <p>Content for Item One</p>,
-    <RandomResturantGrid />,
+  const [content, setContent] = useState([
     <AfricanGridContent />,
-    <p>Content for Item Three</p>,
-  ];
+    <RandomResturantGrid />,
+  ]);
+
+  useEffect(() => {
+    fetch("https://mealy.onrender.com/api/v1/vendor/all")
+      .then((response) => response.json())
+      .then((data) => {
+        if (Array.isArray(data.vendors)) {
+          const mappedTabs = data.vendors.map((vendor) => vendor.name);
+          const mappedContent = data.vendors.map((vendor) => (
+            <div key={vendor.id}>
+              <VendorContentComponent vendorName={vendor.name} />
+            </div>
+          ));
+          setTabs((prevTabs) => [...prevTabs.slice(0, 2), ...mappedTabs]);
+          setContent((prevContent) => [
+            prevContent[0],
+            prevContent[1],
+            ...mappedContent,
+          ]);
+        } else {
+          console.error("Invalid data format received from the endpoint.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data from the endpoint:", error);
+      });
+  }, []);
 
   return (
     <AllResturantStyle>

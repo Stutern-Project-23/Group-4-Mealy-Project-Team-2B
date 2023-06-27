@@ -305,6 +305,7 @@ const HeroSection = styled.div`
       width: 70% !important;
     }
   }
+
   @media (max-width: 745px) {
     .hero-section-content h1 {
       font-size: 50px;

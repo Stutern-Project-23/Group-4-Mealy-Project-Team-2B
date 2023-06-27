@@ -9,28 +9,24 @@ import Button from "./Button";
 import { SignOut, useAuth, AuthDispatch } from "../utilities/auth";
 
 const Footer = () => {
-  const {
-    state: user,
-    dispatch
-  } = useAuth()
+  const { state: user, dispatch } = useAuth();
 
   const history = useNavigate();
 
   const logout = () => {
     // console.log(user.user?.access_token)
-    const token = localStorage.getItem("token")
-    console.log(token)
-    SignOut(token)
-    .then(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    SignOut(token).then(() => {
       // dispatch action to remove user
       dispatch({
         type: AuthDispatch.SignOut,
-      })
-      localStorage.removeItem("token")
-      localStorage.removeItem("id")
-      history("/")
-    })
-  }
+      });
+      localStorage.removeItem("token");
+      localStorage.removeItem("id");
+      history("/");
+    });
+  };
 
   return (
     <FooterSection>
@@ -96,7 +92,12 @@ const Footer = () => {
               <a href="/setting-dashboard">Settings</a>
             </li>
             <li>
-              <Button onClick={()=>logout()}>Logout</Button>
+              <button
+                type="button"
+                className="footer-logout-btn"
+                onClick={() => logout()}>
+                Logout
+              </button>
             </li>
           </ul>
         </div>
@@ -130,7 +131,7 @@ const Footer = () => {
         </div>
       </footer>
     </FooterSection>
-  )
+  );
 };
 
 const FooterSection = styled.div`
@@ -169,7 +170,15 @@ const FooterSection = styled.div`
     gap: 40px;
     margin: 0 30px;
   }
-
+  .footer-logout-btn {
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+  }
   @media (width < 620px) {
     footer {
       flex-direction: column;

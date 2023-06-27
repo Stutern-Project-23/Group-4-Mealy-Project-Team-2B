@@ -10,7 +10,7 @@ import { FormValidationContext } from "../../hooks/UseFormValidationsContext";
 import UseAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
-  const [res, setres] = useState("");
+  const [requestSuccess, setRequestSuccess] = useState("");
   const [disableBtn, setDisableBtn] = useState(false)
 
   const history = useNavigate();
@@ -76,18 +76,16 @@ const SignUp = () => {
         confirmPassword,
         receivePromotionalEmails,
       }).then((response) => {
-        setres(response.status)
-        // console.log("post signup res", response)
+        setRequestSuccess(response.status)
       });
     }
   };
 
   useEffect(() => {
-    if (res) {
+    if (requestSuccess) {
       getUser(email).then(() => {
         history("/sign-up-verification");
       })
-      // console.log('good to go')
     }
     else {
       setDisableBtn(false)

@@ -12,7 +12,7 @@ const useVerifyCode = () => {
 
   const verifyCode = async ({verificationCode}) => {
     // debugger; // eslint-disable-line no-debugger
-    let res;
+    let response;
     try {
       setIsLoading(true);
       setError(null);
@@ -37,7 +37,7 @@ const useVerifyCode = () => {
           // set token to axios common header
           setAuthToken(accessToken);
           // Return the user data to pass it to the next `then` block in 'SignupVerification.js'
-          res = result;
+          response = result;
         }
       })
     } catch (err) {
@@ -66,7 +66,7 @@ const useVerifyCode = () => {
     } finally {
       setIsLoading(false);
     }
-    return res;
+    return response;
   };
 
   return {

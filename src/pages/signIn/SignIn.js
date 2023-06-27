@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import apple from "../../assets/images/apple 1.svg";
 import google from "../../assets/images/google 1.svg";
 import facebook from "../../assets/images/facebook 1.svg";
@@ -15,7 +14,7 @@ import { AuthDispatch, useAuth } from '../../utilities/auth';
 import { setAuthToken } from "../../utilities/rest";
 
 const SignIn = () => {
-  const [res, setres] = useState("")
+  const [requestSuccess, setRequestSuccess] = useState("")
 
   const {
     dispatch,
@@ -34,9 +33,7 @@ const SignIn = () => {
     setPasswordError,
   } = useContext(FormValidationContext);
 
-  const history = useNavigate();
-
-  const { signIn, isLoading, error, getUser } = UseAuth();
+  const { signIn, isLoading, error } = UseAuth();
   const { signInWithGoogle } = UseGoogleSignIn();
 
   const handleSubmit = (e) => {
@@ -52,7 +49,7 @@ const SignIn = () => {
       setPassword("");
       signIn(email, password)
       .then((response) => {
-        setres(response)
+        setRequestSuccess(response)
       });
     }
   };
@@ -72,10 +69,9 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-    if (res) {
-      // console.log(res)
-      const currentUser = res.data?.data?.user
-      const accessToken = res.data?.data?.access_token
+    if (requestSuccess) {
+      const currentUser = requestSuccess.data?.data?.user
+      const accessToken = requestSuccess.data?.data?.access_token
       const data = {...currentUser, accessToken}
       
       // set JWT token to local

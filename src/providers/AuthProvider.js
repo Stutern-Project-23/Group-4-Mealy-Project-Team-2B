@@ -55,7 +55,6 @@ const AuthProvider = ({ children }) => {
     try {
       await getCurrentUser(userid)
       .then(async(user) => {
-        // console.log(user)
         if (user) {
           const data = user.data?.data?.user
           dispatch({
@@ -68,7 +67,7 @@ const AuthProvider = ({ children }) => {
     } catch (error) {
       // console.error('Error fetching user data:', error);
       if (error.response && error.response.status === 404) {
-        // Navigate to sign in page
+        // Navigate to sign in page by dispatching signout
         dispatch({
           type: AuthDispatch.SignOut
         })
@@ -81,7 +80,6 @@ const AuthProvider = ({ children }) => {
   }
   
   useEffect(() => {
-    console.log("auth provider triggered")
     fetchData()
   }, [])
 

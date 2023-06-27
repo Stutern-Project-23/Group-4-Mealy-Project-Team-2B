@@ -27,11 +27,11 @@ export default function UseAuth() {
   }
 
   const signIn = async (email, password) => {
-    let req;
+    let response;
     try {
       setIsLoading(true);
       setError(null);
-      req = await rest().post("/signin",{email,password});
+      response = await rest().post("/signin",{email,password});
     } catch (err) {
       let errorMessage = "An error occurred";
       if (
@@ -59,15 +59,15 @@ export default function UseAuth() {
     } finally {
       setIsLoading(false);
     }
-    return req;
+    return response;
   };
 
   const signUp = async (userData) => {
-    let req;
+    let response;
     try {
       setIsLoading(true);
       setError(null);
-      req = rest().post("/signup", userData)
+      response = rest().post("/signup", userData)
     } catch (err) {
       let errorMessage = "An error occurred";
       if (
@@ -95,7 +95,7 @@ export default function UseAuth() {
     } finally {
       setIsLoading(false);
     }
-    return req;
+    return response;
   };
 
   return {

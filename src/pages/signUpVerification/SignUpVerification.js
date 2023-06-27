@@ -10,7 +10,7 @@ import { RightSideImage } from "../authPageBgImg";
 const SignUpVerification = () => {
   const [verificationCode, setVerificationCode] = useState("");
     useState(false);
-    const [res, setres] = useState("")
+    const [requestSuccess, setRequestSuccess] = useState("")
 
   const { isLoading, error, verifyCode } = useVerifyCode();
   const history = useNavigate();
@@ -19,16 +19,14 @@ const SignUpVerification = () => {
     e.preventDefault();
     verifyCode({verificationCode
     }).then((result) => {
-      // console.log("xx", result)
-      setres(result)
+      setRequestSuccess(result)
     })
   };
 
   useEffect(() => {
-    if (res) {
+    if (requestSuccess) {
       alert("verified successfully!");
       history("/auth-user");
-      // console.log('good to go')
     }
   });
 

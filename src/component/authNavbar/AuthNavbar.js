@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
+import { BsCart3 } from "react-icons/bs";
+import { IoMdNotificationsOutline } from "react-icons/io";
 import location from "../../assets/images/locationVector.png";
 import bag from "../../assets/images/bag.svg";
 import notification from "../../assets/images/notification.svg";
@@ -50,8 +52,8 @@ const AuthNavbar = () => {
             <FaCaretDown className="drop-down" style={{ fontSize: "24px" }} />
           </div>
           <div className="profile" />
-          <img src={bag} alt="" className="bag" />
-          <img src={notification} alt="" className="notification" />
+          <BsCart3 className="bag cart" />
+          <IoMdNotificationsOutline className="notification" />
         </div>
       </div>
       <div>

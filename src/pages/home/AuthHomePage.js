@@ -1,7 +1,5 @@
-/* eslint-disable arrow-body-style */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Layout from "../../component/Layout";
 import MealCustomizationComponentWrapper from "../../component/mealCustomization/MealCustomizationComponentWrapper";
 import Input from "../../component/Input";
@@ -10,7 +8,65 @@ import "../../component/authComp/HeroSection/heroSection.css";
 import { useAuth } from "../../utilities/auth";
 
 const AuthHomePage = () => {
-  const { state: user} = useAuth()
+  const { state: user } = useAuth();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showResultsDropdown, setShowResultsDropdown] = useState(false);
+  const inputRef = useRef(null);
+
+  const handleSearch = (searchTermProp) => {
+    if (searchTermProp) {
+      fetch(
+        `https://mealy.onrender.com/api/v1/product/?product_id=${searchTermProp}`,
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const filteredResults = Array.isArray(data.data)
+            ? data.data
+                ?.filter((product) =>
+                  product.name
+                    .toLowerCase()
+                    .includes(searchTermProp.toLowerCase()),
+                )
+                .slice(0, 6)
+            : [];
+          setSearchResults(filteredResults);
+          setShowResultsDropdown(filteredResults.length > 0);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      setSearchResults([]);
+      setShowResultsDropdown(false);
+      console.log({ showResultsDropdown });
+    }
+  };
+
+  const handleChange = (e) => {
+    const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm);
+    if (newSearchTerm.trim() !== "") {
+      handleSearch(newSearchTerm);
+    } else {
+      setSearchResults([]);
+      setShowResultsDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setShowResultsDropdown(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
     <Layout>
       <div className="hero-page-box">
@@ -22,7 +78,19 @@ const AuthHomePage = () => {
             id="search"
             placeholder="Search"
             className="search-input"
+            value={searchTerm}
+            onChange={handleChange}
+            ref={inputRef}
           />
+          {showResultsDropdown && (
+            <div className="search-results-dropdown">
+              {searchResults.map((product) => (
+                <div key={product._id} className="product-search-item-card">
+                  <h2>{product.name}</h2>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="help-icon-box">
           <div className="help-icon">

@@ -27,11 +27,7 @@ const RatingStarComponent = () => {
     return starIcons;
   };
 
-  return (
-    <div>
-      <div className="rating-stars">{renderStars()}</div>
-    </div>
-  );
+  return <div className="rating-stars">{renderStars()}</div>;
 };
 
 export default RatingStarComponent;

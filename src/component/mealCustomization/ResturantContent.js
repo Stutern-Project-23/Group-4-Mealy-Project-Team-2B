@@ -6,22 +6,20 @@ import RatingStarComponent from "../RatingStarComponent ";
 
 const ResturantContent = ({ imageSrc, description, header, reviewText }) => (
   <ContentWrapperItem>
-    <a href="/meal-dashboard">
-      <div className="content-wrapper-item">
-        <div className="content-img-div">
-          <img src={imageSrc} alt="" className="content-img" />
-        </div>
-        <h4>{header}</h4>
-        <div className="review-star-div">
-          <RatingStarComponent />
-          <p className="review">{reviewText}</p>
-        </div>
-        <div className="paragraph-moreIcon-div">
-          <p>{description}</p>
-          <BsArrowRightCircle />
-        </div>
+    <div className="content-wrapper-item">
+      <div className="content-img-div">
+        <img src={imageSrc} alt="" className="content-img" />
       </div>
-    </a>
+      <h4>{header}</h4>
+      <div className="review-star-div">
+        <RatingStarComponent />
+        <p className="review">{reviewText}</p>
+      </div>
+      <div className="paragraph-moreIcon-div">
+        <p>{description}</p>
+        <BsArrowRightCircle />
+      </div>
+    </div>
   </ContentWrapperItem>
 );
 
@@ -46,8 +44,7 @@ const ContentWrapperItem = styled.div`
   }
   h4 {
     font-weight: 700;
-    font-size: 32px;
-    line-height: 39px;
+    font-size: 22px;
     margin: 0;
   }
   p {
@@ -61,6 +58,7 @@ const ContentWrapperItem = styled.div`
     display: flex;
     align-items: center;
     gap: 1em;
+    text-align: center;
   }
   .review {
     font-weight: 500;
@@ -71,9 +69,14 @@ const ContentWrapperItem = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     gap: 0.5em;
+    margin-top: 1em;
+    p {
+      margin-top: 0;
+    }
     svg {
-      font-size: 26px;
+      font-size: 20px;
       cursor: pointer;
       color: #11111a;
     }

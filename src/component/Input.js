@@ -1,32 +1,27 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { PropTypes } from "prop-types";
 import styled from "styled-components";
 
-const Input = ({
-  className,
-  id,
-  name,
-  value,
-  onChange,
-  placeholder,
-  children,
-}) => {
-  const inputClassName = `input-component${className ? ` ${className}` : ""}`;
+const Input = forwardRef(
+  ({ className, id, name, value, onChange, placeholder, children }, ref) => {
+    const inputClassName = `input-component${className ? ` ${className}` : ""}`;
 
-  return (
-    <InputStyle>
-      <input
-        className={inputClassName}
-        id={id}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
-      {children}
-    </InputStyle>
-  );
-};
+    return (
+      <InputStyle>
+        <input
+          className={inputClassName}
+          id={id}
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          ref={ref}
+        />
+        {children}
+      </InputStyle>
+    );
+  },
+);
 
 Input.propTypes = {
   className: PropTypes.string,
@@ -36,6 +31,16 @@ Input.propTypes = {
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   children: PropTypes.node,
+};
+
+Input.defaultProps = {
+  className: "",
+  placeholder: "",
+  id: "",
+  name: "",
+  value: "",
+  onChange: () => {},
+  children: null,
 };
 
 const InputStyle = styled.div`

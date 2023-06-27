@@ -1,4 +1,5 @@
-import { useLocation, Navigate, Outlet } from 'react-router-dom'
+import { useEffect } from 'react';
+import { useLocation, Outlet, useNavigate } from 'react-router-dom'
 import PropTypes from "prop-types";
 import { useAuth } from '../utilities/auth'
 
@@ -15,8 +16,8 @@ const UNPROTECTED_PAGE_PATHS = [
   '/reset-password-verification',
 ]
 
-export const isUnprotected = (path) => UNPROTECTED_PAGE_PATHS.includes(path)
-export const isProtected = (path) => !isUnprotected(path)
+export const isUnprotected = (path) => UNPROTECTED_PAGE_PATHS.includes(path.toLowerCase())
+export const isProtected = (path) => !isUnprotected(path.toLowerCase())
 
 export const ProtectRoute = ({ children }) => {
   const {
@@ -24,14 +25,22 @@ export const ProtectRoute = ({ children }) => {
   } = useAuth()
 
 	const location = useLocation();
+  const history = useNavigate()
+
+  useEffect(() => {
+    console.log(location.pathname)
+    console.log("isAuthenticated =",isAuthenticated)
+    console.log("this page is unProtected =",UNPROTECTED_PAGE_PATHS.includes(location.pathname))
+  }, [location.pathname])
 
   if (isLoading) {
     return <div>LOADING</div> // <LoadingScreen />
-  } 
-  else if (!isAuthenticated && !UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
-    return <Navigate to="/sign-in" replace />;
-  } else if (isAuthenticated && UNPROTECTED_PAGE_PATHS.includes(location.pathname)) {
-    return <Navigate to="/auth-user" replace />;
+  } else if (isAuthenticated && isUnprotected(location.pathname)) {
+    history("/auth-user")
+  }else if (isAuthenticated && isProtected(location.pathname)) {
+    history("/auth-user")
+  }else if (!isAuthenticated && isProtected(location.pathname)) {
+    history("/sign-in")
   }
 
   return children ? children : <Outlet />;

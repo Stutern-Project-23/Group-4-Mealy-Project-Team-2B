@@ -84,7 +84,7 @@ const SignIn = () => {
         payload: {data},
       })
     }
-  });
+  }, [requestSuccess]);
 
   return (
     <div className="sign-up-page">

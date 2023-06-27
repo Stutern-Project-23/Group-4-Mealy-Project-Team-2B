@@ -8,7 +8,7 @@ import {
 } from "../utilities/auth";
 
 function authReducer(state, action) {
-  // console.log("action", action)
+  console.log("action", action)
   switch (action.type) {
     case AuthDispatch.Authenticated:
     case AuthDispatch.SignIn: {
@@ -61,7 +61,6 @@ const AuthProvider = ({ children }) => {
             payload: { data },
           });
         }
-        return null;
       });
     } catch (error) {
       // console.error('Error fetching user data:', error);

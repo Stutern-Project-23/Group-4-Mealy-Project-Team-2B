@@ -86,7 +86,11 @@ const SignIn = () => {
       })
     }
 
-    // todo: if user is not verified they should not be able to get to the dashboard
+    // todo: if user is not verified; say they left their browser 
+    // after signing up or the battery dies without inputting their verification code
+    // should they be able to get to the dashboard? if this happens and they attempt to login
+    // by standard they should be directed to the verification page and a new verification code should sent
+    // the initial code has a very limited expiry time.
     // if (isVerified) {
     //   const currentUser = requestSuccess.data?.data?.user
     //   const accessToken = requestSuccess.data?.data?.access_token

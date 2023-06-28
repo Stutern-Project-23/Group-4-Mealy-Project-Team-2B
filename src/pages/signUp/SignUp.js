@@ -83,9 +83,10 @@ const SignUp = () => {
 
   useEffect(() => {
     if (requestSuccess) {
-      getUser(email).then(() => {
-        history("/sign-up-verification");
-      })
+      history("/sign-up-verification");
+      // getUser(email).then(() => {
+      //   history("/sign-up-verification");
+      // })
     }
     else {
       setDisableBtn(false)

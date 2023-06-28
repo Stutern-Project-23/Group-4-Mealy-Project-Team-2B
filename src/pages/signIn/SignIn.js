@@ -10,7 +10,7 @@ import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/UseFormValidationsContext";
 import UseGoogleSignIn from "../../hooks/useGoogleSignIn";
 import UseAuth from "../../hooks/useAuth"
-import { AuthDispatch, useAuth } from '../../utilities/auth';
+import { AuthDispatch, Auth } from '../../utilities/auth';
 import { setAuthToken } from "../../utilities/rest";
 
 const SignIn = () => {
@@ -18,7 +18,8 @@ const SignIn = () => {
 
   const {
     dispatch,
-  } = useAuth() 
+    state: { isVerified },
+  } = Auth() 
 
   const {
     email,
@@ -84,6 +85,24 @@ const SignIn = () => {
         payload: {data},
       })
     }
+
+    // todo: if user is not verified they should not be able to get to the dashboard
+    // if (isVerified) {
+    //   const currentUser = requestSuccess.data?.data?.user
+    //   const accessToken = requestSuccess.data?.data?.access_token
+    //   const data = {...currentUser, accessToken}
+      
+    //   // set JWT token to local
+    //   localStorage.setItem("token", accessToken);
+    //   localStorage.setItem("id", currentUser.email)
+    //   // set token to axios common header
+    //   setAuthToken(accessToken);
+    //   dispatch({
+    //     type: AuthDispatch.SignIn,
+    //     payload: {data},
+    //   })
+    // }
+    // isAuthenticated && history('/sign-up-verification')
   }, [requestSuccess]);
 
   return (

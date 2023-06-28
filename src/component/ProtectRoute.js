@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, Outlet, useNavigate } from 'react-router-dom'
 import PropTypes from "prop-types";
-import { useAuth } from '../utilities/auth'
+import { Auth } from '../utilities/auth'
 
 const UNPROTECTED_PAGE_PATHS = [
   '/',
@@ -21,8 +21,8 @@ export const isProtected = (path) => !isUnprotected(path.toLowerCase())
 
 export const ProtectRoute = ({ children }) => {
   const {
-    state: { isAuthenticated, isLoading },
-  } = useAuth()
+    state: { isAuthenticated, isLoading, isVerified },
+  } = Auth()
 
 	const location = useLocation();
   const history = useNavigate()
@@ -30,7 +30,7 @@ export const ProtectRoute = ({ children }) => {
   useEffect(() => {
     console.log(location.pathname)
     console.log("isAuthenticated =",isAuthenticated)
-    console.log("this page is unProtected =",UNPROTECTED_PAGE_PATHS.includes(location.pathname))
+    console.log(UNPROTECTED_PAGE_PATHS.includes(location.pathname) ? "this page is not Protected": "this page is Protected")
   }, [location.pathname])
 
   if (isLoading) {

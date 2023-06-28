@@ -5,10 +5,10 @@ import styled from "styled-components";
 import { BsLinkedin } from "react-icons/bs";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
-import { SignOut, useAuth, AuthDispatch } from "../utilities/auth";
+import { SignOut, Auth, AuthDispatch } from "../utilities/auth";
 
 const Footer = () => {
-  const { state: user, dispatch } = useAuth();
+  const { state: user, dispatch } = Auth();
 
   const history = useNavigate();
 

@@ -5,10 +5,10 @@ import MealCustomizationComponentWrapper from "../../component/mealCustomization
 import Input from "../../component/Input";
 import HelpIcon from "../../assets/images/hero/help-icon.svg";
 import "../../component/authComp/HeroSection/heroSection.css";
-import { useAuth } from "../../utilities/auth";
+import { Auth } from "../../utilities/auth";
 
 const AuthHomePage = () => {
-  const { state: user } = useAuth();
+  const { state: user } = Auth();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showResultsDropdown, setShowResultsDropdown] = useState(false);

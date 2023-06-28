@@ -6,13 +6,19 @@ import Button from "../../component/Button";
 import useVerifyCode from "../../hooks/useVerifyCode";
 import "../authPagesStyles.css";
 import { RightSideImage } from "../authPageBgImg";
+import { setAuthToken } from '../../utilities/rest';
+import { AuthDispatch, Auth } from '../../utilities/auth';
 
 const SignUpVerification = () => {
   const [verificationCode, setVerificationCode] = useState("");
     useState(false);
-    const [requestSuccess, setRequestSuccess] = useState("")
+    const [requestSuccess, setRequestSuccess] = useState("");
 
   const { isLoading, error, verifyCode } = useVerifyCode();
+  const {
+    dispatch,
+  } = Auth()
+
   const history = useNavigate();
 
   const handleVerification = async (e) => {
@@ -25,10 +31,10 @@ const SignUpVerification = () => {
 
   useEffect(() => {
     if (requestSuccess) {
-      alert("verified successfully!");
+      // console.log("requestSuccess", requestSuccess)
       history("/auth-user");
     }
-  });
+  }, [requestSuccess]);
 
   return (
     <div className="verification flex">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import rest, { setAuthToken } from '../utilities/rest';
-import { AuthDispatch, useAuth } from '../utilities/auth';
+import { AuthDispatch, Auth } from '../utilities/auth';
 
 const useVerifyCode = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -8,7 +8,7 @@ const useVerifyCode = () => {
 
   const {
     dispatch,
-  } = useAuth()  
+  } = Auth()  
 
   const verifyCode = async ({verificationCode}) => {
     // debugger; // eslint-disable-line no-debugger

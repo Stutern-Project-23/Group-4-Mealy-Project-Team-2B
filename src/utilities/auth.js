@@ -20,7 +20,7 @@ DispatchContext.displayName = 'DispatchContext'
 
 export const getCurrentUser = async (email) => rest().get(`/${email}`)
 
-export function useAuth() {
+export function Auth() {
 	const state = useContext(StateContext)
 	const dispatch = useContext(DispatchContext)
 	if (state === undefined || dispatch === undefined) {

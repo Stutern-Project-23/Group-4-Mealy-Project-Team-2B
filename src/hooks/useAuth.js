@@ -1,12 +1,12 @@
 import {useState} from 'react'
 import rest from '../utilities/rest';
-import { useAuth, AuthDispatch, getCurrentUser } from "../utilities/auth";
+import { Auth, AuthDispatch, getCurrentUser } from "../utilities/auth";
 
 export default function UseAuth() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { dispatch } = useAuth()
+  const { dispatch } = Auth()
 
   function getUser(userEmail){
     return getCurrentUser(userEmail)

@@ -29,14 +29,14 @@ const MealCustomizationModal = ({ onCloseModal }) => {
           <div className="about flex">
             <div className="main-ingredients">
               <div className="">
-                <img src={mainImage} alt="" />
+                <img src={mainImage} alt="" className="modal-main-img" />
               </div>
               <div className="ingredients flex">
                 <div>
                   <h4>Main Ingredients:</h4>
                 </div>
-                <div className="ing flex">
-                  {ingredients.map((ingredient) => (
+                <div className="ing flex  ingredients-div">
+                  {ingredients.slice(0, 5).map((ingredient) => (
                     <div className="ing-image" key={ingredient.id}>
                       <img src={ingredient.image} alt="" />
                     </div>

@@ -71,7 +71,7 @@ const ContentWrapperItem = styled.div`
   }
   h4 {
     font-weight: 700;
-    font-size: 32px;
+    font-size: 18px;
     line-height: 39px;
     margin: 0;
   }

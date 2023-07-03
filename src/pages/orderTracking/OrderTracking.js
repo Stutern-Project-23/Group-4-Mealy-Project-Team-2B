@@ -33,7 +33,7 @@ const OrderTracking = () => (
           textColor="black"
         />
       </div>
-      <div className="help-icon-box">
+      <div className="help-icon-box tracking-help-icon-box">
         <div className="help-icon">
           <img src={HelpIcon} alt="Help icon" />
         </div>

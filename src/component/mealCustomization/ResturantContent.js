@@ -40,11 +40,12 @@ const ContentWrapperItem = styled.div`
     align-items: center;
     img {
       width: 100%;
+      max-height: 70px;
     }
   }
   h4 {
     font-weight: 700;
-    font-size: 22px;
+    font-size: 18px;
     margin: 0;
   }
   p {
@@ -69,7 +70,7 @@ const ContentWrapperItem = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
+    /* text-align: center; */
     gap: 0.5em;
     margin-top: 1em;
     p {

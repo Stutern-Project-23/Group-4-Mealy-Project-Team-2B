@@ -22,7 +22,7 @@ const useVerifyCode = () => {
           // console.log("response result hook", result)
           console.log('pre dispatch sign in', result.data?.data)
           const currentUser = result.data?.data?.user
-          const accessToken = result.data?.data?.access_token
+          const accessToken = result.data?.data?.user?.accessToken
           const data = {...currentUser, accessToken}
           dispatch({
             type: AuthDispatch.SignIn,

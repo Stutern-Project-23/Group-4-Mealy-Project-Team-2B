@@ -16,15 +16,21 @@ const Footer = () => {
     // console.log(user.user?.access_token)
     const token = localStorage.getItem("token");
     console.log(token);
-    SignOut(token).then(() => {
-      // dispatch action to remove user
-      dispatch({
-        type: AuthDispatch.SignOut,
-      });
-      localStorage.removeItem("token");
-      localStorage.removeItem("id");
-      history("/");
+    // SignOut(token).then(() => {
+    //   // dispatch action to remove user
+    //   dispatch({
+    //     type: AuthDispatch.SignOut,
+    //   });
+    //   localStorage.removeItem("token");
+    //   localStorage.removeItem("id");
+    //   history("/");
+    // });
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    dispatch({
+      type: AuthDispatch.SignOut,
     });
+    history("/");
   };
 
   return (

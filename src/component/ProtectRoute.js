@@ -31,14 +31,15 @@ export const ProtectRoute = ({ children }) => {
     console.log(location.pathname)
     console.log("isAuthenticated =",isAuthenticated)
     console.log(UNPROTECTED_PAGE_PATHS.includes(location.pathname) ? "this page is not Protected": "this page is Protected")
-  }, [location.pathname])
+  }, [location.pathname.toLowerCase()])
 
   if (isLoading) {
     return <div>LOADING</div> // <LoadingScreen />
   } else if (isAuthenticated && isUnprotected(location.pathname)) {
     history("/auth-user")
   }else if (isAuthenticated && isProtected(location.pathname)) {
-    history("/auth-user")
+    // history("/auth-user")
+    return children
   }else if (!isAuthenticated && isProtected(location.pathname)) {
     history("/sign-in")
   }

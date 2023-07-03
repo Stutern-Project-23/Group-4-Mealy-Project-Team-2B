@@ -71,8 +71,11 @@ const SignIn = () => {
 
   useEffect(() => {
     if (requestSuccess) {
+      console.log('from sign in', requestSuccess)
       const currentUser = requestSuccess.data?.data?.user
-      const accessToken = requestSuccess.data?.data?.access_token
+      const accessToken = requestSuccess.data?.data?.user?.accessToken
+
+      // const accessToken = requestSuccess.data?.data?.accessToken
       const data = {...currentUser, accessToken}
       
       // set JWT token to local
@@ -93,7 +96,7 @@ const SignIn = () => {
     // the initial code has a very limited expiry time.
     // if (isVerified) {
     //   const currentUser = requestSuccess.data?.data?.user
-    //   const accessToken = requestSuccess.data?.data?.access_token
+    //   const accessToken = requestSuccess.data?.data?.accessToken
     //   const data = {...currentUser, accessToken}
       
     //   // set JWT token to local

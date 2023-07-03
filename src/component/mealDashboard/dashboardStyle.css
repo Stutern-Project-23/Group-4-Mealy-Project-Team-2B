@@ -272,6 +272,12 @@
   border-radius: 5px;
   width: 10rem;
 }
+.modal-main-img {
+  width: 100%;
+}
+.ingredients-div {
+  width: 100%;
+}
 
 @media (max-width: 1000px) {
   .container {

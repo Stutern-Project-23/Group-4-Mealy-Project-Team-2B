@@ -72,11 +72,11 @@ const ContentWrapperItem = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* text-align: center; */
     gap: 0.5em;
     margin-top: 1em;
     p {
       margin-top: 0;
+      color: #11111a;
     }
     svg {
       font-size: 20px;

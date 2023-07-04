@@ -126,6 +126,11 @@
   row-gap: 2.5rem;
   width: 40%;
 }
+.cart-items-div {
+  /* background-color: blue; */
+  flex-direction: column;
+  row-gap: 1em;
+}
 
 .smokey {
   justify-content: space-between;
@@ -161,15 +166,14 @@
 .extras {
   flex-direction: column;
   row-gap: 1rem;
-  max-height: 200px;
+}
+.extras-scroll {
+  max-height: 220px;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scroll-padding: 0 16px;
-  scrollbar-width: none;
 }
 
-.extras::-webkit-scrollbar {
+.extras-scroll::-webkit-scrollbar {
   display: none;
 }
 
@@ -194,10 +198,6 @@
 .price {
   align-items: center;
   column-gap: 1rem;
-}
-
-.food-img {
-  /* width: 3rem; */
 }
 
 .food-img img {

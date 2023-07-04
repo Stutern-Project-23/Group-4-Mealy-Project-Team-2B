@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useCart } from "react-use-cart";
 import { GrFormClose } from "react-icons/gr";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
-import { cart, receipt } from "./data";
 import Modal from "../../component/Modal";
 import PaymentConfirmation from "../../component/PaymentComfirmation/PaymentConfirmation";
 
 const CheckoutSummary = () => {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+
+  const { items, updateItemQuantity, removeItem, cartTotal, isEmpty } =
+    useCart();
+
+  if (isEmpty) return "empyt cart";
 
   const handlePaymentModalClick = () => {
     setIsPaymentModalOpen(!isPaymentModalOpen);
@@ -38,24 +43,35 @@ const CheckoutSummary = () => {
     <CheckoutSummaryStyle>
       <div className="checkout flex">
         <div className="cart flex cart-scroll">
-          {cart.map((items) => (
-            <div className="food flex" key={items.id}>
+          {items.map((item) => (
+            <div className="food flex" key={item.id}>
               <div className="price flex">
                 <div className="food-img">
-                  <img src={items.image} alt="" className="img" />
+                  <img src={item.imageUrl} alt="" className="img" />
                 </div>
                 <div className="food-texts flex">
-                  <p>{items.food}</p>
-                  <small>{items.price}</small>
+                  <p>{item.name}</p>
+                  <small>${item.price}</small>
                 </div>
               </div>
               <div className="food-number flex">
                 <div className="close-img">
-                  <GrFormClose />
+                  <GrFormClose onClick={() => removeItem(item.id)} />
                 </div>
                 <div className="add flex">
-                  <AiFillMinusCircle className="minus" /> 3
-                  <AiFillPlusCircle className="plus" />
+                  <AiFillMinusCircle
+                    className="minus"
+                    onClick={() =>
+                      updateItemQuantity(item.id, item.quantity - 1)
+                    }
+                  />
+                  {item.quantity}
+                  <AiFillPlusCircle
+                    className="plus"
+                    onClick={() =>
+                      updateItemQuantity(item.id, item.quantity + 1)
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -74,13 +90,23 @@ const CheckoutSummary = () => {
           </button>
         </div>
         <div className="receipt flex">
-          {receipt.map((total) => (
-            <div className="total flex" key={total.id}>
-              <div className="amount flex">
-                <p>{total.item}</p> <small>{total.price}</small>
-              </div>
+          <div className="total flex">
+            <div className="amount flex">
+              <p>Subtotal</p> <small>${cartTotal}</small>
             </div>
-          ))}
+            <div className="amount flex">
+              <p>Discount</p> <small>#0</small>
+            </div>
+            <div className="amount flex">
+              <p>Shipping fee</p> <small>#32, 993</small>
+            </div>
+            <div className="amount flex">
+              <p>VAT</p> <small>#70</small>
+            </div>
+            <div className="amount flex">
+              <p>Total</p> <small>${cartTotal}</small>
+            </div>
+          </div>
 
           <button type="submit" onClick={handlePaymentModalClick}>
             Make Payment

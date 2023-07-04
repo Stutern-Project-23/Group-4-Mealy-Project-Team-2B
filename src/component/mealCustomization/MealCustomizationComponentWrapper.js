@@ -17,6 +17,7 @@ const MealCustomizationComponentWrapper = () => {
     fetch("https://mealy.onrender.com/api/v1/vendor/all")
       .then((response) => response.json())
       .then((data) => {
+        // console.log({ data });
         if (Array.isArray(data.vendors)) {
           const mappedTabs = data.vendors.map((vendor) => vendor.name);
           const mappedContent = data.vendors.map((vendor) => (

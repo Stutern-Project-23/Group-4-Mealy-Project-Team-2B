@@ -1,14 +1,19 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
+import axios from "axios";
 import styled from "styled-components";
+import { useCart } from "react-use-cart";
+import MultipleLoadingCard from "../MultipleLoadingCard";
 import HeroBackgroundImg from "../../assets/images/dashboard-hero-bg.png";
 import AttributeImg from "../../assets/images/Frame 91.png";
 import Layout from "../Layout";
-import CheckoutSummary from "../../pages/paymentCheckout/CheckoutSummary";
-import TasteeImg from "../../assets/images/tastee.png";
 import RestaurantGrid from "./RestaurantGrid";
 import SideCheckoutSummary from "./SideCheckoutSummary";
+import AfricanGridContent from "../mealCustomization/allResturantGrids/AfricanGrid";
+import RandomResturantGrid from "../mealCustomization/allResturantGrids/RandomResturantGrid";
+import MealCustomizationModal from "./MealCustomizationModal";
 
 const TabPanel = ({ children, value, index }) => (
   <div
@@ -25,7 +30,30 @@ const TabPanel = ({ children, value, index }) => (
 );
 
 const ResturantDashboard = () => {
+  const [categories, setCategories] = useState([]);
   const [value, setValue] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [tabs, setTabs] = useState(["Order Again", "All"]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const { addItem } = useCart();
+
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+    console.log("clicked");
+  };
+
+  console.log({ selectedProduct });
+
+  const location = useLocation();
+  const { pathname } = location;
+  const parts = pathname.split("/");
+  const extractedVendorName = parts[2]; // Assuming the vendor's name is at index 2 in the path
+
+  const [content, setContent] = useState([
+    <AfricanGridContent />,
+    <RandomResturantGrid />,
+  ]);
 
   useEffect(() => {
     const storedValue = localStorage.getItem("selectedTab");
@@ -68,16 +96,49 @@ const ResturantDashboard = () => {
     };
   }, [value]);
 
-  const tabItems = [
-    "Order Again",
-    "All",
-    "Starters",
-    "African",
-    "Drinks",
-    "Salad",
-    "Combos",
-    "Snacks",
-  ];
+  const capitalizeFirstLetter = (str) =>
+    str.charAt(0).toUpperCase() + str.slice(1);
+
+  useEffect(() => {
+    // Fetch the product categories from the API endpoint
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(
+          "https://mealy.onrender.com/api/v1/product/category/all",
+        );
+        const categoryNames = response.data.data.map((category) =>
+          capitalizeFirstLetter(category.name),
+        );
+        setCategories(categoryNames);
+        setTabs(["Order Again", "All", ...categoryNames]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  const fetchProductsByCategory = async (category, vendorName) => {
+    try {
+      const response = await axios.get(
+        `https://mealy.onrender.com/api/v1/vendor/${vendorName}`,
+      );
+
+      const filteredProducts = response.data?.data?.products?.filter(
+        (product) => product.category.toLowerCase() === category.toLowerCase(),
+      );
+
+      console.log({ filteredProducts, products });
+      setProducts(filteredProducts);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleTabClick = async (category) => {
+    await fetchProductsByCategory(category, extractedVendorName);
+  };
 
   return (
     <Layout>
@@ -85,7 +146,7 @@ const ResturantDashboard = () => {
         <div className="dashboard-hero-container">
           <div className="dashboard-hero-container-overlay" />
           <div className="dashboard-hero-content">
-            <img src={TasteeImg} alt="" />
+            <p>{extractedVendorName}</p>
           </div>
         </div>
 
@@ -93,57 +154,60 @@ const ResturantDashboard = () => {
           <div className="dashboard-content-tabs">
             <div role="tablist" className="tabList">
               <img src={AttributeImg} alt="" className="attibute-img" />
-              {tabItems.map((item, index) => (
+              {tabs.map((category, index) => (
                 <div
-                  className={`tab-button ${
-                    index === value ? "active-tab" : ""
-                  } ${index === 0 ? "disabled-tab" : ""}`}
+                  className={`tab-button ${index === value ? "active-tab" : ""} 
+                  ${index === 0 ? "disabled-tab" : ""}`}
                   key={`vertical-tab-${index}`}
                   id={`vertical-tab-${index}`}
                   aria-controls={`vertical-tabpanel-${index}`}
                   onClick={() => {
                     if (index !== 0) {
                       handleChange(index);
+                      handleTabClick(category);
+                      console.log({ category });
                     }
                   }}
-                  // onClick={() => handleChange(index)}
                   tabIndex={value === index ? 0 : -1}
                   onKeyDown={(event) => handleKeyDown(event, index)}
                   role="tab">
-                  {item}
+                  {category}
                 </div>
               ))}
             </div>
           </div>
 
           <div className="dashboard-content">
-            <TabPanel value={value} index={0}>
-              Item one
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              <RestaurantGrid />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              Item Three
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-              Item Four
-            </TabPanel>
-            <TabPanel value={value} index={4}>
-              Item Five
-            </TabPanel>
-            <TabPanel value={value} index={5}>
-              Item Six
-            </TabPanel>
-            <TabPanel value={value} index={6}>
-              Item Seven
-            </TabPanel>
+            <div className="dashboard-content-grid">
+              {products.length === 0 ? (
+                <MultipleLoadingCard />
+              ) : (
+                products.map((product, index) => (
+                  <RestaurantGrid
+                    key={index}
+                    imageSrc={product.imageUrl}
+                    description={product.description}
+                    reviewText={`Reviews (${product.reviews.length})`}
+                    header={product.vendor}
+                    onClick={() => handleProductClick(product)}
+                  />
+                ))
+              )}
+            </div>
           </div>
 
           <div className="checkout-summary-section">
             <SideCheckoutSummary />
           </div>
         </div>
+
+        {selectedProduct && (
+          <MealCustomizationModal
+            product={selectedProduct}
+            onCloseModal={() => setSelectedProduct(null)}
+            onAddToCart={(product) => addItem({ id: product._id, ...product })}
+          />
+        )}
       </DashboardStyle>
     </Layout>
   );
@@ -234,7 +298,6 @@ const DashboardStyle = styled.div`
     flex-wrap: wrap;
     gap: 0.5em;
     width: 100%;
-    justify-content: space-evenly;
   }
   .dashboard-content-grid > div {
     margin-top: 0;

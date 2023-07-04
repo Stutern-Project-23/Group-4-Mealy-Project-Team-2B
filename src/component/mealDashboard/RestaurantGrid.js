@@ -1,25 +1,25 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-no-useless-fragment */
-import React, { useState } from "react";
-import Meal from "../../assets/images/meal.png";
+import React from "react";
 import DashboardResturantContent from "./DashboardResturantContent";
 
-const RestaurantGrid = () => {
-  const contents = [];
-
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < 8; i++) {
-    contents.push(
-      <DashboardResturantContent
-        key={i}
-        imageSrc={Meal}
-        description="Basmati rice with chicken chunks and often other savory ingredients"
-        reviewText="Reviews (220)"
-        header="Tastee"
-      />,
-    );
-  }
-
-  return <>{contents}</>;
-};
+const RestaurantGrid = ({
+  description,
+  reviewText,
+  header,
+  imageSrc,
+  onClick,
+}) => (
+  <div onClick={onClick}>
+    <DashboardResturantContent
+      imageSrc={imageSrc}
+      description={description}
+      reviewText={reviewText}
+      header={header}
+    />
+  </div>
+);
 
 export default RestaurantGrid;

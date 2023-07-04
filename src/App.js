@@ -29,8 +29,8 @@ const App = () => {
     if (token) {
       setAuthToken(token);
     }
-  }, [])
-  
+  }, []);
+
   return (
     <div className="App">
       <ValidationProvider>
@@ -40,12 +40,18 @@ const App = () => {
           <Route path="auth-user" element={<AuthHomePage />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="forgot-password" element={<ForgotPasswordFlow />} />
-          {/* <Route path="forgot-password" element={<ForgotPassword />} /> */}
-          <Route path="forgot-password-verification" element={<VerifyEmail />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="forgot-password-verification"
+            element={<VerifyEmail />}
+          />
           <Route path="create-new-password" element={<NewPassword />} />
           <Route path="sign-in" element={<SignIn />} />
           <Route path="reset-password" element={<ResetPassword />} />
-          <Route path="meal-dashboard" element={<ResturantDashboard />} />
+          <Route
+            path="/meal-dashboard/:vendorName/:foodId"
+            element={<ResturantDashboard />}
+          />
           <Route path="order-tracking" element={<OrderTracking />} />
           <Route path="sign-up-verification" element={<SignUpVerification />} />
           <Route
@@ -58,7 +64,7 @@ const App = () => {
         </Routes>
       </ValidationProvider>
     </div>
-  )
-}
+  );
+};
 
 export default App;

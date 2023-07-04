@@ -1,13 +1,33 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { BsArrowRightCircle } from "react-icons/bs";
 import RatingStarComponent from "../RatingStarComponent ";
 
-const ResturantContent = ({ imageSrc, description, header, reviewText }) => (
-  <ContentWrapperItem>
-    <a href="/meal-dashboard">
-      <div className="content-wrapper-item">
+const ResturantContent = ({
+  imageSrc,
+  description,
+  header,
+  reviewText,
+  vendorName,
+  foodId,
+}) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    const url = `/meal-dashboard/${encodeURIComponent(
+      vendorName,
+    )}/${encodeURIComponent(foodId)}`;
+    navigate(url);
+  };
+  return (
+    <ContentWrapperItem>
+      {/* <a href="/meal-dashboard"> */}
+      <div className="content-wrapper-item" onClick={handleClick}>
         <div className="content-img-div">
           <img src={imageSrc} alt="" className="content-img" />
         </div>
@@ -21,9 +41,10 @@ const ResturantContent = ({ imageSrc, description, header, reviewText }) => (
           <BsArrowRightCircle />
         </div>
       </div>
-    </a>
-  </ContentWrapperItem>
-);
+      {/* </a> */}
+    </ContentWrapperItem>
+  );
+};
 
 const ContentWrapperItem = styled.div`
   background: #ffffff;

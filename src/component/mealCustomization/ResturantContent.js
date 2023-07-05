@@ -61,9 +61,11 @@ const ContentWrapperItem = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 120px;
     img {
+      max-width: 100%;
       width: 100%;
-      max-height: 70px;
+      max-height: 100%;
     }
   }
   h4 {

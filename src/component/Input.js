@@ -3,7 +3,11 @@ import { PropTypes } from "prop-types";
 import styled from "styled-components";
 
 const Input = forwardRef(
-  ({ className, id, name, value, onChange, placeholder, children }, ref) => {
+  (
+    { className, id, name, value, onChange, placeholder, children },
+    type,
+    ref,
+  ) => {
     const inputClassName = `input-component${className ? ` ${className}` : ""}`;
 
     return (
@@ -11,6 +15,7 @@ const Input = forwardRef(
         <input
           className={inputClassName}
           id={id}
+          type={type}
           name={name}
           value={value}
           onChange={onChange}

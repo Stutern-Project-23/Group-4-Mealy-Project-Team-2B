@@ -9,17 +9,17 @@ import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/UseFormValidationsContext";
 import UseGoogleSignIn from "../../hooks/useGoogleSignIn";
-import UseAuth from "../../hooks/useAuth"
-import { AuthDispatch, Auth } from '../../utilities/auth';
+import UseAuth from "../../hooks/useAuth";
+import { AuthDispatch, Auth } from "../../utilities/auth";
 import { setAuthToken } from "../../utilities/rest";
 
 const SignIn = () => {
-  const [requestSuccess, setRequestSuccess] = useState("")
+  const [requestSuccess, setRequestSuccess] = useState("");
 
   const {
     dispatch,
     state: { isVerified },
-  } = Auth() 
+  } = Auth();
 
   const {
     email,
@@ -48,9 +48,8 @@ const SignIn = () => {
       setPasswordError("");
       setEmail("");
       setPassword("");
-      signIn(email, password)
-      .then((response) => {
-        setRequestSuccess(response)
+      signIn(email, password).then((response) => {
+        setRequestSuccess(response);
       });
     }
   };
@@ -71,25 +70,25 @@ const SignIn = () => {
 
   useEffect(() => {
     if (requestSuccess) {
-      console.log('from sign in', requestSuccess)
-      const currentUser = requestSuccess.data?.data?.user
-      const accessToken = requestSuccess.data?.data?.user?.accessToken
+      console.log("from sign in", requestSuccess);
+      const currentUser = requestSuccess.data?.data?.user;
+      const accessToken = requestSuccess.data?.data?.user?.accessToken;
 
       // const accessToken = requestSuccess.data?.data?.accessToken
-      const data = {...currentUser, accessToken}
-      
+      const data = { ...currentUser, accessToken };
+
       // set JWT token to local
       localStorage.setItem("token", accessToken);
-      localStorage.setItem("id", currentUser.email)
+      localStorage.setItem("id", currentUser.email);
       // set token to axios common header
       setAuthToken(accessToken);
       dispatch({
         type: AuthDispatch.SignIn,
-        payload: {data},
-      })
+        payload: { data },
+      });
     }
 
-    // todo: if user is not verified; say they left their browser 
+    // todo: if user is not verified; say they left their browser
     // after signing up or the battery dies without inputting their verification code
     // should they be able to get to the dashboard? if this happens and they attempt to login
     // by standard they should be directed to the verification page and a new verification code should sent
@@ -98,7 +97,7 @@ const SignIn = () => {
     //   const currentUser = requestSuccess.data?.data?.user
     //   const accessToken = requestSuccess.data?.data?.accessToken
     //   const data = {...currentUser, accessToken}
-      
+
     //   // set JWT token to local
     //   localStorage.setItem("token", accessToken);
     //   localStorage.setItem("id", currentUser.email)
@@ -126,7 +125,6 @@ const SignIn = () => {
             <h2>Sign In</h2>
           </div>
 
-          
           <div>
             <div className="input-div input-cont">
               <Input

@@ -99,7 +99,8 @@
 .input-wrapper h2 {
   margin-top: 24px;
   margin-bottom: 18px;
-  color: #32324d;
+  clear: #000000;
+  /* color: #32324d; */
 }
 .text {
   flex-direction: column;

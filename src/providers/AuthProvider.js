@@ -8,31 +8,32 @@ import {
 } from "../utilities/auth";
 
 function authReducer(state, action) {
-  console.log("action", action)
+  // console.log("action", action)
   switch (action.type) {
     case AuthDispatch.Authenticated:
     case AuthDispatch.SignIn: {
-      const isVerified = action.payload?.data.isVerified
-      const user = isVerified 
-      ? {
-          _id: action.payload?.data._id,
-          name: action.payload?.data.name,
-          email: action.payload?.data.email,
-          phoneNumber: action.payload?.data.phone_number,
-          address: action.payload?.data.address,
-          createdAt: action.payload?.data.createdAt,
-          isVerified: action.payload?.data.isVerified,
-          receivePromotionalEmails: action.payload?.data.receivePromotionalEmails,
-          access_token: action.payload?.data.accessToken,
-          refreshToken: action.payload?.data.refreshToken,
-          updatedAt: action.payload?.data.updatedAt,
-          photo: action.payload?.data.profilePhoto ?? "/avatar.png",
-          favourites: action.payload?.data.favourites,
-        }
-      : {
-          name: action.payload?.data.name,
-          email: action.payload?.data.email,
-        }
+      const isVerified = action.payload?.data.isVerified;
+      const user = isVerified
+        ? {
+            _id: action.payload?.data._id,
+            name: action.payload?.data.name,
+            email: action.payload?.data.email,
+            phoneNumber: action.payload?.data.phone_number,
+            address: action.payload?.data.address,
+            createdAt: action.payload?.data.createdAt,
+            isVerified: action.payload?.data.isVerified,
+            receivePromotionalEmails:
+              action.payload?.data.receivePromotionalEmails,
+            access_token: action.payload?.data.accessToken,
+            refreshToken: action.payload?.data.refreshToken,
+            updatedAt: action.payload?.data.updatedAt,
+            photo: action.payload?.data.profilePhoto ?? "/avatar.png",
+            favourites: action.payload?.data.favourites,
+          }
+        : {
+            name: action.payload?.data.name,
+            email: action.payload?.data.email,
+          };
 
       return {
         isLoading: false,

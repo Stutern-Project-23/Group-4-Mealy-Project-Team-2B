@@ -23,12 +23,12 @@ const VendorContentComponent = ({ vendorName }) => {
             .map((item) => (
               <ResturantContent
                 key={item._id}
-                imageSrc={Meal}
+                imageSrc={item.imageUrl}
                 description={item.description}
                 reviewText={`Reviews (${item.reviews.length})`}
                 header={item.name}
-                vendorName={vendorName} // Pass the vendor name prop
-                foodId={item._id} // Pass the food ID prop
+                vendorName={vendorName}
+                foodId={item._id}
               />
             ));
           setContents(firstContentData);

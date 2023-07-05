@@ -141,6 +141,16 @@ button {
 .logout-btn {
   margin-top: 3em;
 }
+.logout-content-div p,
+.modal-title {
+  color: #000000 !important;
+}
+.logout-content-div p {
+  margin-top: 0.5em;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+}
 
 /* MEDIA QUERIES */
 

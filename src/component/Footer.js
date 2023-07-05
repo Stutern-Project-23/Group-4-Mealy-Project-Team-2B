@@ -1,36 +1,18 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { BsLinkedin } from "react-icons/bs";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
-import { SignOut, Auth, AuthDispatch } from "../utilities/auth";
+import LogoutModal from "./LogoutModal";
+import Modal from "./Modal";
 
 const Footer = () => {
-  const { state: user, dispatch } = Auth();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const history = useNavigate();
-
-  const logout = () => {
-    // console.log(user.user?.access_token)
-    const token = localStorage.getItem("token");
-    console.log(token);
-    // SignOut(token).then(() => {
-    //   // dispatch action to remove user
-    //   dispatch({
-    //     type: AuthDispatch.SignOut,
-    //   });
-    //   localStorage.removeItem("token");
-    //   localStorage.removeItem("id");
-    //   history("/");
-    // });
-    localStorage.removeItem("token");
-    localStorage.removeItem("id");
-    dispatch({
-      type: AuthDispatch.SignOut,
-    });
-    history("/");
+  const handleLogoutModal = () => {
+    setShowLogoutModal(false);
   };
 
   return (
@@ -100,7 +82,7 @@ const Footer = () => {
               <button
                 type="button"
                 className="footer-logout-btn"
-                onClick={() => logout()}>
+                onClick={() => setShowLogoutModal(true)}>
                 Logout
               </button>
             </li>
@@ -135,6 +117,14 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+      {showLogoutModal && (
+        <Modal
+          onCloseModal={handleLogoutModal}
+          title="Logout of mealy ??"
+          className="logout-modal-title">
+          <LogoutModal />
+        </Modal>
+      )}
     </FooterSection>
   );
 };

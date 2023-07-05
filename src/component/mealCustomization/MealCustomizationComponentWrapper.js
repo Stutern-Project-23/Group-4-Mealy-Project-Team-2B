@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import MultipleLoadingCard from "../MultipleLoadingCard";
 import ResturantTabs from "./ResturantTabs";
 import AfricanGridContent from "./allResturantGrids/AfricanGrid";
 import RandomResturantGrid from "./allResturantGrids/RandomResturantGrid";
@@ -7,6 +8,7 @@ import VendorContentComponent from "./allResturantGrids/VendorContentComponent "
 
 const MealCustomizationComponentWrapper = () => {
   const [tabs, setTabs] = useState(["Order Again", "All"]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [content, setContent] = useState([
     <AfricanGridContent />,
@@ -14,6 +16,7 @@ const MealCustomizationComponentWrapper = () => {
   ]);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://mealy.onrender.com/api/v1/vendor/all")
       .then((response) => response.json())
       .then((data) => {
@@ -37,6 +40,9 @@ const MealCustomizationComponentWrapper = () => {
       })
       .catch((error) => {
         console.error("Error fetching data from the endpoint:", error);
+      })
+      .finally(() => {
+        setIsLoading(false); // Set isLoading to false when the request is complete
       });
   }, []);
 
@@ -47,9 +53,14 @@ const MealCustomizationComponentWrapper = () => {
       </div>
       <ResturantTabs
         tabs={tabs}
-        content={content}
+        content={isLoading ? [] : content}
         className="tabs-custom-class"
       />
+      {isLoading && (
+        <div className="loading-state-div">
+          <MultipleLoadingCard />
+        </div>
+      )}
     </AllResturantStyle>
   );
 };
@@ -74,6 +85,12 @@ const AllResturantStyle = styled.div`
   place-items: center;
   .tabs-custom-class {
     width: 90%;
+  }
+  .loading-state-div {
+    width: 90%;
+    height: 50vh;
+    margin: auto 0;
+    margin-top: 2em;
   }
 `;
 

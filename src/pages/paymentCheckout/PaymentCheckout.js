@@ -56,15 +56,15 @@ const PaymentCheckout = () => (
               <h1>Schedule Delivery</h1>
               <input className="switch" type="checkbox" checked />
             </div>
-            <div className="calender-input flex">
+            <div className="">
               <input
-                type="datetime"
+                type="datetime-local"
                 name=""
                 id=""
                 className="calender input"
-                placeholder="Select preferred date and time"
               />
-              <img src={calender} alt="" className="calender-img" />
+
+              {/* <img src={calender} alt="" className="calender-img" /> */}
             </div>
           </div>
           <div className="payment-method flex">

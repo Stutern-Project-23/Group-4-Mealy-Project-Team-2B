@@ -152,10 +152,18 @@ input[type="number"] {
   opacity: 1;
 }
 
-.calender-input {
+.calender-input1 {
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
+}
+
+input[type="datetime-local"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
 }
 
 .calender {
@@ -164,6 +172,7 @@ input[type="number"] {
   resize: none;
   border: none;
   width: 100%;
+  flex-direction: row !important;
 }
 
 .calender-img {

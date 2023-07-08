@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useCart } from "react-use-cart";
@@ -6,17 +7,22 @@ import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import Modal from "../../component/Modal";
 import PaymentConfirmation from "../../component/PaymentComfirmation/PaymentConfirmation";
 
-const CheckoutSummary = () => {
+const CheckoutSummary = ({ onClick, ErrorMessage }) => {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const { items, updateItemQuantity, removeItem, cartTotal, isEmpty } =
     useCart();
 
-  if (isEmpty) return "empyt cart";
+  if (isEmpty) return " ";
 
-  const handlePaymentModalClick = () => {
-    setIsPaymentModalOpen(!isPaymentModalOpen);
-  };
+  // const handlePaymentModalClick = () => {
+  //   if (selectedCard) {
+  //     setIsPaymentModalOpen(true);
+  //   } else {
+  //     alert("Please choose a payment method first.");
+  //   }
+  //   setIsPaymentModalOpen(!isPaymentModalOpen);
+  // };
 
   const handleClosePaymentModal = () => {
     setIsPaymentModalOpen(false);
@@ -108,19 +114,18 @@ const CheckoutSummary = () => {
             </div>
           </div>
 
-          <button type="submit" onClick={handlePaymentModalClick}>
+          <button type="submit" onClick={onClick}>
             Make Payment
           </button>
+          {ErrorMessage && (
+            <p className="selected-card-error">
+              Select a valid payment method <br />
+              or add a new card.
+            </p>
+          )}
           <p className="cancel-order">
             <a href="/">Cancel Order</a>
           </p>
-        </div>
-        <div>
-          {isPaymentModalOpen && (
-            <Modal onCloseModal={handleClosePaymentModal}>
-              <PaymentConfirmation />
-            </Modal>
-          )}
         </div>
       </div>
     </CheckoutSummaryStyle>
@@ -284,6 +289,7 @@ const CheckoutSummaryStyle = styled.div`
     color: #ffffff;
     background-color: #fa5a00;
     border-radius: 5px;
+    margin-bottom: 0 !important;
   }
 
   .cancel-order {

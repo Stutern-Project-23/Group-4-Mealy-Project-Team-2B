@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
@@ -22,6 +23,10 @@ import OrderTracking from "./pages/orderTracking/OrderTracking";
 import "./App.css";
 import Menu from "./pages/Menu";
 import ForgotPasswordFlow from "./pages/forgotPassword/ForgotPasswordFlow";
+import DeleteVerification from "./pages/settingDashboard/delete/DeleteVerification";
+import ErrorPage from "./pages/errorPage/error404";
+import Contact from "./pages/contactPage/Contact";
+import Aboutus from "./pages/about/Aboutus";
 
 const App = () => {
   useEffect(() => {
@@ -37,6 +42,7 @@ const App = () => {
         <Routes>
           <Route path="guest" element={<GuestHomePage />} />
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<Aboutus />} />
           <Route path="auth-user" element={<AuthHomePage />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="forgot-password" element={<ForgotPasswordFlow />} />
@@ -45,6 +51,11 @@ const App = () => {
             path="forgot-password-verification"
             element={<VerifyEmail />}
           />
+          <Route
+            path="delete-account-verification"
+            element={<DeleteVerification />}
+          />
+
           <Route path="create-new-password" element={<NewPassword />} />
           <Route path="sign-in" element={<SignIn />} />
           <Route path="reset-password" element={<ResetPassword />} />
@@ -61,6 +72,8 @@ const App = () => {
           <Route path="checkout" element={<PaymentCheckout />} />
           <Route path="setting-dashboard" element={<SettingsDashboard />} />
           <Route path="menu" element={<Menu />} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="contact" element={<Contact />} />
         </Routes>
       </ValidationProvider>
     </div>

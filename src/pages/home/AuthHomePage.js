@@ -15,7 +15,7 @@ const AuthHomePage = () => {
   const inputRef = useRef(null);
 
   const handleSearch = (searchTermProp) => {
-    if (searchTermProp) {
+    if (searchTermProp.trim() !== "") {
       fetch(
         `https://mealy.onrender.com/api/v1/product/?product_id=${searchTermProp}`,
       )
@@ -23,15 +23,18 @@ const AuthHomePage = () => {
         .then((data) => {
           const filteredResults = Array.isArray(data.data)
             ? data.data
-                ?.filter((product) =>
+                .filter((product) =>
                   product.name
                     .toLowerCase()
                     .includes(searchTermProp.toLowerCase()),
                 )
                 .slice(0, 6)
             : [];
+
           setSearchResults(filteredResults);
-          setShowResultsDropdown(filteredResults.length > 0);
+          setShowResultsDropdown(
+            filteredResults.length > 0 || searchTermProp.length > 0,
+          );
         })
         .catch((error) => {
           console.error(error);
@@ -39,7 +42,6 @@ const AuthHomePage = () => {
     } else {
       setSearchResults([]);
       setShowResultsDropdown(false);
-      console.log({ showResultsDropdown });
     }
   };
 
@@ -82,21 +84,33 @@ const AuthHomePage = () => {
             onChange={handleChange}
             ref={inputRef}
           />
-          {showResultsDropdown && (
+          {showResultsDropdown ? (
             <div className="search-results-dropdown">
-              {searchResults.map((product) => (
-                <div key={product._id} className="product-search-item-card">
-                  <h2>{product.name}</h2>
+              {searchResults.length > 0 ? (
+                searchResults.map((product) => (
+                  <div key={product._id} className="product-search-item-card">
+                    <div className="search-item-img">
+                      <img src={product.imageUrl} alt="" className="img" />
+                    </div>
+                    <div>
+                      <h2 className="search-item-name">{product.name}</h2>
+                      <small>${product.price}</small>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="search-item-not-found">
+                  <p>Search item not found.</p>
                 </div>
-              ))}
+              )}
             </div>
-          )}
+          ) : null}
         </div>
-        <div className="help-icon-box">
+        {/* <div className="help-icon-box">
           <div className="help-icon">
             <img src={HelpIcon} alt="" />
           </div>
-        </div>
+        </div> */}
       </div>
       <MealCustomizationComponentWrapper />
     </Layout>

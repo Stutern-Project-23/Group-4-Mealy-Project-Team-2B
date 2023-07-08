@@ -40,7 +40,7 @@ const ModalStyle = styled.div`
     padding: 2em;
     padding-top: 1em;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10000;

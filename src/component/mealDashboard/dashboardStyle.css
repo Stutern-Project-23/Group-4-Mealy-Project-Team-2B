@@ -14,11 +14,17 @@
 }
 .main-container {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
+  z-index: 9999;
   transform: translate(-50%, -50%);
   background-color: white;
   z-index: 10000;
+  max-height: 400px;
+  overflow-x: scroll;
+}
+.main-container::-webkit-scrollbar {
+  display: none;
 }
 
 .main-close {

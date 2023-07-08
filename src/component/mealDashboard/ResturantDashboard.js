@@ -11,9 +11,8 @@ import AttributeImg from "../../assets/images/Frame 91.png";
 import Layout from "../Layout";
 import RestaurantGrid from "./RestaurantGrid";
 import SideCheckoutSummary from "./SideCheckoutSummary";
-import AfricanGridContent from "../mealCustomization/allResturantGrids/AfricanGrid";
-import RandomResturantGrid from "../mealCustomization/allResturantGrids/RandomResturantGrid";
 import MealCustomizationModal from "./MealCustomizationModal";
+import EmptyCategory from "../EmptyCategory";
 
 const TabPanel = ({ children, value, index }) => (
   <div
@@ -35,12 +34,12 @@ const ResturantDashboard = () => {
   const [products, setProducts] = useState([]);
   const [tabs, setTabs] = useState(["Order Again", "All"]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const { addItem } = useCart();
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
-    console.log("clicked");
   };
 
   console.log({ selectedProduct });
@@ -49,11 +48,6 @@ const ResturantDashboard = () => {
   const { pathname } = location;
   const parts = pathname.split("/");
   const extractedVendorName = parts[2]; // Assuming the vendor's name is at index 2 in the path
-
-  const [content, setContent] = useState([
-    <AfricanGridContent />,
-    <RandomResturantGrid />,
-  ]);
 
   useEffect(() => {
     const storedValue = localStorage.getItem("selectedTab");
@@ -106,11 +100,14 @@ const ResturantDashboard = () => {
         const response = await axios.get(
           "https://mealy.onrender.com/api/v1/product/category/all",
         );
-        const categoryNames = response.data.data.map((category) =>
-          capitalizeFirstLetter(category.name),
-        );
+        const categoryNames = [
+          "All",
+          ...response.data.data.map((category) =>
+            capitalizeFirstLetter(category.name),
+          ),
+        ];
         setCategories(categoryNames);
-        setTabs(["Order Again", "All", ...categoryNames]);
+        setTabs(["Order Again", ...categoryNames]);
       } catch (error) {
         console.log(error);
       }
@@ -121,24 +118,39 @@ const ResturantDashboard = () => {
 
   const fetchProductsByCategory = async (category, vendorName) => {
     try {
-      const response = await axios.get(
-        `https://mealy.onrender.com/api/v1/vendor/${vendorName}`,
-      );
-
-      const filteredProducts = response.data?.data?.products?.filter(
-        (product) => product.category.toLowerCase() === category.toLowerCase(),
-      );
-
-      console.log({ filteredProducts, products });
-      setProducts(filteredProducts);
+      setLoading(true);
+      if (category.toLowerCase() === "all") {
+        const response = await axios.get(
+          `https://mealy.onrender.com/api/v1/vendor/${extractedVendorName}`,
+        );
+        const filteredProducts = response.data?.data?.products;
+        setProducts(filteredProducts);
+      } else {
+        const response = await axios.get(
+          `https://mealy.onrender.com/api/v1/vendor/${vendorName}`,
+        );
+        const filteredProducts = response.data?.data?.products?.filter(
+          (product) =>
+            product.category.toLowerCase() === category.toLowerCase(),
+        );
+        setProducts(filteredProducts);
+      }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleTabClick = async (category) => {
-    await fetchProductsByCategory(category, extractedVendorName);
+    if (category.toLowerCase() === "all") {
+      await fetchProductsByCategory("All", extractedVendorName);
+    } else {
+      await fetchProductsByCategory(category, extractedVendorName);
+    }
   };
+
+  console.log({ products });
 
   return (
     <Layout>
@@ -146,7 +158,7 @@ const ResturantDashboard = () => {
         <div className="dashboard-hero-container">
           <div className="dashboard-hero-container-overlay" />
           <div className="dashboard-hero-content">
-            <p>{extractedVendorName}</p>
+            <h1>{extractedVendorName}</h1>
           </div>
         </div>
 
@@ -178,22 +190,26 @@ const ResturantDashboard = () => {
           </div>
 
           <div className="dashboard-content">
-            <div className="dashboard-content-grid">
-              {products.length === 0 ? (
-                <MultipleLoadingCard />
-              ) : (
-                products.map((product, index) => (
-                  <RestaurantGrid
-                    key={index}
-                    imageSrc={product.imageUrl}
-                    description={product.description}
-                    reviewText={`Reviews (${product.reviews.length})`}
-                    header={product.vendor}
-                    onClick={() => handleProductClick(product)}
-                  />
-                ))
-              )}
-            </div>
+            {loading ? (
+              <MultipleLoadingCard />
+            ) : (
+              <div className="dashboard-content-grid">
+                {products.length === 0 ? (
+                  <EmptyCategory />
+                ) : (
+                  products.map((product, index) => (
+                    <RestaurantGrid
+                      key={index}
+                      imageSrc={product.imageUrl}
+                      description={product.description}
+                      reviewText={`Reviews (${product.reviews.length})`}
+                      header={product.name}
+                      onClick={() => handleProductClick(product)}
+                    />
+                  ))
+                )}
+              </div>
+            )}
           </div>
 
           <div className="checkout-summary-section">
@@ -246,6 +262,14 @@ const DashboardStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    /* color: #ffffff; */
+    color: #000000;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 58px;
+
     img {
       width: 100px;
       height: 100px;

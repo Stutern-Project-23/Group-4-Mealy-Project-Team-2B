@@ -12,13 +12,10 @@ const Delete = () => (
           <h3>Delete Account and Data</h3>
           <p>
             In accordance with our privacy policy, deleting your account and
-            data can’t be undone, so we need to check it’s you before going
+            data can’t be undone, so we need to verify it’s you before going
             ahead.
           </p>
-          <p>
-            Send us a request and we will confirm via email after we have
-            reviewed it
-          </p>
+          <p>Send us a request and you will ba sent a verification token.</p>
         </div>
 
         <div className="send-request-container">

@@ -74,7 +74,7 @@ const ContentWrapperItem = styled.div`
     margin: 0;
   }
   p {
-    margin-top: 1em;
+    /* margin-top: 1em; */
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
@@ -85,6 +85,8 @@ const ContentWrapperItem = styled.div`
     align-items: center;
     gap: 1em;
     text-align: center;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
   }
   .review {
     font-weight: 500;
@@ -96,9 +98,9 @@ const ContentWrapperItem = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 0.5em;
-    margin-top: 1em;
+
     p {
-      margin-top: 0;
+      margin-top: 0 !important;
       color: #11111a;
     }
     svg {

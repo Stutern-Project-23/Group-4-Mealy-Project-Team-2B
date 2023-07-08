@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { BsLinkedin } from "react-icons/bs";
 import { AiFillTwitterSquare } from "react-icons/ai";
@@ -10,6 +10,8 @@ import Modal from "./Modal";
 
 const Footer = () => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const location = useLocation();
+  const isLandingPage = location.pathname === "/";
 
   const handleLogoutModal = () => {
     setShowLogoutModal(false);
@@ -30,7 +32,7 @@ const Footer = () => {
           <h2>Company</h2>
           <ul>
             <li>
-              <a href="/">About Us</a>
+              <a href="/about">About Us</a>
             </li>
             <li>
               <a href="/">Partnerships</a>
@@ -42,7 +44,7 @@ const Footer = () => {
               <a href="/">Policy</a>
             </li>
             <li>
-              <a href="/">Customer</a>
+              <a href="/contact">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -81,7 +83,10 @@ const Footer = () => {
             <li>
               <button
                 type="button"
-                className="footer-logout-btn"
+                className={`footer-logout-btn ${
+                  isLandingPage ? "disabled" : ""
+                }`}
+                disabled={isLandingPage}
                 onClick={() => setShowLogoutModal(true)}>
                 Logout
               </button>
@@ -174,6 +179,10 @@ const FooterSection = styled.div`
     font-size: 15px;
     line-height: 24px;
   }
+  .footer-logout-btn.disabled {
+    cursor: not-allowed;
+  }
+
   @media (width < 620px) {
     footer {
       flex-direction: column;

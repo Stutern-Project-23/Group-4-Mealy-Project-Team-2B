@@ -15,11 +15,11 @@ const HeroSection = () => (
         className="search-input"
       />
     </div>
-    <div className="help-icon-box">
+    {/* <div className="help-icon-box">
       <div className="help-icon">
         <img src={HelpIcon} alt="" />
       </div>
-    </div>
+    </div> */}
   </div>
 );
 

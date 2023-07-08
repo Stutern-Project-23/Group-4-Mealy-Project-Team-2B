@@ -2,15 +2,20 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import EmptyVendorContent from "../../EmpytVendorContent";
+import MultipleLoadingCard from "../../MultipleLoadingCard";
 import ResturantContent from "../ResturantContent";
 import Meal from "../../../assets/images/meal.png";
 import Avocado from "../../../assets/images/hero/avocado-sandwich.png";
+import uniqueId from "../../uniqueId";
 
 const RandomResturantGrid = () => {
   const [contents, setContents] = useState([]);
   const [remainingContents, setRemainingContents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://mealy.onrender.com/api/v1/product/all")
       .then((response) => response.json())
       .then((data) => {
@@ -18,7 +23,7 @@ const RandomResturantGrid = () => {
           .slice(0, 8)
           .map((item) => (
             <ResturantContent
-              key={item.id}
+              key={uniqueId()}
               imageSrc={Meal}
               description={item.description}
               reviewText={`Reviews (${item.reviews.length})`}
@@ -29,7 +34,7 @@ const RandomResturantGrid = () => {
           .slice(8)
           .map((item) => (
             <ResturantContent
-              key={item.id}
+              key={uniqueId()}
               imageSrc={item.imageUrl}
               description={item.description}
               reviewText={`Reviews (${item.reviews.length})`}
@@ -41,32 +46,49 @@ const RandomResturantGrid = () => {
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
     <div>
-      <ContentWrapperGrid>
-        {/* First grid */}
-        <>{contents}</>
-      </ContentWrapperGrid>
-
-      {/* Discount box */}
-      <div className="discount">
-        <img src={Avocado} alt="" />
-        <div>
-          <p className="discount-off">50% OFF</p>
-          <p className="discount-food">All salad and Pasta</p>
-          <button className="discount-btn" type="submit">
-            Use code Eattak50
-          </button>
+      {isLoading ? (
+        <div className="loading-state-div">
+          <MultipleLoadingCard />
         </div>
-      </div>
+      ) : (
+        <>
+          {contents.length === 0 && remainingContents.length === 0 ? (
+            <EmptyVendorContent />
+          ) : (
+            <div>
+              <ContentWrapperGrid>
+                {/* First grid */}
+                {contents}
+              </ContentWrapperGrid>
 
-      <ContentWrapperGrid>
-        {/* Remaining grid */}
-        <>{remainingContents}</>
-      </ContentWrapperGrid>
+              {/* Discount box */}
+              <div className="discount">
+                <img src={Avocado} alt="" />
+                <div>
+                  <p className="discount-off">50% OFF</p>
+                  <p className="discount-food">All salad and Pasta</p>
+                  <button className="discount-btn" type="submit">
+                    Use code Eattak50
+                  </button>
+                </div>
+              </div>
+
+              {remainingContents.length > 0 && (
+                <ContentWrapperGrid>
+                  {/* Remaining grid */}
+                  {remainingContents}
+                </ContentWrapperGrid>
+              )}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };

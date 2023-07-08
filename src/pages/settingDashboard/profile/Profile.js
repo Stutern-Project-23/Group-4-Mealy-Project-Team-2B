@@ -1,22 +1,72 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { BsPersonCircle } from "react-icons/bs";
+import {
+  getUserProfile,
+  updatePersonalInfo,
+  updateAddressInfo,
+  uploadProfilePicture,
+} from "../../../api/UserProfileApi";
+import Modal from "../../../component/Modal";
 import Input from "../../../component/Input";
 import edit from "../../../assets/images/profile-edit-pen.png";
-import EllipseImg from "../../../assets/images/Ellipse.png";
 import Button from "../../../component/Button";
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const [firstName, setFirstName] = useState("Amara");
-  const [lastName, setLastName] = useState("Chukwu");
-  const [phone, setPhone] = useState("+234 543 6788 0086");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
   const [addressEditing, setIsAddressEditing] = useState(false);
-  const [country, setCountry] = useState("Nigeria");
-  const [cityState, setCityState] = useState("Akoka Lagos State");
-  const [postalCode, setPostalCode] = useState("100213");
-  const [street, setStreet] = useState("St finbarrs road 73");
+  const [country, setCountry] = useState("");
+  const [cityState, setCityState] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [street, setStreet] = useState("");
+  const [deleteAccount, setDeleteAccount] = useState(false);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState(null);
+  const [showImageSaveButton, setShowImageSaveButton] = useState(false);
+
+  const token = localStorage.getItem("token");
+
+  console.log({ postalCode });
+
+  const handleDeleteClick = () => {
+    setDeleteAccount(true);
+  };
+  const handleLogoutModal = () => {
+    setDeleteAccount(false);
+  };
+
+  const handleDeleteRequestClick = async () => {
+    try {
+      setLoading(true);
+      // Make a request to the delete request endpoint
+      console.log({ token });
+      await axios.post(
+        "https://mealy.onrender.com/api/v1/user/deleterequest",
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      // Navigate the user to the token input route
+      navigate("/delete-account-verification");
+    } catch (error) {
+      console.log("Error deleting account:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -25,26 +75,154 @@ const Profile = () => {
     setIsAddressEditing(true);
   };
 
-  const handleSaveClick = () => {
+  const handleSaveClick = async () => {
     setIsEditing(false);
-  };
-  const handleAdressEditClick = () => {
-    setIsAddressEditing(true);
+    try {
+      const personalInfo = {
+        firstName,
+        lastName,
+        phone,
+      };
+      await updatePersonalInfo(personalInfo, token);
+    } catch (error) {
+      console.error("Error updating personal info:", error);
+    }
   };
 
-  const handleAddressSaveClick = () => {
+  const handleAddressSaveClick = async () => {
     setIsAddressEditing(false);
+    try {
+      const addressInfo = {
+        countryName: country,
+        cityAndState: cityState,
+        numberAndStreet: street,
+        postalCode,
+      };
+      const updatedAddress = await updateAddressInfo(addressInfo, token);
+      // Handle the response or perform any necessary actions
+    } catch (error) {
+      console.error("Error updating address info:", error);
+    }
   };
+
+  const handleSaveImageClick = async () => {
+    try {
+      await uploadProfilePicture(image, token);
+      setShowImageSaveButton(false);
+      console.log({ image });
+    } catch (error) {
+      console.error("Error updating image info:", error);
+      console.log({ image });
+    }
+  };
+
+  const data = {
+    name: "Gela Raphael",
+    email: "angelaraph12@gmail.com",
+    isVerified: true,
+    // ... other properties
+    profilePhoto: "", // Assuming this is the URL of the profile image
+  };
+
+  useEffect(() => {
+    if (data.profilePhoto) {
+      setImage(data.profilePhoto);
+    }
+  }, []);
+
+  const handleImageUpload = (event) => {
+    console.log({ event });
+    const uploadedImage = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const imageDataURL = reader.result;
+      setImage(imageDataURL);
+      setTimeout(() => {
+        console.log("Image data URL:", imageDataURL);
+      }, 500);
+    };
+
+    reader.onerror = (error) => {
+      console.error("Error reading the file:", error);
+    };
+
+    if (uploadedImage) {
+      reader.readAsDataURL(uploadedImage);
+    }
+    setShowImageSaveButton(true);
+  };
+
+  useEffect(() => {
+    // Fetch user profile data on component mount
+    const fetchUserProfile = async () => {
+      try {
+        const profileData = await getUserProfile(token);
+
+        setFirstName(profileData.data.name);
+        setLastName(profileData.data.lastName);
+        setPhone(profileData.data.phone);
+        setCountry(profileData.data.countryName);
+        setCityState(profileData.data.cityAndState);
+        setStreet(profileData.data.numberAndStreet);
+        setPostalCode(profileData.data.postalCode);
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
 
   return (
     <ProfileStyles>
       <div className="main">
         <div className="profile-container flex">
           <div className="profile-image-container flex cont-border">
-            <img src={EllipseImg} alt="" />
-            <div className="profile-name-location-div">
-              <p className="user-name">{`${firstName} ${lastName}`}</p>
-              <p className="user-saved-location">{`${cityState} ${country}`}</p>
+            <div className="image-upload-cont">
+              {image ? (
+                <img src={image} alt="" className="profile-image" />
+              ) : (
+                <BsPersonCircle className="no-picture-icon" />
+              )}
+            </div>
+
+            <div>
+              <div className="profile-name-location-div">
+                <p className="user-name">{`${firstName}`}</p>
+
+                <p className="user-saved-location">
+                  {`${cityState && cityState.length > 0 ? cityState : ""} ${
+                    country && country.length > 0 ? country : ""
+                  }`}
+                </p>
+              </div>
+
+              <div className="add-img-container">
+                {showImageSaveButton && (
+                  <button
+                    type="button"
+                    onClick={handleSaveImageClick}
+                    className="save-img-btn">
+                    Save
+                  </button>
+                )}
+                <div>
+                  <label
+                    htmlFor="image-input"
+                    type="button"
+                    className="add-img-btn">
+                    Add image
+                  </label>
+                  <input
+                    style={{ display: "none" }}
+                    id="image-input"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -94,7 +272,9 @@ const Profile = () => {
                       onChange={(e) => setLastName(e.target.value)}
                     />
                   ) : (
-                    <h4>{lastName}</h4>
+                    <h4>
+                      {`${lastName && lastName.length > 0 ? lastName : ""}`}
+                    </h4>
                   )}
                 </div>
 
@@ -108,7 +288,7 @@ const Profile = () => {
                       onChange={(e) => setPhone(e.target.value)}
                     />
                   ) : (
-                    <h4>{phone}</h4>
+                    <h4>{`${phone && phone.length > 0 ? phone : ""}`}</h4>
                   )}
                 </div>
               </div>
@@ -149,7 +329,7 @@ const Profile = () => {
                       onChange={(e) => setCountry(e.target.value)}
                     />
                   ) : (
-                    <h4>{country}</h4>
+                    <h4>{`${country && country.length > 0 ? country : ""}`}</h4>
                   )}
                 </div>
 
@@ -163,7 +343,7 @@ const Profile = () => {
                       onChange={(e) => setStreet(e.target.value)}
                     />
                   ) : (
-                    <h4>{street}</h4>
+                    <h4>{`${street && street.length > 0 ? street : ""}`}</h4>
                   )}
                 </div>
               </div>
@@ -179,7 +359,9 @@ const Profile = () => {
                       onChange={(e) => setCityState(e.target.value)}
                     />
                   ) : (
-                    <h4>{cityState}</h4>
+                    <h4>
+                      {`${cityState && cityState.length > 0 ? cityState : ""}`}
+                    </h4>
                   )}
                 </div>
 
@@ -193,7 +375,12 @@ const Profile = () => {
                       onChange={(e) => setPostalCode(e.target.value)}
                     />
                   ) : (
-                    <h4>{postalCode}</h4>
+                    <h4>
+                      {`${postalCode && postalCode}`}
+                      {/* {`${
+                        postalCode && postalCode.length > 0 ? postalCode : ""
+                      }`} */}
+                    </h4>
                   )}
                 </div>
               </div>
@@ -209,7 +396,28 @@ const Profile = () => {
               </div>
             )}
           </div>
+
+          <div className="delete-account-div" onClick={handleDeleteClick}>
+            <p>Delete Account</p>
+          </div>
         </div>
+        {deleteAccount && (
+          <Modal title="Delete Account?" onCloseModal={handleLogoutModal}>
+            <div className="delete-modal-content">
+              <p>
+                In accordance with our privacy policy, deleting your account and
+                data can’t be undone, so we need to verify it’s you before going
+                ahead.
+              </p>
+              <p>
+                Send us a request and you will ba sent a verification token.
+              </p>
+              <Button onClick={handleDeleteRequestClick}>
+                {loading ? "Sending..." : "Send Request"}
+              </Button>
+            </div>
+          </Modal>
+        )}
       </div>
     </ProfileStyles>
   );
@@ -235,7 +443,6 @@ const ProfileStyles = styled.div`
   }
 
   .profile-image-container img {
-    width: 100px;
     flex-direction: row !important;
     cursor: pointer;
   }
@@ -281,6 +488,64 @@ const ProfileStyles = styled.div`
     .edit-save-btn {
       width: 100px;
     }
+  }
+  .delete-account-div {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+  .delete-modal-content {
+    margin-top: 0.5em;
+    text-align: center;
+    align-items: center;
+    display: grid;
+    place-items: center;
+    p {
+      color: #000000;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 1em;
+    }
+  }
+
+  #upload-input {
+    position: absolute;
+    width: 10px;
+  }
+  .profile-image {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
+  .add-img-btn,
+  .save-img-btn {
+    background: #fa5a00;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    width: 100px;
+    padding: 0.5em;
+    border-radius: 3px;
+    height: 30px;
+    font-size: 14px;
+  }
+  .save-img-btn {
+    margin-top: 1.3em;
+  }
+  .no-picture-icon {
+    font-size: 60px;
+    color: #999999;
+  }
+  #image-input {
+    position: absolute;
+    margin-left: -8em;
+  }
+  .add-img-container {
+    margin-top: 2em;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1em;
   }
 `;
 export default Profile;

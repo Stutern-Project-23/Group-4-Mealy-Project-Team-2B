@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import uniqueId from "../uniqueId";
 
 const TabPanel = ({ children, value, index }) => (
   <div
@@ -35,7 +36,7 @@ const MealCustomization = ({ tabs, content, className }) => {
       <div className="tab-button-div">
         {tabs.map((label, index) => (
           <button
-            key={label.index}
+            key={uniqueId()}
             type="button"
             onClick={() => {
               if (index !== 0) {
@@ -52,7 +53,7 @@ const MealCustomization = ({ tabs, content, className }) => {
       </div>
       <div>
         {tabs.map((label, index) => (
-          <TabPanel key={label.index} value={value} index={index}>
+          <TabPanel key={uniqueId()} value={value} index={index}>
             <div className="tab-content-wrapper"> {content[index]}</div>
           </TabPanel>
         ))}

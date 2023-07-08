@@ -46,7 +46,7 @@ const App = () => {
           <Route path="auth-user" element={<AuthHomePage />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="forgot-password" element={<ForgotPasswordFlow />} />
-          <Route path="forgot-password" element={<ForgotPassword />} />
+          {/* <Route path="forgot-password" element={<ForgotPassword />} /> */}
           <Route
             path="forgot-password-verification"
             element={<VerifyEmail />}

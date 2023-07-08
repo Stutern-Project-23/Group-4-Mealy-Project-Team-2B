@@ -20,7 +20,6 @@ const VendorContentComponent = ({ vendorName }) => {
           `https://mealy.onrender.com/api/v1/vendor/${vendorName}`,
         );
         const data = await response.json();
-        console.log({ data });
         if (Array.isArray(data.data.products)) {
           const firstContentData = data.data.products
             .slice(0, 8)

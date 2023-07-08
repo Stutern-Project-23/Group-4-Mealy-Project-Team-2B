@@ -6,27 +6,26 @@ import Button from "../../component/Button";
 import useVerifyCode from "../../hooks/useVerifyCode";
 import "../authPagesStyles.css";
 import { RightSideImage } from "../authPageBgImg";
-import { setAuthToken } from '../../utilities/rest';
-import { AuthDispatch, Auth } from '../../utilities/auth';
+// import { setAuthToken } from '../../utilities/rest';
+// import { AuthDispatch, Auth } from '../../utilities/auth';
 
 const SignUpVerification = () => {
   const [verificationCode, setVerificationCode] = useState("");
-    useState(false);
-    const [requestSuccess, setRequestSuccess] = useState("");
+  useState(false);
+  const [requestSuccess, setRequestSuccess] = useState("");
 
   const { isLoading, error, verifyCode } = useVerifyCode();
-  const {
-    dispatch,
-  } = Auth()
+  // const {
+  //   dispatch,
+  // } = Auth()
 
   const history = useNavigate();
 
   const handleVerification = async (e) => {
     e.preventDefault();
-    verifyCode({verificationCode
-    }).then((result) => {
-      setRequestSuccess(result)
-    })
+    verifyCode({ verificationCode }).then((result) => {
+      setRequestSuccess(result);
+    });
   };
 
   useEffect(() => {

@@ -36,8 +36,6 @@ const Profile = () => {
 
   const token = localStorage.getItem("token");
 
-  console.log({ postalCode });
-
   const handleDeleteClick = () => {
     setDeleteAccount(true);
   };
@@ -49,7 +47,6 @@ const Profile = () => {
     try {
       setLoading(true);
       // Make a request to the delete request endpoint
-      console.log({ token });
       await axios.post(
         "https://mealy.onrender.com/api/v1/user/deleterequest",
         null,
@@ -62,7 +59,7 @@ const Profile = () => {
       // Navigate the user to the token input route
       navigate("/delete-account-verification");
     } catch (error) {
-      console.log("Error deleting account:", error);
+      // console.log("Error deleting account:", error);
     } finally {
       setLoading(false);
     }
@@ -85,7 +82,7 @@ const Profile = () => {
       };
       await updatePersonalInfo(personalInfo, token);
     } catch (error) {
-      console.error("Error updating personal info:", error);
+      // console.error("Error updating personal info:", error);
     }
   };
 
@@ -98,21 +95,19 @@ const Profile = () => {
         numberAndStreet: street,
         postalCode,
       };
-      const updatedAddress = await updateAddressInfo(addressInfo, token);
+      await updateAddressInfo(addressInfo, token);
       // Handle the response or perform any necessary actions
     } catch (error) {
-      console.error("Error updating address info:", error);
+      // console.error("Error updating address info:", error);
     }
   };
 
-  const handleSaveImageClick = async () => {
+  const handleImageUpload = async () => {
     try {
-      await uploadProfilePicture(image, token);
+      await uploadProfilePicture(image);
       setShowImageSaveButton(false);
-      console.log({ image });
     } catch (error) {
-      console.error("Error updating image info:", error);
-      console.log({ image });
+      // console.error("Error updating image info:", error);
     }
   };
 
@@ -130,26 +125,9 @@ const Profile = () => {
     }
   }, []);
 
-  const handleImageUpload = (event) => {
-    console.log({ event });
+  const handleImageInput = (event) => {
     const uploadedImage = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      const imageDataURL = reader.result;
-      setImage(imageDataURL);
-      setTimeout(() => {
-        console.log("Image data URL:", imageDataURL);
-      }, 500);
-    };
-
-    reader.onerror = (error) => {
-      console.error("Error reading the file:", error);
-    };
-
-    if (uploadedImage) {
-      reader.readAsDataURL(uploadedImage);
-    }
+    setImage(uploadedImage);
     setShowImageSaveButton(true);
   };
 
@@ -167,7 +145,7 @@ const Profile = () => {
         setStreet(profileData.data.numberAndStreet);
         setPostalCode(profileData.data.postalCode);
       } catch (error) {
-        console.error("Error fetching user profile:", error);
+        // console.error("Error fetching user profile:", error);
       }
     };
 
@@ -202,7 +180,7 @@ const Profile = () => {
                 {showImageSaveButton && (
                   <button
                     type="button"
-                    onClick={handleSaveImageClick}
+                    onClick={handleImageUpload}
                     className="save-img-btn">
                     Save
                   </button>
@@ -219,7 +197,8 @@ const Profile = () => {
                     id="image-input"
                     type="file"
                     accept="image/*"
-                    onChange={handleImageUpload}
+                    onChange={handleImageInput}
+                    // onChange={saveFile}
                   />
                 </div>
               </div>

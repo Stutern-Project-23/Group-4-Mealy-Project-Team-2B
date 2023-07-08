@@ -11,11 +11,11 @@ import UseAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
   const [requestSuccess, setRequestSuccess] = useState("");
-  const [disableBtn, setDisableBtn] = useState(false)
+  const [disableBtn, setDisableBtn] = useState(false);
 
   const history = useNavigate();
 
-  const { isLoading, error, signUp, getUser } = UseAuth();
+  const { isLoading, error, signUp } = UseAuth();
 
   const {
     name,
@@ -49,7 +49,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setDisableBtn(true)
+    setDisableBtn(true);
     const isFirstNameValid = validateName();
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
@@ -63,12 +63,6 @@ const SignUp = () => {
       isConfirmPasswordValid &&
       isAgreeCheckedValid
     ) {
-      setNameError("");
-      setEmailError("");
-      setPasswordError("");
-      setConfirmPasswordError("");
-      setAgreeCheckedError("");
-
       signUp({
         name,
         email,
@@ -76,7 +70,12 @@ const SignUp = () => {
         confirmPassword,
         receivePromotionalEmails,
       }).then((response) => {
-        setRequestSuccess(response.status)
+        setRequestSuccess(response.status);
+        setNameError("");
+        setEmailError("");
+        setPasswordError("");
+        setConfirmPasswordError("");
+        setAgreeCheckedError("");
       });
     }
   };
@@ -87,9 +86,8 @@ const SignUp = () => {
       // getUser(email).then(() => {
       //   history("/sign-up-verification");
       // })
-    }
-    else {
-      setDisableBtn(false)
+    } else {
+      setDisableBtn(false);
     }
   });
 
@@ -203,8 +201,15 @@ const SignUp = () => {
           </div>
 
           <div className="create-acc-btn">
-            {error && <div className="endpoint-error">{error}</div>}
-            <Button type="submit" className="input-width" style={disableBtn ? {opacity: '0.6',cursor:'not-allowed'}:{opacity:'1'}}>
+            <div className="error-message endpoint-error">{error}</div>
+            <Button
+              type="submit"
+              className="input-width"
+              style={
+                disableBtn
+                  ? { opacity: "0.6", cursor: "not-allowed" }
+                  : { opacity: "1" }
+              }>
               {isLoading ? "Signing Up..." : "Create an account"}
             </Button>
           </div>

@@ -64,7 +64,6 @@ const ForgotPasswordFlow = () => {
           setResetPasswordToken(resetPasswordTokenData);
           setShowCodeForm(false);
           setShowNewPasswordForm(true);
-          console.log(data);
         } else {
           setError(data.message);
         }
@@ -87,7 +86,7 @@ const ForgotPasswordFlow = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          console.log(data);
+          /* empty */
         } else {
           setError(data.message);
         }
@@ -113,7 +112,6 @@ const ForgotPasswordFlow = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          console.log(data);
           alert("Password updated successfully!");
           history.push("/auth-user");
         } else {

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import EmptyVendorContent from "../../EmpytVendorContent";
+import MultipleLoadingCard from "../../MultipleLoadingCard";
 import ResturantContent from "../ResturantContent";
 import Meal from "../../../assets/images/meal.png";
 import Avocado from "../../../assets/images/hero/avocado-sandwich.png";
@@ -8,9 +10,11 @@ import Avocado from "../../../assets/images/hero/avocado-sandwich.png";
 const VendorContentComponent = ({ vendorName }) => {
   const [contents, setContents] = useState([]);
   const [remainingContents, setRemainingContents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchVendorProducts = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(
           `https://mealy.onrender.com/api/v1/vendor/${vendorName}`,
@@ -54,6 +58,8 @@ const VendorContentComponent = ({ vendorName }) => {
           "Error fetching vendor products from the endpoint:",
           error,
         );
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -62,27 +68,44 @@ const VendorContentComponent = ({ vendorName }) => {
 
   return (
     <div>
-      <ContentWrapperGrid>
-        {/* First grid */}
-        {contents}
-      </ContentWrapperGrid>
-
-      {/* Discount box */}
-      <div className="discount">
-        <img src={Avocado} alt="" />
-        <div>
-          <p className="discount-off">50% OFF</p>
-          <p className="discount-food">All salad and Pasta</p>
-          <button className="discount-btn" type="submit">
-            Use code Eattak50
-          </button>
+      {isLoading ? (
+        <div className="loading-state-div">
+          <MultipleLoadingCard />
         </div>
-      </div>
+      ) : (
+        // eslint-disable-next-line react/jsx-no-useless-fragment
+        <>
+          {contents.length === 0 && remainingContents.length === 0 ? (
+            <EmptyVendorContent />
+          ) : (
+            <div>
+              <ContentWrapperGrid>
+                {/* First grid */}
+                {contents}
+              </ContentWrapperGrid>
 
-      <ContentWrapperGrid>
-        {/* Remaining grid */}
-        {remainingContents}
-      </ContentWrapperGrid>
+              {/* Discount box */}
+              <div className="discount">
+                <img src={Avocado} alt="" />
+                <div>
+                  <p className="discount-off">50% OFF</p>
+                  <p className="discount-food">All salad and Pasta</p>
+                  <button className="discount-btn" type="submit">
+                    Use code Eattak50
+                  </button>
+                </div>
+              </div>
+
+              {remainingContents.length > 0 && (
+                <ContentWrapperGrid>
+                  {/* Remaining grid */}
+                  {remainingContents}
+                </ContentWrapperGrid>
+              )}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };

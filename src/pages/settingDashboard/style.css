@@ -157,6 +157,14 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
+.empty-vector {
+  height: 100px;
+}
+.empty-order-cont {
+  padding-top: 2em;
+  display: grid;
+  place-items: center;
+}
 
 @media (max-width: 1000px) {
   .main-orders-container {

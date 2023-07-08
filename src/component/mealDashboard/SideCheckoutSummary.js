@@ -8,7 +8,7 @@ const SideCheckoutSummary = () => {
   const { items, updateItemQuantity, removeItem, cartTotal, isEmpty } =
     useCart();
 
-  if (isEmpty) return "empyt cart";
+  if (isEmpty) return " ";
   return (
     <SideCheckoutSummaryStyle>
       <div className="checkout flex">
@@ -62,16 +62,16 @@ const SideCheckoutSummary = () => {
         <div className="receipt flex">
           <div className="total flex">
             <div className="amount flex">
-              <p>Subtotal</p> <small>#33, 067</small>
+              <p>Subtotal</p> <small>${cartTotal}</small>
             </div>
             <div className="amount flex">
-              <p>Discount</p> <small>#0</small>
+              <p>Discount</p> <small>$0</small>
             </div>
             <div className="amount flex">
-              <p>Shipping fee</p> <small>#32, 993</small>
+              <p>Shipping fee</p> <small>$32, 993</small>
             </div>
             <div className="amount flex">
-              <p>VAT</p> <small>#70</small>
+              <p>VAT</p> <small>$70</small>
             </div>
             <div className="amount flex">
               <p>Total</p> <small>${cartTotal}</small>
@@ -244,6 +244,7 @@ const SideCheckoutSummaryStyle = styled.div`
     color: #ffffff;
     background-color: #fa5a00;
     border-radius: 5px;
+    margin-bottom: 0 !important;
   }
 
   .cancel-order {

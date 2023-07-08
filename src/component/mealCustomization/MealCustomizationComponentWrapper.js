@@ -20,7 +20,6 @@ const MealCustomizationComponentWrapper = () => {
     fetch("https://mealy.onrender.com/api/v1/vendor/all")
       .then((response) => response.json())
       .then((data) => {
-        // console.log({ data });
         if (Array.isArray(data.vendors)) {
           const mappedTabs = data.vendors.map((vendor) => vendor.name);
           const mappedContent = data.vendors.map((vendor) => (
@@ -42,7 +41,7 @@ const MealCustomizationComponentWrapper = () => {
         console.error("Error fetching data from the endpoint:", error);
       })
       .finally(() => {
-        setIsLoading(false); // Set isLoading to false when the request is complete
+        setIsLoading(false);
       });
   }, []);
 

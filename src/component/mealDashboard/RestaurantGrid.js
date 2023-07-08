@@ -12,7 +12,7 @@ const RestaurantGrid = ({
   imageSrc,
   onClick,
 }) => (
-  <div onClick={onClick}>
+  <div onClick={onClick} className="dashboard-content-card">
     <DashboardResturantContent
       imageSrc={imageSrc}
       description={description}

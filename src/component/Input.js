@@ -4,8 +4,9 @@ import styled from "styled-components";
 
 const Input = forwardRef(
   (
-    { className, id, name, value, onChange, placeholder, children },
-    type,
+    // eslint-disable-next-line react/prop-types
+    { className, id, name, value, onChange, placeholder, children, type },
+
     ref,
   ) => {
     const inputClassName = `input-component${className ? ` ${className}` : ""}`;

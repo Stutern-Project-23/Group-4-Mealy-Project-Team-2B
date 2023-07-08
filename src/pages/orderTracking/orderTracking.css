@@ -27,6 +27,7 @@
 
 .order__map {
   margin: 1.5rem 0 2.5rem;
+  width: 100%;
 }
 .order__map img {
   width: 70%;
@@ -62,11 +63,12 @@
 .help-icon-box {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   margin-bottom: 1rem;
 }
 .tracking-help-icon-box {
-  bottom: 250px;
+  bottom: 70px;
+  height: 200px;
+  position: absolute;
 }
 
 .help-icon {

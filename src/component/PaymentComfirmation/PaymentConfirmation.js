@@ -13,7 +13,7 @@ const PaymentConfirmation = () => (
           <img src={Success} alt="" />
         </div>
         <h1 className="payment-title">Payment Successful</h1>
-        <div className="payment-details">
+        {/* <div className="payment-details">
           {PaymentData.map((item) => (
             <div className="payment-detail" key={item.id}>
               <p className="payment-info">{item.title}</p>
@@ -24,7 +24,7 @@ const PaymentConfirmation = () => (
         <div className="payment-total">
           <h3>Total</h3>
           <p>#33, 067</p>
-        </div>
+        </div> */}
 
         <Link to="/order-tracking">
           <Button type="submit" className="track-order-btn">

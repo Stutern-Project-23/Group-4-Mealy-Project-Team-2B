@@ -13,27 +13,27 @@ const DashboardResturantContent = ({
   reviewText,
 }) => (
   <ContentWrapperItem>
-    <div>
-      <div className="content-wrapper-item">
-        <div className="content-img-div">
-          <img src={imageSrc} alt="" className="content-img" />
-        </div>
-        <h4>{header}</h4>
-        <div className="review-star-div">
-          <RatingStarComponent />
-          <p className="review">{reviewText}</p>
-        </div>
-        <div className="paragraph-moreIcon-div">
-          <p>{description}</p>
-          <BsArrowRightCircle />
-        </div>
+    <div className="content-wrapper-item">
+      <div className="content-img-div">
+        <img src={imageSrc} alt="" className="content-img" />
+      </div>
+      <h4 className="card-name">{header}</h4>
+      <div className="review-star-div">
+        <RatingStarComponent />
+        <p className="review">{reviewText}</p>
+      </div>
+      <div className="paragraph-moreIcon-div">
+        <p>{description}</p>
+        <BsArrowRightCircle />
       </div>
     </div>
   </ContentWrapperItem>
 );
 
 const ContentWrapperItem = styled.div`
+  cursor: pointer;
   background: #ffffff;
+  height: 90%;
   display: flex;
   flex-direction: column;
   gap: 17px;
@@ -47,6 +47,7 @@ const ContentWrapperItem = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1em;
     img {
       width: 100%;
       height: 70px;
@@ -55,11 +56,18 @@ const ContentWrapperItem = styled.div`
   h4 {
     font-weight: 700;
     font-size: 18px;
-    line-height: 39px;
+    /* line-height: 39px; */
     margin: 0;
   }
+  .card-name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   p {
-    margin-top: 1em;
+    /* margin-top: 1em; */
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
@@ -69,6 +77,8 @@ const ContentWrapperItem = styled.div`
     display: flex;
     align-items: center;
     gap: 1em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
   }
   .review {
     font-weight: 500;
@@ -81,7 +91,7 @@ const ContentWrapperItem = styled.div`
     align-items: center;
     gap: 0.5em;
     svg {
-      font-size: 26px;
+      font-size: 20px;
       cursor: pointer;
       color: #11111a;
     }

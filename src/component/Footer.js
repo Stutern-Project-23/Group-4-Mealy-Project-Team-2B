@@ -16,6 +16,9 @@ const Footer = () => {
   const handleLogoutModal = () => {
     setShowLogoutModal(false);
   };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <FooterSection>
@@ -32,19 +35,29 @@ const Footer = () => {
           <h2>Company</h2>
           <ul>
             <li>
-              <a href="/about">About Us</a>
+              <a href="/about" onClick={scrollToTop}>
+                About Us
+              </a>
             </li>
             <li>
-              <a href="/">Partnerships</a>
+              <a href="/" onClick={scrollToTop}>
+                Partnerships
+              </a>
             </li>
             <li>
-              <a href="/">Privacy</a>
+              <a href="/" onClick={scrollToTop}>
+                Privacy
+              </a>
             </li>
             <li>
-              <a href="/">Policy</a>
+              <a href="/" onClick={scrollToTop}>
+                Policy
+              </a>
             </li>
             <li>
-              <a href="/contact">Contact Us</a>
+              <a href="/contact" onClick={scrollToTop}>
+                Contact Us
+              </a>
             </li>
           </ul>
         </div>
@@ -52,18 +65,26 @@ const Footer = () => {
           <h2>Services</h2>
           <ul>
             <li>
-              <a href="/menu">Menu</a>
+              <a href="/menu" onClick={scrollToTop}>
+                Menu
+              </a>
             </li>
             <li>
-              <a href="/">Recipe</a>
+              <a href="/" onClick={scrollToTop}>
+                Recipe
+              </a>
             </li>
 
             <li>
-              <a href="/">Delivery</a>
+              <a href="/" onClick={scrollToTop}>
+                Delivery
+              </a>
             </li>
 
             <li>
-              <a href="/">Customer</a>
+              <a href="/" onClick={scrollToTop}>
+                Customer
+              </a>
             </li>
           </ul>
         </div>
@@ -72,13 +93,19 @@ const Footer = () => {
           <h2>Support</h2>
           <ul>
             <li>
-              <a href="/">Help Center</a>
+              <a href="/" onClick={scrollToTop}>
+                Help Center
+              </a>
             </li>
             <li>
-              <a href="/">Status</a>
+              <a href="/" onClick={scrollToTop}>
+                Status
+              </a>
             </li>
             <li>
-              <a href="/setting-dashboard">Settings</a>
+              <a href="/settings" onClick={scrollToTop}>
+                Settings
+              </a>
             </li>
             <li>
               <button
@@ -179,9 +206,6 @@ const FooterSection = styled.div`
     font-size: 15px;
     line-height: 24px;
   }
-  .footer-logout-btn.disabled {
-    cursor: not-allowed;
-  }
 
   @media (width < 620px) {
     footer {
@@ -235,6 +259,10 @@ const FooterSection = styled.div`
     footer.top .links {
       grid-template-columns: 1fr;
     }
+  }
+  .footer-logout-btn.disabled {
+    cursor: not-allowed;
+    display: none !important;
   }
 `;
 

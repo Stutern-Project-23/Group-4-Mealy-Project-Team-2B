@@ -12,6 +12,7 @@ import UseGoogleSignIn from "../../hooks/useGoogleSignIn";
 import UseAuth from "../../hooks/useAuth";
 import { AuthDispatch, Auth } from "../../utilities/auth";
 import { setAuthToken } from "../../utilities/rest";
+import "../authPagesStyles.css"
 
 const SignIn = () => {
   const [requestSuccess, setRequestSuccess] = useState("");

@@ -5,7 +5,7 @@ import { useCart } from "react-use-cart";
 import { ImCancelCircle } from "react-icons/im";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
-
+import "../../mealDashboard/dashboardStyle.css";
 import "./cartmodal.css";
 import EmptyCart from "./EmptyCart";
 
@@ -116,8 +116,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
+  padding-top: 1em;
   .cart {
-    margin-top: 1em;
+    padding-top: 3.5em;
     width: 100%;
     padding-bottom: 1em;
     display: flex;

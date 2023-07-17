@@ -8,6 +8,8 @@ import Button from "../../component/Button";
 import { RightSideImage } from "../authPageBgImg";
 import { FormValidationContext } from "../../hooks/UseFormValidationsContext";
 import UseAuth from "../../hooks/useAuth";
+import "../authPagesStyles.css";
+import "./style.css"
 
 const SignUp = () => {
   const [requestSuccess, setRequestSuccess] = useState("");
@@ -101,7 +103,9 @@ const SignUp = () => {
         </a>
 
         <form className="input-wrapper" onSubmit={handleSubmit}>
-          <h2>Create an Account</h2>
+          <div className="signup-form-title">
+            <h2>Create an Account</h2>
+          </div>
 
           <div className="input-div input-cont">
             <Input
@@ -190,7 +194,7 @@ const SignUp = () => {
               />
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="agree" className="checkbox-label">
-                yes, I understand and agree to Mealy’s Terms of service
+                Yes, I understand and agree to Mealy’s Terms of service
               </label>
               <div className="validation-error-div">
                 {agreeCheckedError && (

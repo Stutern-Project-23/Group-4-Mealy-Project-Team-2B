@@ -257,7 +257,6 @@ const DashboardStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* color: #ffffff; */
     color: #000000;
     align-items: center;
     text-decoration: none;

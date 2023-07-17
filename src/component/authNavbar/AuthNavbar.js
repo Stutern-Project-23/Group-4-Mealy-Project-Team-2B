@@ -21,12 +21,6 @@ const AuthNavbar = () => {
   const [isnotificationModalOpen, setIsNotificationModalOpen] = useState(false);
   const { totalItems } = useCart();
 
-  // const handleCartClick = () => {
-  //   setIsCartModalOpen(!isCartModalOpen);
-  // };
-  // const handleNotifcationClick = () => {
-  //   setIsNotificationModalOpen(!isnotificationModalOpen);
-  // };
 
   const handleInputClick = () => {
     setIsLocationModalOpen(!isLocationModalOpen);

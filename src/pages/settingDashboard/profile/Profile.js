@@ -17,6 +17,8 @@ import Modal from "../../../component/Modal";
 import Input from "../../../component/Input";
 import edit from "../../../assets/images/profile-edit-pen.png";
 import Button from "../../../component/Button";
+import "../style.css";
+import SnackbarComponent from "../../../component/Snackbar";
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -27,12 +29,14 @@ const Profile = () => {
   const [country, setCountry] = useState("");
   const [cityState, setCityState] = useState("");
   const [postalCode, setPostalCode] = useState("");
+  const [email, setEmail] = useState("");
   const [street, setStreet] = useState("");
   const [deleteAccount, setDeleteAccount] = useState(false);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [showImageSaveButton, setShowImageSaveButton] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -68,6 +72,7 @@ const Profile = () => {
   const handleEditClick = () => {
     setIsEditing(true);
   };
+
   const handleAddressEditClick = () => {
     setIsAddressEditing(true);
   };
@@ -81,8 +86,10 @@ const Profile = () => {
         phone,
       };
       await updatePersonalInfo(personalInfo, token);
+      setShowSnackbar(true);
+      console.log("true");
     } catch (error) {
-      // console.error("Error updating personal info:", error);
+      console.error("Error updating personal info:", error);
     }
   };
 
@@ -96,7 +103,7 @@ const Profile = () => {
         postalCode,
       };
       await updateAddressInfo(addressInfo, token);
-      // Handle the response or perform any necessary actions
+      setShowSnackbar(true);
     } catch (error) {
       // console.error("Error updating address info:", error);
     }
@@ -137,13 +144,14 @@ const Profile = () => {
       try {
         const profileData = await getUserProfile(token);
 
-        setFirstName(profileData.data.name);
-        setLastName(profileData.data.lastName);
-        setPhone(profileData.data.phone);
-        setCountry(profileData.data.countryName);
-        setCityState(profileData.data.cityAndState);
-        setStreet(profileData.data.numberAndStreet);
-        setPostalCode(profileData.data.postalCode);
+        setFirstName(profileData.data?.name);
+        setLastName(profileData.data?.lastName);
+        setPhone(profileData.data?.phone);
+        setCountry(profileData.data?.countryName);
+        setCityState(profileData.data?.cityAndState);
+        setStreet(profileData.data?.numberAndStreet);
+        setPostalCode(profileData.data?.postalCode);
+        setEmail(profileData.data?.email);
       } catch (error) {
         // console.error("Error fetching user profile:", error);
       }
@@ -167,7 +175,9 @@ const Profile = () => {
 
             <div>
               <div className="profile-name-location-div">
-                <p className="user-name">{`${firstName}`}</p>
+                <p className="user-name">{`${
+                  firstName?.split(" ")[0]
+                } ${lastName}`}</p>
 
                 <p className="user-saved-location">
                   {`${cityState && cityState.length > 0 ? cityState : ""} ${
@@ -223,20 +233,18 @@ const Profile = () => {
                   {isEditing ? (
                     <Input
                       type="text"
-                      value={firstName}
+                      value={`${firstName?.split(" ")[0]}`}
                       className="edit-input"
                       onChange={(e) => setFirstName(e.target.value)}
                     />
                   ) : (
-                    <h4>{firstName}</h4>
+                    <h4>{`${firstName?.split(" ")[0]}`}</h4>
                   )}
                 </div>
 
                 <div>
                   <p>Email address</p>
-                  <h4 className={isEditing ? "greyed-out" : ""}>
-                    amarachuckwu@gmail.com
-                  </h4>
+                  <h4 className={isEditing ? "greyed-out" : ""}>{email}</h4>
                 </div>
               </div>
 
@@ -397,6 +405,10 @@ const Profile = () => {
             </div>
           </Modal>
         )}
+
+        {showSnackbar && (
+          <SnackbarComponent message="Settings successfully updated" />
+        )}
       </div>
     </ProfileStyles>
   );
@@ -461,6 +473,7 @@ const ProfileStyles = styled.div`
   }
   .edit-input {
     margin-top: 1em;
+    width: 300px;
   }
   .edit-save-btn-div {
     justify-content: flex-end;
@@ -507,9 +520,10 @@ const ProfileStyles = styled.div`
     border-radius: 3px;
     height: 30px;
     font-size: 14px;
+    cursor: pointer;
   }
   .save-img-btn {
-    margin-top: 1.3em;
+    /* margin-top: 1.3em; */
   }
   .no-picture-icon {
     font-size: 60px;
@@ -525,6 +539,27 @@ const ProfileStyles = styled.div`
     display: flex;
     justify-content: space-between;
     column-gap: 1em;
+  }
+  @media (max-width: 1051px) {
+    .personal-information-edit {
+      display: grid;
+      place-items: center;
+      > div {
+        width: 100%;
+      }
+      p,
+      h4 {
+        font-size: 16px;
+      }
+      .edit-input {
+        margin-top: 0.3em;
+      }
+    }
+  }
+  @media (max-width: 645px) {
+    .edit-input {
+      width: 100%;
+    }
   }
 `;
 export default Profile;

@@ -3,6 +3,7 @@ import styles from "./uniqueAttribute.module.css";
 import vissionImg from "./vision.webp";
 import subheadingStyles from "./About.module.css";
 import headingStyles from "./aboutTop.module.css";
+import LoyaltyImg from "./jellof.jpg";
 
 const UniqueAttribute = () => (
   <div className={styles.vision}>
@@ -25,7 +26,7 @@ const UniqueAttribute = () => (
       </div>
     </div>
     <div className={styles.container}>
-      <img className={styles.img} src={vissionImg} alt="" />
+      <img className={styles.img} src={LoyaltyImg} alt="" />
       <div className={subheadingStyles.textCont}>
         <h2 className={subheadingStyles.h2Main}>Loyalty Rewards Program</h2>
         <p className={subheadingStyles.para}>

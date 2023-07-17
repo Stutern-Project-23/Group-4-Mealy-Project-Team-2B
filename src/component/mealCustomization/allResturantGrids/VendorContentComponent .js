@@ -6,6 +6,7 @@ import MultipleLoadingCard from "../../MultipleLoadingCard";
 import ResturantContent from "../ResturantContent";
 import Meal from "../../../assets/images/meal.png";
 import Avocado from "../../../assets/images/hero/avocado-sandwich.png";
+import "../../authComp/HeroSection/heroSection.css";
 
 const VendorContentComponent = ({ vendorName }) => {
   const [contents, setContents] = useState([]);

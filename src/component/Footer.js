@@ -15,8 +15,7 @@ const Footer = () => {
 
   const handleLogoutModal = () => {
     setShowLogoutModal(false);
-  };
-  const scrollToTop = () => {
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -35,29 +34,19 @@ const Footer = () => {
           <h2>Company</h2>
           <ul>
             <li>
-              <a href="/about" onClick={scrollToTop}>
-                About Us
-              </a>
+              <a href="/about">About Us</a>
             </li>
             <li>
-              <a href="/" onClick={scrollToTop}>
-                Partnerships
-              </a>
+              <a href="/">Partnerships</a>
             </li>
             <li>
-              <a href="/" onClick={scrollToTop}>
-                Privacy
-              </a>
+              <a href="/">Privacy</a>
             </li>
             <li>
-              <a href="/" onClick={scrollToTop}>
-                Policy
-              </a>
+              <a href="/">Policy</a>
             </li>
             <li>
-              <a href="/contact" onClick={scrollToTop}>
-                Contact Us
-              </a>
+              <a href="/contact">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -65,26 +54,18 @@ const Footer = () => {
           <h2>Services</h2>
           <ul>
             <li>
-              <a href="/menu" onClick={scrollToTop}>
-                Menu
-              </a>
+              <a href="/menu">Menu</a>
             </li>
             <li>
-              <a href="/" onClick={scrollToTop}>
-                Recipe
-              </a>
+              <a href="/">Recipe</a>
             </li>
 
             <li>
-              <a href="/" onClick={scrollToTop}>
-                Delivery
-              </a>
+              <a href="/">Delivery</a>
             </li>
 
             <li>
-              <a href="/" onClick={scrollToTop}>
-                Customer
-              </a>
+              <a href="/">Customer</a>
             </li>
           </ul>
         </div>
@@ -93,19 +74,13 @@ const Footer = () => {
           <h2>Support</h2>
           <ul>
             <li>
-              <a href="/" onClick={scrollToTop}>
-                Help Center
-              </a>
+              <a href="/">Help Center</a>
             </li>
             <li>
-              <a href="/" onClick={scrollToTop}>
-                Status
-              </a>
+              <a href="/">Status</a>
             </li>
             <li>
-              <a href="/settings" onClick={scrollToTop}>
-                Settings
-              </a>
+              <a href="/settings">Settings</a>
             </li>
             <li>
               <button
